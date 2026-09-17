@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="es" style="display: block;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplos de Seudo-clases de Interacción Multi-idioma</title>
+  <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+
+<!-- PSEUDOCLASES & CAMBIOS DE LENGUAJE -->
+  <div class="lang-bar">
+    <button onclick="cambiarIdioma('es')">🇪🇸 Español</button>
+    <button onclick="cambiarIdioma('en')">🇬🇧 English</button>
+    <button onclick="cambiarIdioma('fr')">🇫🇷 Français</button>
+    <button onclick="cambiarIdioma('ja')">🇯🇵 日本語</button>
+    <button onclick="cambiarIdioma('de')">🇩🇪 Deutsch</button>
+    <button onclick="cambiarIdioma('ar')">🇸🇦 العربية</button>
+  </div>
+
+  <div class="container">
+    <h2>
+      <span lang="es">Seudo-clases de Interacción en Cajas de Texto</span>
+      <span lang="en">Interaction Pseudo-classes in Textboxes</span>
+      <span lang="fr">Pseudo-classes d'interaction dans les zones de texte</span>
+      <span lang="ja">テキストボックスのインタラクティブ擬似クラス</span>
+      <span lang="de">Interaktions-Pseudoklassen in Textfeldern</span>
+      <span lang="ar">فئات التفاعل الوهمية في مربعات النصوص</span>
+    </h2>
+    <p>
+      <span lang="es">Interactúa con cada campo para ver los diferentes efectos CSS.</span>
+      <span lang="en">Interact with each field to see the different CSS effects.</span>
+      <span lang="fr">Interagissez avec chaque champ pour voir les différents effets CSS.</span>
+      <span lang="ja">各フィールドを操作して、さまざまなCSS効果を確認してください。</span>
+      <span lang="de">Interaktieren Sie mit jedem Feld, um die verschiedenen CSS-Effekte zu sehen.</span>
+      <span lang="ar">تفاعل مع كل حقل لمشاهدة تأثيرات CSS المختلفة.</span>
+    </p>
+
+    <div class="form-group">
+      <label>
+        <span lang="es">Efecto <code>:hover</code> (Pasa el cursor por encima)</span>
+        <span lang="en"><code>:hover</code> Effect (Move mouse over)</span>
+        <span lang="fr">Effet <code>:hover</code> (Passez la souris)</span>
+        <span lang="ja"><code>:hover</code> エフェクト (マウスホバー)</span>
+        <span lang="de"><code>:hover</code>-Effekt (Maus darüber bewegen)</span>
+        <span lang="ar">تأثير <code>:hover</code> (مرر الماوس فوقه)</span>
+      </label>
+      <input type="text" class="box-hover" lang="es" placeholder="Pasa el mouse aquí...">
+      <input type="text" class="box-hover" lang="en" placeholder="Hover here...">
+      <input type="text" class="box-hover" lang="fr" placeholder="Survolez ici...">
+      <input type="text" class="box-hover" lang="ja" placeholder="ここにホバー...">
+      <input type="text" class="box-hover" lang="de" placeholder="Hier hovern...">
+      <input type="text" class="box-hover" lang="ar" placeholder="مرر الماوس هنا...">
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span lang="es">Efecto <code>:focus</code> (Haz clic para escribir)</span>
+        <span lang="en"><code>:focus</code> Effect (Click to type)</span>
+        <span lang="fr">Effet <code>:focus</code> (Cliquez para taper)</span>
+        <span lang="ja"><code>:focus</code> エフェクト (クリックして入力)</span>
+        <span lang="de"><code>:focus</code>-Effekt (Zum Tippen klicken)</span>
+        <span lang="ar">تأثير <code>:focus</code> (انقر للكتابة)</span>
+      </label>
+      <input type="text" class="box-focus" lang="es" placeholder="Haz clic aquí...">
+      <input type="text" class="box-focus" lang="en" placeholder="Click here...">
+      <input type="text" class="box-focus" lang="fr" placeholder="Cliquez ici...">
+      <input type="text" class="box-focus" lang="ja" placeholder="ここをクリック...">
+      <input type="text" class="box-focus" lang="de" placeholder="Hier klicken...">
+      <input type="text" class="box-focus" lang="ar" placeholder="انقر هنا...">
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span lang="es">Efecto <code>:active</code> (Mantén el clic presionado)</span>
+        <span lang="en"><code>:active</code> Effect (Hold click down)</span>
+        <span lang="fr">Effet <code>:active</code> (Maintenez le clic)</span>
+        <span lang="ja"><code>:active</code> エフェクト (クリックしたままにする)</span>
+        <span lang="de"><code>:active</code>-Effekt (Klick gedrückt halten)</span>
+        <span lang="ar">تأثير <code>:active</code> (اضغط مع الاستمرار)</span>
+      </label>
+      <input type="text" class="box-active" lang="es" placeholder="Mantén presionado el clic...">
+      <input type="text" class="box-active" lang="en" placeholder="Hold click down...">
+      <input type="text" class="box-active" lang="fr" placeholder="Maintenez le clic...">
+      <input type="text" class="box-active" lang="ja" placeholder="クリックしたままにする...">
+      <input type="text" class="box-active" lang="de" placeholder="Klick gedrückt halten...">
+      <input type="text" class="box-active" lang="ar" placeholder="اضغط مع الاستمرار...">
+    </div>
+
+    <div class="form-group box-focus-within">
+      <label>
+        <span lang="es">Efecto <code>:focus-within</code> (Cambia el fondo del contenedor)</span>
+        <span lang="en"><code>:focus-within</code> Effect (Changes container background)</span>
+        <span lang="fr">Effet <code>:focus-within</code> (Change le fond du conteneur)</span>
+        <span lang="ja"><code>:focus-within</code> エフェクト (コンテナの背景が変わる)</span>
+        <span lang="de"><code>:focus-within</code>-Effekt (Ändert den Container-Hintergrund)</span>
+        <span lang="ar">تأثير <code>:focus-within</code> (يغير خلفية الحاوية)</span>
+      </label>
+      <input type="text" lang="es" placeholder="Haz clic y todo el bloque cambiará...">
+      <input type="text" lang="en" placeholder="Click and the whole block changes...">
+      <input type="text" lang="fr" placeholder="Cliquez et tout le bloc change...">
+      <input type="text" lang="ja" placeholder="クリックするとブロック全体が変わります...">
+      <input type="text" lang="de" placeholder="Klicken und der gesamte Block ändert sich...">
+      <input type="text" lang="ar" placeholder="انقر وسيتغير الكتلة بالكامل...">
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span lang="es">Efecto <code>:focus-visible</code> (Usa la tecla TAB)</span>
+        <span lang="en"><code>:focus-visible</code> Effect (Use TAB key)</span>
+        <span lang="fr">Effet <code>:focus-visible</code> (Utilisez la touche TAB)</span>
+        <span lang="ja"><code>:focus-visible</code> エフェクト (TABキーを使用)</span>
+        <span lang="de"><code>:focus-visible</code>-Effekt (TAB-Taste verwenden)</span>
+        <span lang="ar">تأثير <code>:focus-visible</code> (استخدم مفتاح TAB)</span>
+      </label>
+      <input type="text" class="box-visible" lang="es" placeholder="Selecciona usando el teclado...">
+      <input type="text" class="box-visible" lang="en" placeholder="Select using the keyboard...">
+      <input type="text" class="box-visible" lang="fr" placeholder="Sélectionnez au clavier...">
+      <input type="text" class="box-visible" lang="ja" placeholder="キーボードで選択...">
+      <input type="text" class="box-visible" lang="de" placeholder="Mit der Tastatur auswählen...">
+      <input type="text" class="box-visible" lang="ar" placeholder="حدد باستخدام لوحة المفاتيح...">
+    </div>
+  </div>
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px;">
+    <h2>
+      <span lang="es">Seudo-clases para Enlaces (Links)</span>
+      <span lang="en">Pseudo-classes for Links</span>
+      <span lang="fr">Pseudo-classes pour les liens</span>
+      <span lang="ja">リンクの擬似クラス</span>
+      <span lang="de">Pseudoklassen für Links</span>
+      <span lang="ar">فئات وهمية للروابط</span>
+    </h2>
+    <p>
+      <span lang="es">Cada enlace demuestra un estado específico de forma separada.</span>
+      <span lang="en">Each link demonstrates a specific state separately.</span>
+      <span lang="fr">Chaque lien démontre un état spécifique séparément.</span>
+      <span lang="ja">各リンクは、特定の状態を個別に示します。</span>
+      <span lang="de">Jeder Link zeigt separat einen bestimmten Zustand.</span>
+      <span lang="ar">يظهر كل رابط حالة معينة بشكل منفصل.</span>
+    </p>
+
+    <div class="form-group">
+      <label>
+        <span lang="es">Estado <code>:link</code> (No visitado)</span>
+        <span lang="en">State <code>:link</code> (Unvisited)</span>
+        <span lang="fr">État <code>:link</code> (Non visité)</span>
+        <span lang="ja">状態 <code>:link</code> (未訪問)</span>
+        <span lang="de">Zustand <code>:link</code> (Nicht besucht)</span>
+        <span lang="ar">حالة <code>:link</code> (غير مستعرض)</span>
+      </label>
+      <a href="https://un-sitio-web-falso-123456789.com" class="ln-link" target="_blank">
+        <span lang="es">Enlace no visitado</span>
+        <span lang="en">Unvisited link</span>
+        <span lang="fr">Lien non visité</span>
+        <span lang="ja">未訪問のリンク</span>
+        <span lang="de">Nicht besuchte Verknüpfung</span>
+        <span lang="ar">رابط غير مستعرض</span>
+      </a>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span lang="es">Estado <code>:visited</code> (Visitado)</span>
+        <span lang="en">State <code>:visited</code> (Visited)</span>
+        <span lang="fr">État <code>:visited</code> (Visité)</span>
+        <span lang="ja">状態 <code>:visited</code> (訪問済み)</span>
+        <span lang="de">Zustand <code>:visited</code> (Besucht)</span>
+        <span lang="ar">حالة <code>:visited</code> (مستعرض)</span>
+      </label>
+      <a href="https://www.google.com" class="ln-visited" target="_blank">
+        <span lang="es">Enlace visitado (Google)</span>
+        <span lang="en">Visited link (Google)</span>
+        <span lang="fr">Lien visité (Google)</span>
+        <span lang="ja">訪問済みリンク (Google)</span>
+        <span lang="de">Besuchte Verknüpfung (Google)</span>
+        <span lang="ar">رابط مستعرض (جوجل)</span>
+      </a>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span lang="es">Estado <code>:hover</code> (Pasa el cursor)</span>
+        <span lang="en">State <code>:hover</code> (Hover mouse)</span>
+        <span lang="fr">État <code>:hover</code> (Survolez)</span>
+        <span lang="ja">状態 <code>:hover</code> (ホバー)</span>
+        <span lang="de">Zustand <code>:hover</code> (Hovern)</span>
+        <span lang="ar">حالة <code>:hover</code> (تأثير الحوام)</span>
+      </label>
+      <a href="#hover" class="ln-hover">
+        <span lang="es">Pasa el mouse aquí</span>
+        <span lang="en">Hover over here</span>
+        <span lang="fr">Passez la souris ici</span>
+        <span lang="ja">ここをホバー</span>
+        <span lang="de">Hier hovern</span>
+        <span lang="ar">مرر الماوس هنا</span>
+      </a>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <span lang="es">Estado <code>:active</code> (Mantén presionado)</span>
+        <span lang="en">State <code>:active</code> (Click and hold)</span>
+        <span lang="fr">État <code>:active</code> (Maintenez enfoncé)</span>
+        <span lang="ja">状態 <code>:active</code> (アクティブ)</span>
+        <span lang="de">Zustand <code>:active</code> (Gedrückt halten)</span>
+        <span lang="ar">حالة <code>:active</code> (نشط)</span>
+      </label>
+      <a href="#active" class="ln-active">
+        <span lang="es">Haz clic y mantén presionado</span>
+        <span lang="en">Click and hold</span>
+        <span lang="fr">Cliquez et maintenez</span>
+        <span lang="ja">クリックして保持</span>
+        <span lang="de">Klicken und halten</span>
+        <span lang="ar">انقر مع الاستمرار</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function cambiarIdioma(codigoIdioma) {
+      // Modifica el atributo 'lang' en la etiqueta html directamente
+      document.documentElement.lang = codigoIdioma;
+    }
+  </script>
+
+  <hr width="90%">
+  <h1>PSEUDOCLASES CON HIJOS</h1>
+  <hr width="90%">
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px;">
+    <h2>
+      <span lang="es">Seudo-clases Estructurales</span>
+      <span lang="en">Structural Pseudo-classes</span>
+      <span lang="fr">Pseudo-classes structurelles</span>
+      <span lang="ja">構造擬似クラス</span>
+      <span lang="de">Struktur-Pseudoklassen</span>
+      <span lang="ar">فئات الهيكل الوهمية</span>
+    </h2>
+    <p>
+      <span lang="es">Selección de elementos según su orden, tipo y descendencia en el DOM.</span>
+      <span lang="en">Selecting elements based on their order, type, and nesting in the DOM.</span>
+      <span lang="fr">Sélection d'éléments en función de leur ordre, type et imbrication dans le DOM.</span>
+      <span lang="ja">DOM内の順序、タイプ、およびネストに基づいて要素を選択します。</span>
+      <span lang="de">Auswahl von Elementen basierend auf Reihenfolge, Typ und Verschachtelung im DOM.</span>
+      <span lang="ar">تحديد العناصر بناءً sobre ترتيبها ونوعها وتداخلها في DOM.</span>
+    </p>
+
+    <div class="demo-block">
+      <div class="child-box-container">
+        <div class="text-item">
+          <span lang="es">Texto 1 (:first-child)</span>
+          <span lang="en">Text 1 (:first-child)</span>
+          <span lang="fr">Texte 1 (:first-child)</span>
+          <span lang="ja">テキスト 1 (:first-child)</span>
+          <span lang="de">Text 1 (:first-child)</span>
+          <span lang="ar">النص 1 (:first-child)</span>
+        </div>
+        <div class="text-item">
+          <span lang="es">Texto 2 (:nth-child(special) - Par)</span>
+          <span lang="en">Text 2 (:nth-child(special) - Even)</span>
+          <span lang="fr">Texte 2 (:nth-child(special) - Pair)</span>
+          <span lang="ja">テキスト 2 (:nth-child(special) - 偶数)</span>
+          <span lang="de">Text 2 (:nth-child(special) - Gerade)</span>
+          <span lang="ar">النص 2 (:nth-child(special) - زوجي)</span>
+        </div>
+        <div class="text-item">
+          <span lang="es">Texto 3 (:nth-child(3))</span>
+          <span lang="en">Text 3 (:nth-child(3))</span>
+          <span lang="fr">Texte 3 (:nth-child(3))</span>
+          <span lang="ja">テキスト 3 (:nth-child(3))</span>
+          <span lang="de">Text 3 (:nth-child(3))</span>
+          <span lang="ar">النص 3 (:nth-child(3))</span>
+        </div>
+        <div class="text-item">
+          <span lang="es">Texto 4 (:last-child y Par)</span>
+          <span lang="en">Text 4 (:last-child and Even)</span>
+          <span lang="fr">Texte 4 (:last-child et Pair)</span>
+          <span lang="ja">テキスト 4 (:last-child と偶数)</span>
+          <span lang="de">Text 4 (:last-child und Gerade)</span>
+          <span lang="ar">النص 4 (:last-child وزوجي)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-block" style="margin-top: 25px;">
+      <div class="type-box-container">
+        <small>Etiqueta SMALL (Ignorada por selectores P)</small>
+        <p class="type-p">
+          <span lang="es">Párrafo A (:first-of-type)</span>
+          <span lang="en">Paragraph A (:first-of-type)</span>
+          <span lang="fr">Paragraphe A (:first-of-type)</span>
+          <span lang="ja">段落 A (:first-of-type)</span>
+          <span lang="de">Absatz A (:first-of-type)</span>
+          <span lang="ar">الفقرة أ (:first-of-type)</span>
+        </p>
+        <p class="type-p">
+          <span lang="es">Párrafo B (:nth-last-of-type(2))</span>
+          <span lang="en">Paragraph B (:nth-last-of-type(2))</span>
+          <span lang="fr">Paragraphe B (:nth-last-of-type(2))</span>
+          <span lang="ja">段落 B (:nth-last-of-type(2))</span>
+          <span lang="de">Absatz B (:nth-last-of-type(2))</span>
+          <span lang="ar">الفقرة ب (:nth-last-of-type(2))</span>
+        </p>
+        <p class="type-p">
+          <span lang="es">Párrafo C (:last-of-type)</span>
+          <span lang="en">Paragraph C (:last-of-type)</span>
+          <span lang="fr">Paragraphe C (:last-of-type)</span>
+          <span lang="ja">段落 C (:last-of-type)</span>
+          <span lang="de">Absatz C (:last-of-type)</span>
+          <span lang="ar">الفقرة ج (:last-of-type)</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="demo-block" style="margin-top: 25px;">
+      <div class="isolate-container">
+        <div class="text-item">
+          <span lang="es">Soy hijo único (:only-child)</span>
+          <span lang="en">I am an only child (:only-child)</span>
+          <span lang="fr">Je suis enfant unique (:only-child)</span>
+          <span lang="ja">私は一人っ子です (:only-child)</span>
+          <span lang="de">Ich bin ein Einzelkind (:only-child)</span>
+          <span lang="ar">أنا ابن وحيد (:only-child)</span>
+        </div>
+      </div>
+
+      <div class="isolate-container" style="margin-top: 15px;">
+        <small>Etiqueta SMALL de relleno</small>
+        <p class="type-p">
+          <span lang="es">Único párrafo aquí (:only-of-type)</span>
+          <span lang="en">Only paragraph here (:only-of-type)</span>
+          <span lang="fr">Seul paragraphe ici (:only-of-type)</span>
+          <span lang="ja">ここにある唯一の段落 (:only-of-type)</span>
+          <span lang="de">Einziger Absatz hier (:only-of-type)</span>
+          <span lang="ar">الفقرة الوحيدة هنا (:only-of-type)</span>
+        </p>
+      </div>
+
+      <div class="empty-box" style="margin-top: 15px;"></div>
+      <p class="empty-note">
+        <span lang="es">^ El bloque de arriba está vacío y afectado por <code>:empty</code></span>
+        <span lang="en">^ The block above is empty and affected by <code>:empty</code></span>
+        <span lang="fr">^ Le bloc ci-dessus est vide et affecté par <code>:empty</code></span>
+        <span lang="ja">^ 上のブロックは空で、<code>:empty</code> の影響を受けています</span>
+        <span lang="de">^ Der obige Block ist leer und von <code>:empty</code> betroffen</span>
+        <span lang="ar">^ الكتلة أعلاه فارغة وتتأثر بـ <code>:empty</code></span>
+      </p>
+    </div>
+  </div>
+
+
+
+
+  <hr width="90%">
+  <h1>JUEGO PSEUDOCLASES DE ESTRUCTURA</h1>
+  <hr width="90%">
+
+
+
+
+    <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 600px;">
+    <h2>
+      <span lang="es">🎮 Minijuego: Adivina el Selector</span>
+      <span lang="en">🎮 Minigame: Guess the Selector</span>
+      <span lang="fr">🎮 Mini-jeu: Devinez le sélecteur</span>
+      <span lang="ja">🎮 ミニゲーム：セレクターを推測する</span>
+      <span lang="de">🎮 Minispiel: Errate den Selektor</span>
+      <span lang="ar">🎮 لعبة صغيرة: خمن المحدد</span>
+    </h2>
+    <p style="margin-bottom: 20px;">
+      <span lang="es">Observa el elemento resaltado con la estrella (⭐) e identifica qué pseudo-clase lo selecciona correctamente según su estructura.</span>
+      <span lang="en">Observe the element highlighted with the star (⭐) and identify which pseudo-class correctly selects it based on its structure.</span>
+      <span lang="fr">Observez l'élément en surbrillance avec l'étoile (⭐) et identifiez quelle pseudo-classe le sélectionne correctement en fonction de sa structure.</span>
+      <span lang="ja">星（⭐）で強調表示されている要素を観察し、その構造に基づいて正しく選択する擬似クラスを特定します。</span>
+      <span lang="de">Beobachte das mit dem Stern (⭐) hervorgehobene Element und identifiziere, welche Pseudoklasse es basierend auf seiner Struktur richtig auswählt.</span>
+      <span lang="ar">لاحظ العنصر المميز بالنجمة (⭐) وحدد الفئة الوهمية التي تختاره بشكل صحيح بناءً على هيكله.</span>
+    </p>
+
+    <div class="game-arena" id="game-arena">
+      </div>
+
+    <div class="game-options">
+      <button class="btn-game" onclick="checkGuess(':first-child', this)">:first-child</button>
+      <button class="btn-game" onclick="checkGuess(':last-child', this)">:last-child</button>
+      <button class="btn-game" onclick="checkGuess(':nth-child()', this)">:nth-child()</button>
+      <button class="btn-game" onclick="checkGuess(':nth-child(special)', this)">:nth-child(special)</button>
+      <button class="btn-game" onclick="checkGuess(':first-of-type', this)">:first-of-type</button>
+      <button class="btn-game" onclick="checkGuess(':last-of-type', this)">:last-of-type</button>
+      <button class="btn-game" onclick="checkGuess(':nth-last-of-type()', this)">:nth-last-of-type()</button>
+      <button class="btn-game" onclick="checkGuess(':only-child', this)">:only-child</button>
+      <button class="btn-game" onclick="checkGuess(':only-of-type', this)">:only-of-type</button>
+      <button class="btn-game" onclick="checkGuess(':empty', this)">:empty</button>
+    </div>
+
+    <div class="game-feedback">
+      <div id="feedback-correct" class="feedback-msg" style="display:none; color: #27ae60;">
+        <strong>
+          <span lang="es">¡Correcto! Excelente deducción. 🎉</span>
+          <span lang="en">Correct! Excellent deduction. 🎉</span>
+          <span lang="fr">Correct ! Excellente déduction. 🎉</span>
+          <span lang="ja">正解！素晴らしい推論です。 🎉</span>
+          <span lang="de">Richtig! Hervorragende Schlussfolgerung. 🎉</span>
+          <span lang="ar">صحيح! استنتاج ممتاز. 🎉</span>
+        </strong>
+      </div>
+      <div id="feedback-wrong" class="feedback-msg" style="display:none; color: #c0392b;">
+        <strong>
+          <span lang="es">Esa no es. ¡Intenta con otra! ❌</span>
+          <span lang="en">That's not it. Try another one! ❌</span>
+          <span lang="fr">Ce n'est pas ça. Essayez encore ! ❌</span>
+          <span lang="ja">違います。もう一度試してください！ ❌</span>
+          <span lang="de">Das ist es nicht. Versuch ein anderes! ❌</span>
+          <span lang="ar">ليس هذا. جرب واحدا آخر! ❌</span>
+        </strong>
+      </div>
+      
+      <button id="btn-next-puzzle" class="btn-next" onclick="loadPuzzle()" style="display:none;">
+        <span lang="es">Siguiente Reto ➔</span>
+        <span lang="en">Next Challenge ➔</span>
+        <span lang="fr">Défi suivant ➔</span>
+        <span lang="ja">次の課題 ➔</span>
+        <span lang="de">Nächste Herausforderung ➔</span>
+        <span lang="ar">التحدي التالي ➔</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    /* LÓGICA DEL MINIJUEGO */
+    const gamePuzzles = [
+      { answer: ':first-child', html: '<div class="g-el target" data-tag="<div>">Bloque A</div> <div class="g-el" data-tag="<div>">Bloque B</div> <div class="g-el" data-tag="<div>">Bloque C</div>' },
+      { answer: ':last-child', html: '<div class="g-el" data-tag="<p>">Párrafo 1</div> <div class="g-el" data-tag="<p>">Párrafo 2</div> <div class="g-el target" data-tag="<p>">Párrafo 3</div>' },
+      { answer: ':nth-child()', html: '<div class="g-el" data-tag="<span>">Ítem 1</div> <div class="g-el" data-tag="<span>">Ítem 2</div> <div class="g-el target" data-tag="<span>">Ítem 3</div> <div class="g-el" data-tag="<span>">Ítem 4</div>' },
+      { answer: ':nth-child(special)', html: '<div class="g-el" data-tag="<li>">Uno</div> <div class="g-el target" data-tag="<li>">Dos</div> <div class="g-el" data-tag="<li>">Tres</div> <div class="g-el target" data-tag="<li>">Cuatro</div>' },
+      { answer: ':first-of-type', html: '<div class="g-el" data-tag="<span>">Texto</div> <div class="g-el target" data-tag="<p>">Párrafo</div> <div class="g-el" data-tag="<p>">Párrafo</div>' },
+      { answer: ':last-of-type', html: '<div class="g-el" data-tag="<div>">Caja</div> <div class="g-el target" data-tag="<div>">Caja</div> <div class="g-el" data-tag="<span>">Etiqueta</div>' },
+      { answer: ':nth-last-of-type()', html: '<div class="g-el" data-tag="<p>">Texto</div> <div class="g-el target" data-tag="<p>">Penúltimo P</div> <div class="g-el" data-tag="<p>">Último P</div> <div class="g-el" data-tag="<span>">Extra</div>' },
+      { answer: ':only-child', html: '<div class="g-el target" data-tag="<section>">Soy el único aquí</div>' },
+      { answer: ':only-of-type', html: '<div class="g-el" data-tag="<div>">Caja</div> <div class="g-el target" data-tag="<span>">Único Span</div> <div class="g-el" data-tag="<div>">Caja</div>' },
+      { answer: ':empty', html: '<div class="g-el" data-tag="<div>">Contenido</div> <div class="g-el target empty-el" data-tag="<div>"></div> <div class="g-el" data-tag="<div>">Contenido</div>' }
+    ];
+
+    let currentAnswer = '';
+    let usedPuzzles = [];
+
+    function loadPuzzle() {
+      // Reiniciar mensajes y botón siguiente
+      document.getElementById('feedback-correct').style.display = 'none';
+      document.getElementById('feedback-wrong').style.display = 'none';
+      document.getElementById('btn-next-puzzle').style.display = 'none';
+
+      // Restaurar botones
+      const btns = document.querySelectorAll('.btn-game');
+      btns.forEach(b => {
+        b.classList.remove('btn-correct', 'btn-wrong');
+        b.disabled = false;
+      });
+
+      // Lógica para que no se repitan los retos hasta haberlos visto todos
+      if(usedPuzzles.length === gamePuzzles.length) usedPuzzles = [];
+      let available = gamePuzzles.filter(p => !usedPuzzles.includes(p));
+      let randomPuzzle = available[Math.floor(Math.random() * available.length)];
+      usedPuzzles.push(randomPuzzle);
+
+      // Cargar reto
+      currentAnswer = randomPuzzle.answer;
+      document.getElementById('game-arena').innerHTML = randomPuzzle.html;
+    }
+
+    function checkGuess(guess, btnElement) {
+      if(guess === currentAnswer) {
+        document.getElementById('feedback-correct').style.display = 'block';
+        document.getElementById('feedback-wrong').style.display = 'none';
+        document.getElementById('btn-next-puzzle').style.display = 'inline-block';
+        btnElement.classList.add('btn-correct');
+        
+        // Bloquear todos los botones al acertar
+        document.querySelectorAll('.btn-game').forEach(b => b.disabled = true);
+      } else {
+        document.getElementById('feedback-wrong').style.display = 'block';
+        btnElement.classList.add('btn-wrong');
+        btnElement.disabled = true; // Deshabilitar solo el incorrecto
+      }
+    }
+
+    // Iniciar el primer reto al cargar la página
+    loadPuzzle();
+  </script>
+
+
+
+  <hr width="90%">
+  <h1>JUEGO DE PENALES</h1>
+  <hr width="90%">
+
+
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 700px;">
+    <h2>
+      <span lang="es">⚽ Tanda de Penaltis Estructural</span>
+      <span lang="en">⚽ Structural Penalty Shootout</span>
+      <span lang="fr">⚽ Séance de tirs au but structurelle</span>
+      <span lang="ja">⚽ 構造的ペナルティシュートアウト</span>
+      <span lang="de">⚽ Struktur-Elfmeterschießen</span>
+      <span lang="ar">⚽ ركلات الترجيح الهيكلية</span>
+    </h2>
+
+    <div id="setup-panel" class="setup-block">
+      <p style="margin-top:0;"><strong>
+        <span lang="es">Selecciona las dos Selecciones:</span>
+        <span lang="en">Select both National Teams:</span>
+      </strong></p>
+      <div class="selectors-row">
+        <div class="sel-group">
+          <label>Local (Impares):</label>
+          <select id="team-a-select">
+            <option value="colombia" selected>Colombia 🇨🇴</option>
+            <option value="argentina">Argentina 🇦🇷</option>
+            <option value="brasil">Brasil 🇧🇷</option>
+            <option value="francia">Francia 🇫🇷</option>
+            <option value="espana">España 🇪🇸</option>
+            <option value="inglaterra">Inglaterra 🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
+          </select>
+        </div>
+        <div class="sel-group">
+          <label>Visitante (Pares):</label>
+          <select id="team-b-select">
+            <option value="colombia">Colombia 🇨🇴</option>
+            <option value="argentina" selected>Argentina 🇦🇷</option>
+            <option value="brasil">Brasil 🇧🇷</option>
+            <option value="francia">Francia 🇫🇷</option>
+            <option value="espana">España 🇪🇸</option>
+            <option value="inglaterra">Inglaterra 🏴󠁧󠁢󠁥󠁮󠁧󠁿</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-pitch" onclick="initSoccerGame()" style="margin-top: 15px; width: 100%;">
+        <span lang="es">Generar Cancha y Jugadores ➔</span>
+        <span lang="en">Generate Pitch & Players ➔</span>
+      </button>
+    </div>
+
+    <div id="soccer-pitch-area" style="display: none; margin-top: 20px;">
+      
+      <div class="kicker-controls">
+        <div class="control-box">
+          <p class="ctrl-title"><span lang="es">Opción 1: Elegir por Posición</span><span lang="en">Option 1: Choose by Position</span></p>
+          <div class="pos-buttons">
+            <button onclick="selectPlayerByPos(1)">1</button>
+            <button onclick="selectPlayerByPos(2)">2</button>
+            <button onclick="selectPlayerByPos(3)">3</button>
+            <button onclick="selectPlayerByPos(4)">4</button>
+            <button onclick="selectPlayerByPos(5)">5</button>
+            <button onclick="selectPlayerByPos(6)">6</button>
+          </div>
+        </div>
+
+        <div class="control-box">
+          <p class="ctrl-title"><span lang="es">Opción 2: Elegir por Nombre</span><span lang="en">Option 2: Choose by Name</span></p>
+          <select id="kicker-name-select" onchange="selectPlayerByName(this.value)">
+            </select>
+        </div>
+      </div>
+
+      <div class="pitch-canvas" id="pitch-canvas-element">
+        
+        <div class="players-vertical-column" id="players-list-container">
+          </div>
+
+        <div class="pitch-center">
+          <div class="penalty-spot" id="penalty-spot-node">
+            <div class="soccer-ball" id="soccer-ball-node">⚽</div>
+          </div>
+        </div>
+
+        <div class="pitch-goal-side">
+          <div class="goal-frame">
+            <div class="goal-zone" onclick="shootPenalty(1)"><span>Izq / Left</span></div>
+            <div class="goal-zone" onclick="shootPenalty(2)"><span>Centro / Center</span></div>
+            <div class="goal-zone" onclick="shootPenalty(3)"><span>Der / Right</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pitch-announcements" id="announcement-box">
+        <div class="welcome-msg">
+          <span lang="es">¡Selecciona un cobrador y haz clic en una zona de la portería para tirar!</span>
+          <span lang="en">Select a kicker and click on a goal zone to shoot!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* BASE DE DATOS DE SELECCIONES (Nombres y variables CSS de color) */
+    const teamDatabase = {
+      colombia: { color: '#f1c40f', text: '#000000', players: ['Luis Díaz', 'James Rodríguez', 'Jhon Durán'] },
+      argentina: { color: '#74b9ff', text: '#000000', players: ['Leo Messi', 'Julián Álvarez', 'Lautaro Martínez'] },
+      brasil: { color: '#2ecc71', text: '#ffffff', players: ['Vinícius Jr', 'Rodrygo', 'Neymar Jr'] },
+      francia: { color: '#1a365d', text: '#ffffff', players: ['Kylian Mbappé', 'Antoine Griezmann', 'Ousmane Dembélé'] },
+      espana: { color: '#e74c3c', text: '#ffffff', players: ['Lamine Yamal', 'Nico Williams', 'Dani Olmo'] },
+      inglaterra: { color: '#ffffff', text: '#000000', players: ['Jude Bellingham', 'Harry Kane', 'Bukayo Saka'] }
+    };
+
+    let activeKickerIndex = null; // 1 a 6
+    let dynamicPlayersArray = [];
+
+    function initSoccerGame() {
+      const teamAKey = document.getElementById('team-a-select').value;
+      const teamBKey = document.getElementById('team-b-select').value;
+
+      const teamA = teamDatabase[teamAKey];
+      const teamB = teamDatabase[teamBKey];
+
+      // Seteamos las variables de color en el contenedor para que el CSS las herede estructuradamente
+      const canvas = document.getElementById('pitch-canvas-element');
+      canvas.style.setProperty('--color-team-a', teamA.color);
+      canvas.style.setProperty('--text-team-a', teamA.text);
+      canvas.style.setProperty('--color-team-b', teamB.color);
+      canvas.style.setProperty('--text-team-b', teamB.text);
+
+      // Mezclamos e intercalamos los jugadores: Impares (Team A), Pares (Team B)
+      dynamicPlayersArray = [
+        { name: teamA.players[0], team: 'A' }, // Pos 1 (impar)
+        { name: teamB.players[0], team: 'B' }, // Pos 2 (par)
+        { name: teamA.players[1], team: 'A' }, // Pos 3 (impar)
+        { name: teamB.players[1], team: 'B' }, // Pos 4 (par)
+        { name: teamA.players[2], team: 'A' }, // Pos 5 (impar)
+        { name: teamB.players[2], team: 'B' }  // Pos 6 (par)
+      ];
+
+      // Renderizar la columna HTML de jugadores de forma plana y limpia
+      const container = document.getElementById('players-list-container');
+      container.innerHTML = '';
+      
+      // Select de nombres
+      const selectName = document.getElementById('kicker-name-select');
+      selectName.innerHTML = '<option value="" disabled selected>-- Elige Jugador --</option>';
+
+      dynamicPlayersArray.forEach((player, idx) => {
+        const posNum = idx + 1;
+        
+        // Estructura interna limpia con etiquetas variadas para explotar el "of-type"
+        const playerHtml = `
+          <div class="player-row" onclick="selectPlayerByPos(${posNum})">
+            <span>#${posNum}</span>
+            <p>${player.name}</p>
+          </div>
+        `;
+        container.innerHTML += playerHtml;
+
+        // Añadir al select por nombre
+        selectName.innerHTML += `<option value="${posNum}">${player.name} (Pos ${posNum})</option>`;
+      });
+
+      // Resetear Balón y Campo
+      resetBallToSpot();
+      activeKickerIndex = null;
+      canvas.className = "pitch-canvas"; // Limpia clases de selección previa
+
+      // Mostrar Cancha
+      document.getElementById('soccer-pitch-area').style.display = 'block';
+      document.getElementById('announcement-box').innerHTML = `
+        <div class="welcome-msg">
+          <span lang="es">⚽ ¡Cancha lista! Elige tu cobrador.</span>
+          <span lang="en">⚽ Pitch ready! Choose your kicker.</span>
+        </div>
+      `;
+    }
+
+    function selectPlayerByPos(pos) {
+      activeKickerIndex = pos;
+      const canvas = document.getElementById('pitch-canvas-element');
+      
+      // Quitamos selecciones previas y asignamos la clase de posición al padre absoluto
+      canvas.className = "pitch-canvas sel-pos-" + pos;
+
+      // Sincronizar el select de nombres
+      document.getElementById('kicker-name-select').value = pos;
+    }
+
+    function selectPlayerByName(posValue) {
+      if(!posValue) return;
+      selectPlayerByPos(parseInt(posValue));
+    }
+
+    function resetBallToSpot() {
+      const spot = document.getElementById('penalty-spot-node');
+      const ball = document.getElementById('soccer-ball-node');
+      if (ball && spot.className.includes('')) {
+        spot.appendChild(ball);
+        ball.className = "soccer-ball";
+      }
+    }
+
+    function shootPenalty(zoneNum) {
+      if(!activeKickerIndex) {
+        alert("Por favor, selecciona primero un jugador.");
+        return;
+      }
+
+      const ball = document.getElementById('soccer-ball-node');
+      const zones = document.querySelectorAll('.goal-zone');
+      const targetZone = zones[zoneNum - 1];
+
+      // Trasladamos físicamente el balón al contenedor de la red elegida (:empty se activará en el punto penal)
+      targetZone.appendChild(ball);
+      ball.classList.add('kicked');
+
+      // Calcular resultado aleatorio
+      const outcomes = ['GOAL', 'SAVED', 'OUT'];
+      const result = outcomes[Math.floor(Math.random() * outcomes.length)];
+      const kickerName = dynamicPlayersArray[activeKickerIndex - 1].name;
+
+      const announceBox = document.getElementById('announcement-box');
+      
+      if(result === 'GOAL') {
+        announceBox.innerHTML = `<div class="goal-alert">🎉 ¡GOOOOOOL de ${kickerName}! 🎉</div>`;
+      } else if (result === 'SAVED') {
+        announceBox.innerHTML = `<div class="saved-alert">🧤 ¡El portero la atajó! Magnífica tapada. 🧤</div>`;
+      } else {
+        announceBox.innerHTML = `<div class="out-alert">❌ ¡Fuera! ${kickerName} la mandó a las nubes. ❌</div>`;
+      }
+
+      // Añadimos botón de reinicio rápido usando una sola etiqueta para gatillar :only-child en el anuncio
+      announceBox.innerHTML += `<button class="btn-pitch" style="margin-top:10px;" onclick="resetBallToSpot()">Volver a acomodar el balón 🔄</button>`;
+    }
+  </script>
+
+
+
+  <hr width="90%">
+  <h1>PSEUDOCLASES PARA FORMULARIOS: "CHECKED" & "INDETERMINATE"</h1>
+  <hr width="90%">
+
+
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 600px;">
+    <h2>
+      <span lang="es">🧪 Pseudo-clases: :checked e :indeterminate</span>
+      <span lang="en">🧪 Pseudo-classes: :checked and :indeterminate</span>
+      <span lang="fr">🧪 Pseudo-classes: :checked et :indeterminate</span>
+      <span lang="ja">🧪 擬似クラス：:checked と :indeterminate</span>
+      <span lang="de">🧪 Pseudoklassen: :checked und :indeterminate</span>
+      <span lang="ar">🧪 الفئات الوهمية: :checked و :indeterminate</span>
+    </h2>
+    <p style="margin-bottom: 20px;">
+      <span lang="es">Interactúa con los estados de las casillas de verificación. El tercer input se inicializa en estado intermedio/parcial mediante código.</span>
+      <span lang="en">Interact with the checkbox states. The third input is initialized in an intermediate/partial state using code.</span>
+    </p>
+
+    <div class="checkbox-demo-group">
+      
+      <label class="custom-check-card">
+        <input type="checkbox" id="check-default">
+        <span class="check-text">
+          <span lang="es">Casilla Desmarcada (Por defecto)</span>
+          <span lang="en">Unchecked Box (Default)</span>
+        </span>
+      </label>
+
+      <label class="custom-check-card">
+        <input type="checkbox" id="check-marked" checked>
+        <span class="check-text">
+          <span lang="es">Casilla Marcada (:checked)</span>
+          <span lang="en">Checked Box (:checked)</span>
+        </span>
+      </label>
+
+      <label class="custom-check-card">
+        <input type="checkbox" id="check-partial">
+        <span class="check-text">
+          <span lang="es">Casilla Parcial (:indeterminate)</span>
+          <span lang="en">Partial Box (:indeterminate)</span>
+        </span>
+      </label>
+
+    </div>
+  </div>
+
+  <script>
+    // NOTA: El estado 'indeterminate' no existe como atributo HTML, 
+    // se debe aplicar directamente a la propiedad del elemento en el DOM.
+    document.getElementById('check-partial').indeterminate = true;
+  </script>
+
+
+
+  <hr width="90%">
+  <h1>BOTONES (ENABLED & DISABLED)</h1>
+  <hr width="90%">
+
+
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 500px;">
+    <h2>
+      <span lang="es">🧪 Pseudo-clases: :enabled y :disabled</span>
+      <span lang="en">🧪 Pseudo-classes: :enabled and :disabled</span>
+      <span lang="fr">🧪 Pseudo-classes: :enabled et :disabled</span>
+      <span lang="ja">🧪 擬似クラス：:enabled と :disabled</span>
+      <span lang="de">🧪 Pseudoklassen: :enabled und :disabled</span>
+      <span lang="ar">🧪 الفئات الوهمية: :enabled و :disabled</span>
+    </h2>
+    <p style="margin-bottom: 20px;">
+      <span lang="es">Escribe cualquier texto en la caja para habilitar el botón. Si la dejas vacía, se desactivará automáticamente.</span>
+      <span lang="en">Type any text in the box to enable the button. If you leave it empty, it will automatically disable.</span>
+    </p>
+
+    <div class="state-demo-group">
+      <input 
+        type="text" 
+        id="text-state-demo" 
+        placeholder="Escribe algo aquí... / Type something..." 
+        oninput="validateInputState()"
+      >
+      
+      <button id="btn-state-demo" disabled>
+        <span lang="es">Enviar Datos 🚀</span>
+        <span lang="en">Submit Data 🚀</span>
+        <span lang="fr">Soumettre 🚀</span>
+        <span lang="ja">データを送信 🚀</span>
+        <span lang="de">Daten senden 🚀</span>
+        <span lang="ar">إرسال البيانات 🚀</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function validateInputState() {
+      const inputEl = document.getElementById('text-state-demo');
+      const btnEl = document.getElementById('btn-state-demo');
+      
+      // .trim() elimina los espacios en blanco innecesarios
+      if (inputEl.value.trim() !== "") {
+        btnEl.disabled = false; // Remueve el atributo e invoca :enabled en CSS
+      } else {
+        btnEl.disabled = true;  // Añade el atributo e invoca :disabled en CSS
+      }
+    }
+  </script>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
+ <!-- ================== P S E U D O E L E M E N T O S ================== -->
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<!-- "::marker"
+
+"::backdrop"
+
+"::placeholder"
+
+"::file-selector-button"
+
+"::before"
+
+"::after"
+
+"::first-line"
+
+"::first-letter"
+
+"::selection"
+
+"::target-next"
+
+"::spelling-error"
+
+"::grammar-error"
+
+"::part"
+
+"::slotted"
+
+"::view-transition"
+
+"::view-transition-group"
+
+"::view-transition-image-pair"
+
+"::view-transition-new"
+
+"::view-transition-old" 
+
+ -->
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 800px;">
+    <h2>
+      <span lang="es">✨ El poder de los Pseudo-elementos (::)</span>
+      <span lang="en">✨ The power of Pseudo-elements (::)</span>
+      <span lang="fr">✨ Le pouvoir des Pseudo-éléments (::)</span>
+      <span lang="ja">✨ 擬似要素の力 (::)</span>
+      <span lang="de">✨ Die Macht der Pseudoelemente (::)</span>
+      <span lang="ar">✨ قوة العناصر الوهمية (::)</span>
+    </h2>
+    
+    <div class="demo-block" style="margin-bottom: 20px;">
+      <h3 style="margin-top:0;">1. Tipografía y Selección</h3>
+      <p class="pe-texto" id="pe-texto-id">
+        <span lang="es">Este párrafo de prueba demuestra varios pseudo-elementos. Selecciona este texto con el ratón para ver el efecto de selection. Además, la primera línea reaccionará diferente, al igual que la primera letra.</span>
+        <span lang="en">This test paragraph demonstrates several pseudo-elements. Select this text with your mouse to see the selection effect. Also, the first line and first letter will react differently.</span>
+      </p>
+      
+      <ul class="pe-lista">
+        <li><span lang="es">Elemento de lista con ::marker modificado</span><span lang="en">List item with modified ::marker</span></li>
+        <li><span lang="es">Otro elemento más</span><span lang="en">Another item</span></li>
+      </ul>
+    </div>
+
+    <div class="demo-block" style="margin-bottom: 20px;">
+      <h3 style="margin-top:0;">2. Formularios (::placeholder y ::file-selector-button)</h3>
+      <input type="text" class="pe-input" placeholder="Escribe aquí para ver cómo desaparece el ::placeholder...">
+      <input type="file" class="pe-file" style="margin-top: 10px;">
+    </div>
+
+    <div class="demo-block" style="margin-bottom: 20px;">
+      <h3 style="margin-top:0;">3. Contenido Generado</h3>
+      <div class="pe-cita">
+        <span lang="es">CSS es magia visual pura.</span>
+        <span lang="en">CSS is pure visual magic.</span>
+      </div>
+    </div>
+
+    <div class="demo-block" style="margin-bottom: 20px;">
+      <h3 style="margin-top:0;">4. Errores, Textos Destacados y ::backdrop</h3>
+      
+      <p class="pe-errores" contenteditable="true" spellcheck="true">
+        <span lang="es">Heste tecsto tyene horrores hortográficos (modificable).</span>
+        <span lang="en">Thiss texxt has speling errrors (editable).</span>
+      </p>
+      
+      <button onclick="document.getElementById('pe-modal').showModal()" class="btn-pitch" style="margin-top: 10px;">
+        <span lang="es">Abrir Modal (Ver ::backdrop)</span>
+        <span lang="en">Open Modal (See ::backdrop)</span>
+      </button>
+      
+      <dialog id="pe-modal" class="pe-dialogo">
+        <p>¡Hola! El fondo oscuro de atrás es el <code>::backdrop</code>.</p>
+        <button onclick="this.parentElement.close()">Cerrar</button>
+      </dialog>
+    </div>
+
+    <div class="demo-block" style="margin-bottom: 20px;">
+      <h3 style="margin-top:0;">5. Web Components (::part y ::slotted)</h3>
+      <mi-componente>
+        <span slot="texto-inyectado" class="pe-slotted-demo">
+          <span lang="es">Soy un texto inyectado por SLOTS</span>
+          <span lang="en">I am text injected via SLOTS</span>
+        </span>
+      </mi-componente>
+    </div>
+
+    <div class="demo-block">
+      <h3 style="margin-top:0;">6. View Transitions API</h3>
+      <p style="font-size: 13px; color: #666;">Requiere navegador moderno (Chrome 111+, Edge 111+).</p>
+      <div class="pe-vt-caja" id="vt-box" onclick="animarTransicion()">
+        <span lang="es">Clic para Transición Visual</span>
+        <span lang="en">Click for Visual Transition</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // LÓGICA PARA PSEUDO-ELEMENTOS AVANZADOS
+    // ==========================================
+
+    // 1. Creación de un Web Component para probar ::part y ::slotted
+    class MiComponente extends HTMLElement {
+      constructor() {
+        super();
+        // Adjuntamos un Shadow DOM (Un DOM oculto e independiente)
+        const shadow = this.attachShadow({ mode: 'open' });
+        
+        // Creamos la estructura interna del componente
+        shadow.innerHTML = `
+          <style>
+            .caja-interna {
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 6px;
+              background-color: #f1f5f9;
+            }
+          </style>
+          <div part="contenedor-sombra" class="caja-interna">
+            <p style="margin:0 0 10px 0; font-weight:bold;">Dentro del Shadow DOM:</p>
+            <slot name="texto-inyectado"></slot>
+          </div>
+        `;
+      }
+    }
+    // Definimos la etiqueta HTML personalizada
+    customElements.define('mi-componente', MiComponente);
+
+    // 2. Función para disparar la View Transitions API
+    function animarTransicion() {
+      const caja = document.getElementById('vt-box');
+      
+      // Verificamos si el navegador soporta esta tecnología nueva
+      if (!document.startViewTransition) {
+        // Fallback si no está soportado
+        caja.classList.toggle('pe-vt-activa');
+        return;
+      }
+      
+      // Inicia la captura de los ::view-transition (old y new)
+      document.startViewTransition(() => {
+        caja.classList.toggle('pe-vt-activa');
+      });
+    }
+  </script>
+
+
+<!-- Dashboard y Perfil de Usuario -->
+
+
+<div class="container" style="margin-top: 50px; margin-bottom: 50px; max-width: 1000px; padding: 0;">
+    
+    <div class="pro-dashboard">
+      <aside class="dash-sidebar">
+        <h2 class="dash-logo">Mi Dashboard</h2>
+        <nav class="dash-nav">
+          <a href="#" class="active">Inicio</a>
+          <a href="#">Proyectos</a>
+          <a href="#">Reportes</a>
+          <a href="#">Configuración</a>
+        </nav>
+        <div class="dash-version" data-version="2.3.4"></div>
+      </aside>
+
+      <main class="dash-main">
+        
+        <section class="dash-section">
+          <h3 class="section-title">Estado del Sistema</h3>
+          <div class="status-badges">
+            <span class="badge badge-ok">Operacional</span>
+            <span class="badge badge-warn">3 Alertas</span>
+          </div>
+        </section>
+
+        <section class="dash-section">
+          <h3 class="section-title">Tareas Pendientes</h3>
+          <div class="task-list">
+            <label class="custom-task">
+              <input type="checkbox" checked>
+              <span class="task-text">Diseñar interfaz de usuario</span>
+            </label>
+            <label class="custom-task">
+              <input type="checkbox">
+              <span class="task-text">Implementar funcionalidad CSS</span>
+            </label>
+            <label class="custom-task">
+              <input type="checkbox">
+              <span class="task-text">Optimizar rendimiento</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="dash-section">
+          <h3 class="section-title">Equipo</h3>
+          <div class="team-avatars">
+            <div class="avatar" data-initials="MJ" style="background: #e74c3c;"></div>
+            <div class="avatar" data-initials="AL" style="background: #3498db;"></div>
+            <div class="avatar" data-initials="DR" style="background: #2ecc71;"></div>
+          </div>
+        </section>
+
+        <section class="dash-section" style="border-bottom: none;">
+          <h3 class="section-title">
+            Información 
+            <span class="info-icon" data-tooltip="Información técnica detallada">i</span>
+          </h3>
+          <p class="info-desc">Este dashboard muestra técnicas avanzadas de CSS incluyendo:</p>
+          <ul class="info-list">
+            <li><code>::before</code> y <code>::after</code></li>
+            <li><code>attr()</code> para contenido dinámico</li>
+            <li>Variables CSS personalizadas</li>
+            <li>Contadores CSS</li>
+            <li>Gradientes e imágenes en pseudoelementos</li>
+          </ul>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!--  ========================== Selectores Especificos ========================== -->
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 800px;">
+    <h2>🔧 Selectores Específicos y Combinadores</h2>
+    <p>Ejemplo práctico usando componentes y pasos de ensamblaje.</p>
+
+    <div class="demo-block" style="margin-bottom: 30px;">
+      <h3 style="margin-top:0;">1. Selectores de Atributo ( ^= , $= , *= )</h3>
+      <ul class="pc-parts-list">
+        <li><a href="https://es.aliexpress.com/item/xeon">Procesador Intel Xeon E5-2666 v3</a></li>
+        
+        <li data-part="gpu-nvidia">Tarjeta Gráfica GTX 1660 Super</li>
+        <li data-part="gpu-amd">Tarjeta Gráfica RX 580 8GB</li>
+        <li data-part="motherboard-x99">Placa Base X99</li>
+        
+        <li><a href="/manuales/guia-x99.pdf">Descargar manual de placa (PDF)</a></li>
+      </ul>
+    </div>
+
+    <div class="demo-block">
+      <h3 style="margin-top:0;">2. Selectores de Hermanos ( + y ~ )</h3>
+      
+      <div class="build-guide">
+        <h4 class="step-title">Paso 1: Placa Base</h4>
+        <p>Saca la X99 de su caja antiestática.</p>
+        <p>Abre el seguro del zócalo del procesador.</p>
+
+        <h4 class="step-title warning-step">Paso 2: Instalación del CPU</h4>
+        <div class="alert-box">¡Precaución con los pines del socket!</div>
+        <p>Alinea el triángulo dorado del Xeon con la marca de la placa.</p>
+        <p>Aplica una gota de pasta térmica en el centro.</p>
+        <p>Asegura el disipador con los tornillos.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-----------------------------------------------------------------------------------------------------------------------  -->
+
+  <div class="exercise-screen-container">
+    
+    <div class="exercise-workspace">
+      <div class="exercise-header-title">Ejercicio</div>
+      
+      <div class="buttons-grid">
+        
+        <div class="love-card-container">
+          <div class="love-card-header">❤️</div>
+          <button class="btn-3d-blue love-btn">Love this tutorial!</button>
+        </div>
+
+        <div class="inset-button-box">
+          <div class="fondo-btn-profundo">
+            <button class="btn-profundo">Click me!</button>
+          </div>
+        </div>
+
+        <div class="standalone-box">
+          <div class="fondo-btn-profundo-2">
+            <button class="btn-profundo-2">Click me!</button>
+          </div> 
+        </div>
+
+        <button class="btn-3d-blue btn-with-arrow">
+          <span class="btn-text-left">Click me!</span>
+          <span class="arrow-hole">➔</span>
+        </button>
+
+        <div class="numbered-btn-group">
+          <div class="number-badge-side">1</div>
+          <button class="btn-3d-blue padded-btn">Click me!</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="exercise-sidebar-title">
+      <div class="title-main">CSS BUTTONS</div>
+      <div class="title-sub">WITH PSEUDO-ELEMENTS</div>
+    </div>
+
+  </div>
+
+  
+</body>
+</html>

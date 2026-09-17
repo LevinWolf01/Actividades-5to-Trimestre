@@ -1,0 +1,5 @@
+/* Se inyecta en una capa anónima (muy útil para estilos base de baja prioridad) */
+.box-layer-anon {
+  box-shadow: 4px 4px 0px #94a3b8; /* Efecto de sombra dura estilo retro */
+  border: 2px solid #64748b;
+}

@@ -1,0 +1,332 @@
+/* =========================================
+   CONFIGURACIÓN BASE DEL ENTORNO Y LAS CAJAS
+   ========================================= */
+body {
+  background-color: #494949;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 20px;
+  color: white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+/* Forma y estilo neutral para que los inputs parezcan solo cajas */
+.caja {
+  width: 120px;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: #2b2d30;
+  cursor: pointer;
+  transition: all 0.4s ease; /* Transición general para suavizar las animaciones */
+  color: white;
+}
+
+/* =========================================
+   1. OUTER SHADOW (Sombra Exterior)
+   Aplica una sombra proyectada hacia afuera. 
+   Da la ilusión de que la caja flota sobre el nivel del fondo.
+   ========================================= */
+.outer {
+  box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.6), 
+             -4px -4px 10px rgba(255, 255, 255, 0.03);
+}
+
+/* =========================================
+   2. INNER SHADOW (Sombra Interior)
+   Utiliza la propiedad 'inset'. La sombra se dibuja por dentro 
+   de la caja, creando un efecto visual de agujero o profundidad.
+   ========================================= */
+.inner {
+  box-shadow: inset 8px 8px 16px rgba(0, 0, 0, 0.7), 
+              inset -8px -8px 16px rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   3. HOVER (Interacción simple)
+   Tiene una sombra suave por defecto. Al pasar el cursor (:hover), 
+   el color de fondo se aclara levemente y la sombra se expande.
+   ========================================= */
+.hover-simple {
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+}
+.hover-simple:hover {
+  background-color: #33363a;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.9);
+}
+
+/* =========================================
+   4. NEOMÓRFICA CON TRANSFORM (Efecto botón físico)
+   Usa un juego de luces (esquina superior izquierda) y sombras 
+   (esquina inferior derecha) con el color exacto del fondo.
+   Al hacer hover, la caja se encoge ligeramente (scale) y las 
+   sombras se vuelven internas (inset) para simular que se presiona.
+   ========================================= */
+.neo-transform {
+  box-shadow: 9px 9px 18px #1c1d1f, 
+             -9px -9px 18px #3a3d41;
+}
+.neo-transform:hover {
+  transform: scale(0.92);
+  box-shadow: inset 9px 9px 18px #1c1d1f, 
+              inset -9px -9px 18px #3a3d41;
+}
+
+/* =========================================
+   5. NEON SHADOW (Sombra de Neón)
+   Superpone múltiples capas de 'box-shadow' con un color brillante 
+   (cyan) y distintos niveles de difuminado para crear un halo luminoso.
+   ========================================= */
+.neon {
+  box-shadow: 0 0 5px #00f3ff, 
+              0 0 15px #00f3ff, 
+              0 0 35px #00f3ff;
+  border: 1px solid rgba(0, 243, 255, 0.3); /* Borde tenue para definir el límite */
+}
+
+/* =========================================
+   6. HOVER + TRANSFORM (Traslación y Rotación)
+   Tiene una sombra rígida (sin difuminado). Al hacer hover, 
+   la caja se desplaza hacia arriba (translateY) y rota en su eje,
+   separando la caja de su sombra.
+   ========================================= */
+/*==============================================================================================================*/
+/*                                BOTON "PULSAME"                                                               */
+.hover-transform {
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.7);
+}
+.hover-transform:hover {
+  transform: translateY(-12px) rotate(8deg);
+  box-shadow: 18px 18px 0px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor para centrar */
+.neon-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* Estilo base del botón */
+.btn-neon-inner {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+  color: #00f3ff;
+  background: transparent;
+  border: 2px solid #00f3ff;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Efecto de Neón Interior al presionar (:active) */
+.btn-neon-inner:active {
+    position: 50% 50%;
+    color: #ffffff;
+    transform: scale(0.95); /* Efecto de hundimiento */
+  
+    /* Capas de sombras internas para el resplandor de neón */
+    box-shadow: inset 0 0 15px #00f3ff, 
+                inset 0 0 30px #00f3ff, 
+                0 0 10px #00f3ff;
+  
+    text-shadow: 0 0 8px #fff;
+}
+/*============================================================================================*/
+/*                                BOTON DE APAGADO                                             */
+/* Contenedor del botón de apagado */
+.power-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* Estilo base del botón circular */
+.btn-power {
+  width: 70px;
+  height: 70px;
+  background-color: #232528;
+  border: 2px solid #ff3b30;
+  border-radius: 50%;
+  color: #ff3b30;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 59, 48, 0.2);
+}
+
+/* Icono de Apagado diseñado puramente con CSS */
+.power-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 3px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent; /* Abre el círculo en la parte superior */
+  display: block;
+  box-sizing: border-box;
+  margin-top: 4px; /* Ajuste fino de centrado */
+}
+
+/* Línea vertical superior del icono */
+.power-icon::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 12px;
+  background-color: currentColor;
+  border-radius: 2px;
+}
+
+/* Estado Hover: El botón se ilumina en rojo neón */
+.btn-power:hover {
+  background-color: #ff3b30;
+  color: #ffffff;
+  box-shadow: 0 0 25px #ff3b30, 
+              0 0 45px rgba(255, 59, 48, 0.6);
+}
+
+/* Estado Active: Efecto de pulsación */
+.btn-power:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 10px #ff3b30;
+}
+
+/*====================================================================================================================*/
+/*                                       INPUTS CON "DROP-SHADOW" Y "BOX-SHADOW"                                               */
+/* Contenedor para el nuevo par de inputs */
+.shadow-comparison-container {
+  margin-top: 50px;
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   1. FILTER: DROP-SHADOW
+   Este efecto utiliza el motor de renderizado de filtros de CSS. 
+   A diferencia de box-shadow, 'drop-shadow' no se limita estrictamente a la 
+   caja del elemento; genera una sombra basada en la silueta real y el canal 
+   alfa (transparencia) del objeto. Si el elemento tuviera partes transparentes
+   o bordes irregulares, la sombra se adaptaría exactamente a esa forma.
+   ========================================================================== */
+.input-drop-shadow {
+  background-color: #2b2d30;
+  border: 2px solid #00f3ff;
+  filter: drop-shadow(8px 8px 12px rgba(0, 243, 255, 0.5));
+}
+
+/* ==========================================================================
+   2. BOX-SHADOW (Propiedad Estándar)
+   Es la sombra tradicional de CSS. Se aplica de forma estricta al marco o 
+   "caja" (bounding box) del elemento geométrico, respetando propiedades como 
+   el 'border-radius'. Es más eficiente en rendimiento que un filtro y permite 
+   efectos internos (inset) o múltiples capas separadas por comas.
+   ========================================================================== */
+.input-box-shadow {
+  background-color: #2b2d30;
+  border: 2px solid #ff3b30;
+  box-shadow: 8px 8px 12px rgba(255, 59, 48, 0.5);
+}
+
+/* ==========================================================================
+   3. TEXTO CON FILTER: DROP-SHADOW
+   Al aplicar 'filter: drop-shadow' a una cadena de texto, el navegador ignora
+   por completo el bloque o caja invisible del contenedor del párrafo. La sombra
+   se dibuja adaptándose estrictamente a la silueta (los glifos) de cada letra.
+   A diferencia de 'text-shadow', 'drop-shadow' utiliza el motor de renderizado 
+   de filtros de hardware, lo que a veces da un difuminado más suave.
+   ========================================================================== */
+.texto-drop-shadow {
+  color: #ffffff;
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 28px;
+  margin: 0;
+  letter-spacing: 2px;
+  /* Aplica la sombra de silueta con un tono amarillo brillante */
+  filter: drop-shadow(5px 5px 8px #ffeb3b); 
+}
+
+/*===============================================================================================================*/
+/* Contenedor para la caja de texto */
+.rgba-inset-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Estilo base para el input de texto */
+.caja-texto {
+  width: 300px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 0 15px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #232528;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Evita que el placeholder sea completamente blanco */
+.caja-texto::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+/*===================================================================================================================================*/
+/* ==========================================================================
+   CAJA DE TEXTO CON BOX-SHADOW, INSET Y COLORES RGBA
+   
+   - box-shadow: Aplica los efectos de iluminación y profundidad.
+   - inset: Invierte la dirección de la sombra, forzándola a renderizarse 
+     hacia el INTERIOR de la caja del input, simulando hundimiento.
+   - rgba(): Define el color mediante canales (Red, Green, Blue) y añade un 
+     cuarto canal 'Alpha' para controlar la opacidad/transparencia (de 0 a 1).
+   ========================================================================== */
+.input-rgba-inset {
+  /* Se aplican dos capas de sombras internas (ambas usan 'inset'):
+     1. Una sombra negra translúcida (rgba 0,0,0,0.6) en la esquina superior izquierda.
+     2. Un resplandor verde esmeralda translúcido (rgba 46,204,113,0.2) en la esquina inferior derecha. */
+  box-shadow: inset 6px 6px 10px rgba(0, 0, 0, 0.6), 
+              inset -6px -6px 12px rgba(46, 204, 113, 0.2);
+              
+  border: 1px solid rgba(46, 204, 113, 0.1); /* Borde sutil con opacidad del 10% */
+}
+
+/* Cambios estéticos cuando el usuario hace clic dentro del input (:focus) */
+.input-rgba-inset:focus {
+  border: 1px solid rgba(46, 204, 113, 0.5); /* El borde se vuelve más visible */
+  
+  /* Se incrementa la opacidad del canal Alpha en el color verde (de 0.2 a 0.45) 
+     para intensificar el resplandor interno de neón cuando el input está activo */
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.8), 
+              inset -4px -4px 15px rgba(46, 204, 113, 0.45);
+}
+
+/*===================================================================================================================================*/
+.marco-imagen {
+    width: 720px;
+    height: 493px;
+    margin: 20px;
+    border: 20px solid #3d2501;
+    background-image: url('https://img.freepik.com/foto-gratis/hermosa-foto-casa-campo-hierba-seca-montana-boscosa-niebla_181624-4406.jpg?semt=ais_hybrid&w=740&q=80');
+    box-shadow: inset 30px 30px 50px rgba(0, 0, 0, 0.647), 30px 30px 50px rgba(0, 0, 0, 0.647);
+}
+/*=============================================================================================================================================================================================================*/

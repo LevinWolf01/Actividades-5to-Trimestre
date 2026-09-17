@@ -1,0 +1,1798 @@
+:root {background-color: #f4f7f6;}
+/* ==========================================================================
+   ESTILOS GENERALES Y BARRA SUPERIOR
+   ========================================================================== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 80px; /* Espacio libre para que la barra fija no tape el diseño */
+  transition: all 0.3s ease;
+}
+/* --------------------------------------------------------------------------------------------- */
+/* PSEUDOCLASES & CAMBIOS DE LENGUAJE */
+
+/* Diseño de la barra superior */
+.lang-bar {
+  width: 100%;
+  background-color: #2c3e50;
+  padding: 12px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.lang-bar button {
+  background-color: #34495e;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.lang-bar button:hover {
+  background-color: #1abc9c;
+}
+
+/* Contenedores */
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+}
+
+h2 { margin-top: 0; color: #2c3e50; font-size: 20px;}
+code { background-color: #e8f0fe; color: #1a73e8; padding: 2px 6px; border-radius: 4px; font-family: monospace;}
+
+.form-group { margin-bottom: 20px; display: flex; flex-direction: column; transition: all 0.3s ease; padding: 10px; border-radius: 8px;}
+label { margin-bottom: 8px; font-weight: 600; font-size: 14px; }
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.container a { font-size: 16px; font-weight: bold; text-decoration: none; display: inline-block; padding: 4px 0; transition: all 0.2s ease;}
+
+/* ==========================================================================
+   SISTEMA DE TRADUCCIÓN USANDO LA PSEUDO-CLASE :lang()
+   ========================================================================== */
+
+/* Español activo por defecto - ocultar otros idiomas */
+html:lang(es) [lang]:not([lang="es"]) { display: none !important; }
+html:lang(es) [lang="es"] { display: block !important; }
+html:lang(es) span[lang="es"], html:lang(es) a[lang="es"] { display: inline !important; }
+
+/* Inglés activo - ocultar otros idiomas */
+html:lang(en) [lang]:not([lang="en"]) { display: none !important; }
+html:lang(en) [lang="en"] { display: block !important; }
+html:lang(en) span[lang="en"], html:lang(en) a[lang="en"] { display: inline !important; }
+
+/* Francés activo */
+html:lang(fr) [lang]:not([lang="fr"]) { display: none !important; }
+html:lang(fr) [lang="fr"] { display: block !important; }
+html:lang(fr) span[lang="fr"], html:lang(fr) a[lang="fr"] { display: inline !important; }
+
+/* Japonés activo */
+html:lang(ja) [lang]:not([lang="ja"]) { display: none !important; }
+html:lang(ja) [lang="ja"] { display: block !important; }
+html:lang(ja) span[lang="ja"], html:lang(ja) a[lang="ja"] { display: inline !important; }
+
+/* Alemán activo */
+html:lang(de) [lang]:not([lang="de"]) { display: none !important; }
+html:lang(de) [lang="de"] { display: block !important; }
+html:lang(de) span[lang="de"], html:lang(de) a[lang="de"] { display: inline !important; }
+
+/* Árabe activo */
+html:lang(ar) [lang]:not([lang="ar"]) { display: none !important; }
+html:lang(ar) [lang="ar"] { display: block !important; }
+html:lang(ar) span[lang="ar"], html:lang(ar) a[lang="ar"] { display: inline !important; }
+
+/* ==========================================================================
+   SOPORTE PARA IDIOMA ÁRABE (Dirección Derecha a Izquierda - RTL)
+   ========================================================================== */
+html:lang(ar) {
+  direction: rtl;
+}
+
+/* Al activar RTL, volteamos de lado automáticamente los elementos flex */
+html:lang(ar) .lang-bar {
+  flex-direction: row; /* Flex maneja el orden inverso de los botones de forma nativa con rtl */
+}
+
+/* ==========================================================================
+   ESTADOS DE CAJAS Y ENLACES (EFECTOS PREVIOS)
+   ========================================================================== */
+.box-hover:hover { border-color: #2ecc71; background-color: #e8f8f0; box-shadow: 0 0 8px rgba(46, 204, 113, 0.3);}
+.box-focus:focus { border-color: #3498db; background-color: #ebf5fb; box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);}
+.box-active:active { border-color: #e74c3c; transform: scale(0.98);}
+.box-focus-within:focus-within { background-color: #fef9e7; border: 1px dashed #f1c40f;}
+.box-focus-within input:focus { border-color: #f1c40f;}
+.box-visible:focus-visible { outline: 3px solid #9b59b6; outline-offset: 2px; border-color: #9b59b6;}
+
+.ln-link:link { color: #00b4d8; border-bottom: 2px solid #00b4d8;}
+.ln-visited:visited { color: #9b59b6; text-decoration: line-through;}
+.ln-hover { color: #2c3e50; }
+.ln-hover:hover { color: #e67e22; letter-spacing: 1px;}
+.ln-active { color: #2c3e50; }
+.ln-active:active { color: #e74c3c; transform: translateY(3px);}
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* PSEUDOCLASES CON HIJOS */
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* ==========================================================================
+   ESTILOS PARA NUEVAS SEUDO-CLASES ESTRUCTURALES
+   ========================================================================== */
+
+/* Contenedores y espaciados base */
+.demo-block {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.text-item {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.type-p {
+  padding: 8px;
+  margin: 6px 0;
+  background-color: #ffffff;
+  border-radius: 4px;
+  font-size: 14px;
+  border-left: 4px solid #94a3b8;
+}
+
+/* Ajuste de borde izquierdo para Árabe (RTL) */
+html:lang(ar) .type-p {
+  border-left: none;
+  border-right: 4px solid #94a3b8;
+}
+
+/* --------------------------------------------------------------------------
+   APLICACIÓN DE LAS SEUDO-CLASES REQUERIDAS
+   -------------------------------------------------------------------------- */
+
+/* 1. :first-child - Selecciona el primer hijo dentro del contenedor */
+.child-box-container .text-item:first-child {
+  border-left: 5px solid #2ecc71; /* Borde verde */
+  font-weight: bold;
+}
+html:lang(ar) .child-box-container .text-item:first-child { border-left: none; border-right: 5px solid #2ecc71; }
+
+/* 2. :last-child - Selecciona el último hijo dentro del contenedor */
+.child-box-container .text-item:last-child {
+  border-left: 5px solid #e74c3c; /* Borde rojo */
+}
+html:lang(ar) .child-box-container .text-item:last-child { border-left: none; border-right: 5px solid #e74c3c; }
+
+/* 3. :nth-child() - Selecciona una posición exacta (En este caso la 3) */
+.child-box-container .text-item:nth-child(3) {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+}
+
+/* 4. :nth-child(special) - Uso de palabras clave/fórmulas como 'even' (pares) u 'odd' (impares) */
+.child-box-container .text-item:nth-child(even) {
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.05);
+  background-color: #f1f5f9;
+}
+
+/* 5. :first-of-type - Primer elemento que sea de tipo 'p' en su contenedor */
+.type-box-container .type-p:first-of-type {
+  border-color: #3498db;
+  color: #3498db;
+  background-color: #ebf5fb;
+}
+
+/* 6. :last-of-type - Último elemento que sea de tipo 'p' en su contenedor */
+.type-box-container .type-p:last-of-type {
+  border-color: #e67e22;
+  color: #e67e22;
+  background-color: #fdf2e9;
+}
+
+/* 7. :nth-last-of-type() - Cuenta desde el último hacia atrás (el penúltimo tipo 'p') */
+.type-box-container .type-p:nth-last-of-type(2) {
+  text-decoration: underline;
+  background-color: #faf5ff;
+  border-color: #a855f7;
+}
+
+/* 8. :only-child - Se activa si es el único hijo absoluto dentro de su padre */
+.isolate-container .text-item:only-child {
+  background-color: #fef9e7;
+  border: 2px dashed #f1c40f;
+  color: #b78a00;
+  text-align: center;
+}
+
+/* 9. :only-of-type - Se activa si es el único elemento de tipo 'p', aunque tenga hermanos de otra etiqueta */
+.isolate-container .type-p:only-of-type {
+  background-color: #e6fffa;
+  border-color: #319795;
+  color: #234e52;
+}
+
+/* 10. :empty - Detecta elementos que no tienen ningún hijo, texto ni espacios en blanco */
+.empty-box:empty {
+  height: 35px;
+  background-color: #fee2e2;
+  border: 2px dashed #ef4444;
+  border-radius: 4px;
+  position: relative;
+}
+
+.empty-note {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* JUEGO PSEUDOCLASES DE ESTRUCTURA */
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+/* ==========================================================================
+   ESTILOS DEL MINIJUEGO INTERACTIVO
+   ========================================================================== */
+
+/* Área de visualización del reto */
+.game-arena {
+  background-color: #f1f5f9;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Elementos gráficos (Representan las etiquetas HTML) */
+.g-el {
+  background: #ffffff;
+  border: 2px solid #94a3b8;
+  border-radius: 6px;
+  padding: 12px 15px;
+  font-family: monospace;
+  font-size: 14px;
+  color: #334155;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* La pseudo-etiqueta visual indicando si es un div, p, span, etc. */
+.g-el::before {
+  content: attr(data-tag);
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+/* El objetivo que el usuario debe adivinar */
+.g-el.target {
+  background-color: #fef08a;
+  border-color: #eab308;
+  color: #854d0e;
+  box-shadow: 0 0 12px rgba(234, 179, 8, 0.4);
+  transform: scale(1.05);
+}
+
+.g-el.target::after {
+  content: "⭐";
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: #ffffff;
+  border: 2px solid #eab308;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Visualización especial para :empty */
+.g-el.empty-el {
+  padding-bottom: 25px; /* Para que quede como un cuadrado vacío */
+}
+
+/* Cuadrícula de Botones de Opciones */
+.game-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-game {
+  background-color: #f8fafc;
+  color: #334155;
+  border: 2px solid #cbd5e1;
+  padding: 10px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-game:hover:not(:disabled) {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.btn-game:disabled {
+  cursor: not-allowed;
+}
+
+/* Estados de acierto y error */
+.btn-game.btn-correct {
+  background-color: #22c55e !important;
+  color: #ffffff !important;
+  border-color: #16a34a !important;
+  box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
+}
+
+.btn-game.btn-wrong {
+  background-color: #fca5a5 !important;
+  color: #991b1b !important;
+  border-color: #ef4444 !important;
+  opacity: 0.6;
+}
+
+/* Retroalimentación y botón siguiente */
+.game-feedback {
+  text-align: center;
+  min-height: 40px;
+}
+
+.feedback-msg {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.btn-next {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-next:hover {
+  background-color: #7c3aed;
+  transform: translateY(-2px);
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* JUEGO DE PENALES  */
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+/*COSAS QUE SE PUEDEN AÑADIR:
+    => Animacion al balón
+    => Un marcador de Goles
+*/
+
+
+
+/* ==========================================================================
+   ESTILOS JUEGO DE FÚTBOL: SEUDO-CLASES ESTRUCTURALES EN ACCIÓN
+   ========================================================================== */
+
+/* Variables de respaldo por defecto */
+.pitch-canvas {
+  --color-team-a: #f1c40f;
+  --text-team-a: #000;
+  --color-team-b: #74b9ff;
+  --text-team-b: #000;
+  
+  background-color: #27ae60;
+  border: 4px solid #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.2);
+}
+
+/* Configuración de paneles de control */
+.setup-block { background: #ebf5fb; padding: 15px; border-radius: 8px; border: 1px solid #aec6cf; }
+.selectors-row { display: flex; gap: 15px; }
+.sel-group { flex: 1; display: flex; flex-direction: column; }
+.sel-group select, .control-box select { padding: 8px; border-radius: 4px; border: 1px solid #ccc; font-weight: 600; }
+.kicker-controls { display: flex; gap: 15px; margin-bottom: 15px; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; }
+.control-box { flex: 1; }
+.ctrl-title { margin: 0 0 8px 0; font-size: 13px; font-weight: bold; color: #475569; }
+.pos-buttons { display: flex; gap: 5px; }
+.pos-buttons button { flex: 1; padding: 6px; font-weight: bold; border-radius: 4px; border: 1px solid #cbd5e1; background: #fff; cursor: pointer; transition: all 0.2s; }
+.pos-buttons button:hover { background-color: #34495e; color: white; }
+.btn-pitch { background-color: #2c3e50; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+.btn-pitch:hover { background-color: #1abc9c; }
+
+/* --- 1. USO DE :nth-child(special) -> INTERCALAR UNIFORMES --- */
+.players-vertical-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 200px;
+}
+
+.player-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  font-size: 13px;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+/* Filas Impares (1, 3, 5): Team Local A */
+.player-row:nth-child(odd) {
+  background-color: var(--color-team-a);
+  color: var(--text-team-a);
+}
+
+/* Filas Pares (2, 4, 6): Team Visitante B */
+.player-row:nth-child(even) {
+  background-color: var(--color-team-b);
+  color: var(--text-team-b);
+}
+
+/* --- 2. USO DE :first-child Y :last-child -> MARCADORES EXCLUSIVOS --- */
+/* Añade estrella de capitán automáticamente al primer renglón */
+.player-row:first-child p::after {
+  content: " 👑 (Capitán)";
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Modificación estética al último elemento de la lista */
+.player-row:last-child {
+  border-bottom: 3px dashed rgba(0,0,0,0.4);
+}
+
+/* --- 3. USO DE :nth-child() COMBINADO -> ILUMINACIÓN DEL JUGADOR SELECCIONADO --- */
+/* Cuando el padre adquiere la clase de posición, se ilumina el nth-child exacto */
+.pitch-canvas.sel-pos-1 .player-row:nth-child(1),
+.pitch-canvas.sel-pos-2 .player-row:nth-child(2),
+.pitch-canvas.sel-pos-3 .player-row:nth-child(3),
+.pitch-canvas.sel-pos-4 .player-row:nth-child(4),
+.pitch-canvas.sel-pos-5 .player-row:nth-child(5),
+.pitch-canvas.sel-pos-6 .player-row:nth-child(6) {
+  border-color: #ffffff;
+  transform: scale(1.08) translateX(5px);
+  box-shadow: 0 0 15px #ffffff;
+}
+
+/* --- 4. USO DE :first-of-type Y :last-of-type INTERNOS --- */
+/* Estilos diferenciados a las etiquetas internas dentro de la tarjeta de jugador */
+.player-row span:first-of-type {
+  font-family: monospace;
+  font-weight: 900;
+  margin-right: 10px;
+  opacity: 0.7;
+}
+
+/* --- 5. EL PUNTO PENAL Y USO DE :empty --- */
+.pitch-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.penalty-spot {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255,255,255,0.4);
+  border: 2px dashed #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+/* Cuando el balón es removido, el punto de manchón penal se queda :empty */
+.penalty-spot:empty {
+  background-color: rgba(231, 76, 60, 0.4); /* Cambia a un color rojo de advertencia */
+  border-color: #e74c3c;
+}
+.penalty-spot:empty::after {
+  content: "❌";
+  font-size: 12px;
+}
+
+/* El Balón */
+.soccer-ball {
+  font-size: 26px;
+  cursor: grab;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  user-select: none;
+  animation: floatBall 2s infinite ease-in-out;
+}
+.soccer-ball.kicked {
+  animation: none;
+  transform: scale(1.3);
+}
+
+@keyframes floatBall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* --- 6. LA PORTERÍA Y DETALLES DE ZONAS DE RED --- */
+.pitch-goal-side {
+  display: flex;
+  align-items: center;
+}
+
+.goal-frame {
+  width: 140px;
+  height: 160px;
+  background: rgba(255,255,255,0.1);
+  border: 5px solid #ffffff;
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.goal-zone {
+  flex: 1;
+  border-bottom: 1px rgba(255,255,255,0.3) solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: crosshair;
+  transition: background 0.2s;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+}
+.goal-zone:hover {
+  background-color: rgba(255,255,255,0.25);
+}
+
+/* Estilos de red usando posiciones relativas en las zonas */
+.goal-zone span { background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; }
+
+/* --- 7. USO DE :only-child EN LOS ANUNCIOS/MENSAJES --- */
+.pitch-announcements {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  text-align: center;
+}
+
+/* Si dentro de la caja de anuncios solo queda una alerta de gol limpia, le inyectamos estilos gigantes */
+.pitch-announcements .goal-alert:only-child {
+  font-size: 22px;
+  color: #27ae60;
+  animation: pulseGoal 0.5s infinite alternate;
+}
+
+.goal-alert { font-weight: bold; color: #27ae60; font-size: 16px;}
+.saved-alert { font-weight: bold; color: #e67e22; font-size: 16px;}
+.out-alert { font-weight: bold; color: #c0392b; font-size: 16px;}
+
+@keyframes pulseGoal {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
+/* Soporte RTL (Árabe) para voltear la dirección del juego de izquierda a derecha */
+html:lang(ar) .pitch-canvas {
+  flex-direction: row-reverse;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* PSEUDOCLASES PARA FORMULARIOS: "CHECKED" & "INDETERMINATE" */
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+
+/* ==========================================================================
+   ESTILOS PARA ESTADOS :CHECKED E :INDETERMINATE
+   ========================================================================== */
+
+/* Contenedor principal del grupo */
+.checkbox-demo-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: #f8fafc;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Tarjeta/Label base para cada input */
+.custom-check-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  background-color: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* El input nativo (puedes aumentar su escala para que se note más el diseño del navegador) */
+.custom-check-card input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   APLICACIÓN DE LA PSEUDO-CLASE :checked
+   -------------------------------------------------------------------------- */
+
+/* Cambia el fondo y el borde de la tarjeta contenedora cuando el input interno está marcado */
+.custom-check-card:has(input:checked) {
+  border-color: #22c55e;
+  background-color: #f0fdf4;
+}
+
+/* Modifica el texto usando el selector de hermano adyacente (+) */
+input:checked + .check-text {
+  color: #15803d;
+  font-weight: bold;
+}
+
+/* Añade una etiqueta dinámica al final del texto */
+input:checked + .check-text::after {
+  content: " ✓ True";
+  font-size: 11px;
+  font-family: monospace;
+  background-color: #22c55e;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   APLICACIÓN DE LA PSEUDO-CLASE :indeterminate
+   -------------------------------------------------------------------------- */
+
+/* Cambia el fondo y el borde de la tarjeta cuando el input está indeterminado */
+.custom-check-card:has(input:indeterminate) {
+  border-color: #eab308;
+  background-color: #fefce8;
+}
+
+/* Modifica el texto */
+input:indeterminate + .check-text {
+  color: #a16207;
+  font-weight: bold;
+}
+
+/* Añade una etiqueta dinámica para el estado indeterminado */
+input:indeterminate + .check-text::after {
+  content: " ➖ Indeterminate";
+  font-size: 11px;
+  font-family: monospace;
+  background-color: #eab308;
+  color: #451a03;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* BOTONES (ENABLED & DISABLED) */
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+/* ==========================================================================
+   ESTILOS PARA ESTADOS :ENABLED Y :DISABLED
+   ========================================================================== */
+
+/* Contenedor del formulario */
+.state-demo-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #f8fafc;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Caja de texto interactiva */
+.state-demo-group input[type="text"] {
+  padding: 12px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.state-demo-group input[type="text"]:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Estilos base del Botón */
+.state-demo-group button {
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   ESTADO :disabled (Cuando la caja está vacía)
+   -------------------------------------------------------------------------- */
+.state-demo-group button:disabled {
+  background-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  transform: scale(1);
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   ESTADO :enabled (Cuando la caja tiene texto)
+   -------------------------------------------------------------------------- */
+.state-demo-group button:enabled {
+  background-color: #3b82f6;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Animaciones exclusivas que solo funcionan si el botón está :enabled */
+.state-demo-group button:enabled:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+}
+
+.state-demo-group button:enabled:active {
+  transform: translateY(0);
+}
+
+/* -------------------------------------------------------------------------------------------------------------------------------------------------
+ ================== P S E U D O E L E M E N T O S ================== 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+"::marker"
+
+"::backdrop"
+
+"::placeholder"
+
+"::file-selector-button"
+
+"::before"
+
+"::after"
+
+"::first-line"
+
+"::first-letter"
+
+"::selection"
+
+"::target-next"
+
+"::spelling-error"
+
+"::grammar-error"
+
+"::part"
+
+"::slotted"
+
+"::view-transition"
+
+"::view-transition-group"
+
+"::view-transition-image-pair"
+
+"::view-transition-new"
+
+"::view-transition-old"  */
+
+/* ==========================================================================
+   ESTILOS PARA PSEUDO-ELEMENTOS (::)
+   ========================================================================== */
+
+/* --- 1. ::first-letter y ::first-line --- */
+.pe-texto::first-letter {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #e74c3c;
+  float: left;
+  margin-right: 8px;
+  line-height: 1;
+}
+
+.pe-texto::first-line {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* --- 2. ::selection (Cuando el usuario resalta texto) --- */
+.pe-texto::selection {
+  background-color: #f1c40f;
+  color: #000;
+  text-shadow: none;
+}
+
+/* --- 3. ::marker (Viñetas de listas) --- */
+.pe-lista li::marker {
+  content: "🚀 ";
+  font-size: 1.2em;
+}
+
+/* --- 4. Formularios: ::placeholder y ::file-selector-button --- */
+.pe-input { width: 100%; padding: 10px; box-sizing: border-box; }
+.pe-input::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.pe-file::file-selector-button {
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-right: 10px;
+}
+.pe-file::file-selector-button:hover {
+  background-color: #7c3aed;
+}
+
+/* --- 5. Contenido Generado: ::before y ::after --- */
+.pe-cita {
+  position: relative;
+  padding: 15px 40px;
+  background-color: #ebf5fb;
+  border-left: 4px solid #3498db;
+  font-size: 18px;
+  font-style: italic;
+}
+.pe-cita::before {
+  content: "“";
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  font-size: 40px;
+  color: #3498db;
+  font-family: serif;
+}
+.pe-cita::after {
+  content: "”";
+  position: absolute;
+  right: 15px;
+  bottom: -15px;
+  font-size: 40px;
+  color: #3498db;
+  font-family: serif;
+}
+
+/* --- 6. Errores y Modales: ::spelling-error, ::grammar-error y ::backdrop --- */
+/* Nota: Support en navegadores es limitado para spelling-error actualmente */
+.pe-errores::spelling-error {
+  text-decoration: wavy underline #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
+}
+.pe-errores::grammar-error {
+  text-decoration: dashed underline #f1c40f;
+}
+
+/* ::target-text (Se activa si navegas a #pe-texto-id:~:text=párrafo) */
+::target-text {
+  background-color: #2ecc71;
+  color: white;
+}
+
+/* ::backdrop oscurece toda la pantalla detrás de la etiqueta <dialog> */
+.pe-dialogo {
+  padding: 20px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.pe-dialogo::backdrop {
+  background-color: rgba(44, 62, 80, 0.8);
+  backdrop-filter: blur(4px); /* Efecto cristalino */
+}
+
+/* --- 7. Web Components: ::part y ::slotted --- */
+/* ::part entra al Shadow DOM del componente y estiliza un elemento con part="contenedor-sombra" */
+mi-componente::part(contenedor-sombra) {
+  border-color: #8b5cf6;
+  background-color: #faf5ff;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
+}
+
+/* ::slotted estiliza el contenido HTML que se insertó en un slot desde afuera */
+mi-componente::slotted(.pe-slotted-demo) {
+  color: #d946ef;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* --- 8. View Transitions API (::view-transition-*) --- */
+.pe-vt-caja {
+  padding: 20px;
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  /* 1. Nombramos el elemento para que la API lo reconozca y aísle */
+  view-transition-name: caja-animada; 
+}
+.pe-vt-caja.pe-vt-activa {
+  background-color: #e74c3c;
+  transform: translateX(100px) scale(1.1);
+  border-radius: 20px;
+}
+
+/* 2. Controlamos el árbol de pseudo-elementos que el navegador crea temporalmente */
+::view-transition-group(caja-animada) {
+  animation-duration: 0.8s; /* Ralentizamos la transición para apreciarla */
+}
+::view-transition-old(caja-animada) {
+  /* Estado antiguo (saliente) */
+  animation: fadeOut 0.4s ease-in-out forwards;
+}
+::view-transition-new(caja-animada) {
+  /* Estado nuevo (entrante) */
+  animation: fadeIn 0.4s ease-in-out forwards;
+  mix-blend-mode: normal;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; filter: blur(0); }
+  to { opacity: 0; filter: blur(5px); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; filter: blur(5px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dashboard y perfil de Usuario */
+
+
+/* ==========================================================================
+   ESTILOS DASHBOARD AVANZADO (TÉCNICAS PRO)
+   ========================================================================== */
+
+
+/* Variables CSS Personalizadas */
+.pro-dashboard {
+  --sidebar-bg: #2176ff;
+  --sidebar-hover: #1b62d8;
+  --main-bg: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+  --text-dark: #334155;
+  --text-light: #94a3b8;
+  --line-color: #cbd5e1;
+  --accent: #3b82f6;
+
+  display: flex;
+  min-height: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- PANEL LATERAL --- */
+.dash-sidebar {
+  width: 240px;
+  background-color: var(--sidebar-bg);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0;
+  position: relative;
+}
+
+.dash-logo {
+  font-size: 20px;
+  padding: 0 25px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.dash-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-nav a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 12px 25px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.dash-nav a:hover, .dash-nav a.active {
+  background-color: var(--sidebar-hover);
+  color: white;
+  font-weight: bold;
+}
+
+/* Uso de ::before para el indicador lateral de la pestaña activa */
+.dash-nav a.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: white;
+}
+
+/* Uso de attr() para inyectar la versión dinámicamente desde el HTML */
+.dash-version {
+  margin-top: auto;
+  padding: 0 25px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+.dash-version::before {
+  content: "Versión " attr(data-version);
+}
+
+/* --- CONTENIDO PRINCIPAL Y CONTADORES --- */
+.dash-main {
+  flex: 1;
+  background: var(--main-bg);
+  padding: 10px 40px;
+  /* Inicializamos el contador de CSS */
+  counter-reset: section-counter; 
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-section {
+  position: relative;
+  padding: 25px 0;
+  border-bottom: 2px solid var(--line-color);
+  /* Incrementamos el contador por cada sección */
+  counter-increment: section-counter; 
+}
+
+/* Generamos la marca de agua numérica a la derecha ("01", "02"...) */
+.dash-section::after {
+  content: "0" counter(section-counter);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  font-weight: 600;
+  color: rgba(148, 163, 184, 0.15); /* Color gris muy transparente */
+  pointer-events: none; /* Evita que el número estorbe al hacer clic */
+}
+
+.section-title {
+  color: var(--text-dark);
+  font-size: 16px;
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- BADGES CON ::before (Puntos de estado) --- */
+.status-badges { display: flex; gap: 10px; }
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255,255,255,0.6);
+  border: 1px solid var(--line-color);
+  color: var(--text-dark);
+}
+.badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.badge-ok::before { background-color: #10b981; box-shadow: 0 0 5px #10b981; }
+.badge-warn::before { background-color: #f59e0b; }
+
+/* --- CHECKBOXES PERSONALIZADOS CON ::before y ::after --- */
+.task-list { display: flex; flex-direction: column; gap: 10px; }
+.custom-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+/* Ocultamos el input original */
+.custom-task input { display: none; }
+
+/* Creamos la caja del checkbox falso con ::before */
+.task-text::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--text-light);
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-right: 10px;
+  transition: all 0.2s;
+  background-color: white;
+  position: relative;
+}
+
+/* Si está chequeado, cambia el fondo y el borde */
+.custom-task input:checked + .task-text::before {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Creamos el chulo/palomita (checkmark) con ::after. 
+   Por defecto invisible (escala 0). */
+.custom-task input + .task-text::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Cuando se marca, hacemos aparecer el checkmark */
+.custom-task input:checked + .task-text::after {
+  transform: rotate(45deg) scale(1);
+}
+
+/* --- AVATARES GENERADOS CON ::after y attr() --- */
+.team-avatars { display: flex; gap: -10px; }
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  margin-right: -10px; /* Para que se superpongan */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+/* Inyecta las letras (initials) sobre el div circular */
+.avatar::after {
+  content: attr(data-initials);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* --- TOOLTIP CON attr() --- */
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background-color: var(--accent);
+  color: white; 
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: help;
+  position: relative;
+}
+
+/* Construcción del tooltip oculto por defecto */
+.info-icon::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: #1e293b;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+/* Triangulito del tooltip */
+.info-icon::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1e293b;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+/* Aparece el tooltip en Hover */
+.info-icon:hover::after,
+.info-icon:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1); /* Despliega el contenido */
+}
+
+.info-desc { 
+  font-size: 14px; 
+  color: var(--text-dark); 
+  margin: 0 0 10px 0; }
+.info-list { 
+  margin: 0; 
+  padding-left: 20px; 
+  font-size: 13px; 
+  color: var(--text-dark); 
+  line-height: 1.6; }
+.info-list code { 
+  background: rgba(0,0,0,0.05); 
+  padding: 2px 5px; 
+  border-radius: 3px; 
+  color: #e74c3c; }
+
+
+
+
+
+
+
+
+  
+ 
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------- --> */
+/* ================== Selectores Especificos ================== --> */
+
+/* ==========================================================================
+   ESTILOS PARA SELECTORES DE ATRIBUTO Y COMBINADORES
+   ========================================================================== */
+
+.pc-parts-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pc-parts-list li {
+  padding: 10px 15px;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.pc-parts-list a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   SELECTORES DE ATRIBUTO
+   -------------------------------------------------------------------------- */
+
+/* 1. EMPIEZA CON (^=) : Busca enlaces que inicien con 'https://' (Externos) */
+.pc-parts-list a[href^="https://"] {
+  color: #2563eb;
+  font-weight: bold;
+}
+.pc-parts-list a[href^="https://"]::before {
+  content: "🛒 Tienda Externa: ";
+  font-size: 0.85em;
+  color: #f97316;
+}
+
+/* 2. TERMINA EN ($=) : Busca enlaces que finalicen en '.pdf' */
+.pc-parts-list a[href$=".pdf"] {
+  color: #dc2626;
+  background-color: #fef2f2;
+  border-radius: 4px;
+}
+.pc-parts-list a[href$=".pdf"]::after {
+  content: " 📄";
+}
+
+/* 3. CONTIENE (*=) : Busca cualquier elemento cuyo 'data-part' incluya la palabra 'gpu' 
+   (Esto afectará tanto a 'gpu-nvidia' como a 'gpu-amd' de un solo golpe) */
+.pc-parts-list li[data-part*="gpu"] {
+  border-left: 4px solid #10b981;
+  background-color: #ecfdf5;
+}
+.pc-parts-list li[data-part*="gpu"]::before {
+  content: "🎮 Gráfica: ";
+  font-weight: bold;
+  color: #047857;
+}
+
+/* --------------------------------------------------------------------------
+   SELECTORES DE COMBINADORES (+ y ~)
+   -------------------------------------------------------------------------- */
+.build-guide {
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.step-title {
+  background-color: #1e293b;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.step-title:first-child { margin-top: 0; }
+
+.build-guide p {
+  margin: 0 0 8px 0;
+  padding-left: 15px;
+  color: #475569;
+  border-left: 2px solid transparent;
+}
+
+.alert-box {
+  background-color: #fef08a;
+  color: #854d0e;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* 4. HERMANO ADYACENTE (+) : Selecciona ÚNICAMENTE el primer <p> 
+   que está exactamente después de un .step-title */
+.step-title + p {
+  font-weight: bold;
+  color: #0f172a;
+  border-left-color: #3b82f6; /* Le pone una rayita azul solo a la primera instrucción */
+}
+
+/* 5. HERMANO GENERAL (~) : Selecciona TODOS los <p> que compartan contenedor 
+   y estén ubicados en cualquier lugar después de un .warning-step */
+.warning-step ~ p {
+  background-color: #fef2f2;
+  border-left-color: #ef4444; /* Les pone una rayita roja a todos los pasos que siguen */
+  padding: 8px 15px;
+}
+
+
+
+
+
+
+/* --------------------------------------------------------------------------------------------------------------- */
+
+/* Ejercicio  Botones (PseudoElementos) */
+
+/* ==========================================================================
+   ESTILOS: REPLICACIÓN DE PANTALLA DE EJERCICIO
+   ========================================================================== */
+
+/* Contenedor principal estilo monitor / pantalla dividida */
+.exercise-screen-container {
+  display: flex;
+  max-width: 1000px;
+  min-height: 550px;
+  margin: 40px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+/* --- LADO IZQUIERDO (Gris claro) --- */
+.exercise-workspace {
+  flex: 1.3;
+  background-color: #eef2f5;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exercise-header-title {
+  font-size: 32px;
+  color: #334155;
+  font-weight: normal;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 40px;
+}
+
+/* Distribución de los botones en el espacio de trabajo */
+.buttons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 550px;
+}
+
+/* --- ESTILO BASE DEL BOTÓN 3D (Azul Celeste) --- */
+.btn-3d-blue {
+  background-color: #00bcff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  /* La magia del efecto 3D plano de la imagen es esta sombra sólida hacia abajo */
+  box-shadow: 0 5px 0 #008cb8;
+  transition: all 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Efecto opcional al presionarlos para que se sienta el 3D hundirse */
+.btn-3d-blue:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #008cb8;
+}
+
+
+/* --------------------------------------------------------------------------
+   REQUERIMIENTO 1: Botón "Love this tutorial!" acoplado
+   -------------------------------------------------------------------------- */
+.love-card-container {
+  grid-column: span 2; /* Ocupa las dos columnas arriba */
+  justify-self: start;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+.love-card-header {
+  background-color: white;
+  text-align: center;
+  padding: 12px;
+  font-size: 24px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid #e2e8f0;
+  border-bottom: none;
+}
+
+.love-btn {
+  border-radius: 0 0 8px 8px; /* Se acopla perfectamente abajo */
+  width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   BOTONES DE EN MEDIO (Caja contenedora y Botón simple)
+   -------------------------------------------------------------------------- */
+
+  /* Boton INTET Button box*/
+.inset-button-box {
+  background-color: #c3d2e3;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 3px 45px rgba(0,0,0,0.05);
+}
+
+.fondo-btn-profundo{
+  background-color: #0280a7;
+  border-radius: 5px; 
+  display: flex;
+}
+
+.btn-profundo {
+  background-color: #00bcff;
+  color: white;
+  border: solid 1.5px #0280a7;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+
+  /* La magia del efecto 3D plano de la imagen es esta sombra sólida hacia abajo */
+  box-shadow: 0 3px 0 #008cb8;
+  transition: all 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-profundo:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 0 #008cb8;
+  transition: all 0.1s ease;
+  
+}
+
+
+/* Boton Standalone Box */
+.standalone-box {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.fondo-btn-profundo-2{
+  background-color: #0280a7;
+  border-radius: 8px;
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 3px 45px rgba(0,0,0,0.05);
+}
+
+.btn-profundo-2 {
+  background-color: #00bcff;
+  color: white;
+  border: solid 1.5px #0280a7;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+
+  /* La magia del efecto 3D plano de la imagen es esta sombra sólida hacia abajo */
+  box-shadow: 0 3px 0 #008cb8;
+  transition: all 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-profundo-2:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #008cb8;
+}
+
+/* --------------------------------------------------------------------------
+   REQUERIMIENTO 2 CORREGIDO: Botón con "hueco/clavo" estático
+   -------------------------------------------------------------------------- */
+.btn-with-arrow {
+  position: relative; /* Necesario para posicionar el 'clavo' adentro */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 45px; /* Dejamos un espacio fijo a la derecha para que el texto no pise la flecha */
+}
+
+/* El texto izquierdo del botón para asegurar que se alinee bien */
+.btn-text-left {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+}
+
+/* El "Clavo": El círculo oscuro con la flecha */
+.arrow-hole {
+  position: absolute;
+  right: 10px;
+  top: 20%;
+  
+  
+  background-color: #008cb8;
+  color: white;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+ 
+}
+
+/* --------------------------------------------------------------------------
+   EL TRUCO CUANDO EL BOTÓN SE ACTIVA (:active)
+   -------------------------------------------------------------------------- */
+.btn-with-arrow:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 0 #008cb8;
+}
+
+/* La flecha permanece visualmente estática aunque el botón claro se encoja */
+.btn-with-arrow:active .arrow-hole {
+  transform: scale(1.05263) !important;
+  transform-origin: center center;
+}
+
+
+
+
+
+/* --------------------------------------------------------------------------
+   REQUERIMIENTO 3: Botón acoplado al bloque numérico "1"
+   -------------------------------------------------------------------------- */
+.numbered-btn-group {
+  display: flex;
+  align-items: stretch; /* Obliga a que ambos tengan la misma altura */
+}
+
+.number-badge-side {
+  background-color: #00769c; /* Azul más oscuro, no es botón */
+  color: #00d2ff;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border-radius: 6px 0 0 6px;
+
+  /* Sombra inferior igual a la del botón para mantener la continuidad 3D */
+  box-shadow: 0 5px 0 #005673; 
+  border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+.padded-btn {
+  border-radius: 0 6px 6px 0; /* Se acopla al bloque numérico izquierdo */
+  flex: 1;
+}
+
+
+/* --- LADO DERECHO (Gris un poco más oscuro con texto de diseño) --- */
+.exercise-sidebar-title {
+  flex: 1;
+  background-color: #dbe3e8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  border-left: 1px solid #cbd5e1;
+}
+
+.title-main {
+  font-size: 42px;
+  color: #00bcff;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.title-sub {
+  font-size: 18px;
+  color: #334155;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+}
+

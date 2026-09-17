@@ -1,0 +1,234 @@
+/* --- CONFIGURACIÓN GLOBAL Y VARIABLES --- */
+:root {
+    --bg-main: #0f172a;       /* Fondo oscuro profundo */
+    --bg-card: #1e293b;       /* Fondo de las tarjetas */
+    --border-color: #334155;  /* Bordes sutiles */
+    --text-main: #f8fafc;     /* Texto claro */
+    --text-muted: #94a3b8;    /* Texto secundario */
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Contenedor Principal (Centrado y ordenado) */
+.container {
+    max-width: 650px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #38bdf8; /* Azul neón */
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+/* Estructura de Tarjetas (Cards) */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.15rem;
+    color: #cbd5e1;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 16px 0;
+}
+
+
+p {
+    color: rgb(0, 217, 255);
+    font-family: sans-serif;
+    margin: 8px 0;
+}
+
+.my-class {
+    color: rgb(123, 166, 245);
+    font-family: Avenir, sans-serif;
+}
+
+#my-id {
+    color: #f87171;
+    font-family: Courier, monospace;
+}
+
+div p {
+    color: rgb(57, 253, 13);
+    font-family: Helvetica, sans-serif;
+}
+
+/* Botón Estilizado */
+.button-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: #6366f1; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background-color: #4f46e5;
+    transform: scale(1.02);
+}
+
+/* Contenedor Flex para tus tres divs de colores */
+.flex-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+#first, #second, #third {
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+/* Ajusté los anchos para que se acomoden mejor en pantallas pequeñas */
+#first {
+    background-color: aqua;
+    color: black;
+    flex: 1;
+    text-align: center;
+}
+
+#second {
+    background-color: black;
+    color: chartreuse;
+    width: 100px;
+    text-align: center;
+}
+
+#third {
+    background-color: rgb(222, 13, 13);
+    color: rgba(255, 251, 2, 0.984);
+    width: 120px;
+    text-align: center;
+}
+
+/* Bloque de código / Tabla Pre */
+pre {
+    background-color: #0f172a;
+    padding: 16px;
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+}
+
+/* Listas en paralelo usando Grid */
+.lists-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+ul, ol {
+    padding-left: 20px;
+    color: #e2e8f0;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* --- FORMULARIOS MODERNOS --- */
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    color: #e2e8f0;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+input[type="number"], input[type="tel"] {
+    background-color: #0f172a;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+/* Formato para los tres inputs del teléfono alineados */
+.phone-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.phone-inputs input {
+    text-align: center;
+}
+
+#areacode, #threedigits { width: 60px; }
+#fourdigits { width: 80px; }
+
+/* Clases de utilidad */
+.instructions {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-left: 4px;
+}
+
+.hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}

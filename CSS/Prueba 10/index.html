@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaySmart: IA y Logística Avanzada</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Fuente moderna e impactante -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navegación Flotante con Botones de Acceso (Modals/Triggers) -->
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <div class="logo-icon">WS</div>
+            <h2>WaySmart</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#intro">Inicio</a></li>
+            <li><a href="#solucion">IA Generativa</a></li>
+            <li><a href="#video-section">Demo</a></li>
+            <li><a href="#estadisticas">Métricas</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-secondary" id="openLogin">Iniciar Sesión</button>
+            <button class="btn-primary" id="openRegister">Registrarse</button>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section con Degradado Animado -->
+    <header class="site-header">
+        <div class="header-content">
+            <span class="badge-neon">v 2.0.0 - Fase de Prueba</span>
+            <h1>Logística Urbana<br>Reinventada con <span>IA</span></h1>
+            <p>WaySmart optimiza rutas en milisegundos, empoderando a los repartidores con tecnología predictiva de última generación.</p>
+        </div>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </header>
+
+    <!-- Contenedor Principal: Bento Grid Moderno Expandido -->
+    <main class="grid-main">
+
+        <!-- Card 1: Intro (Imagen de fondo gigante) -->
+        <article id="intro" class="research-section bento-hero has-bg-image">
+            <img src="https://images.unsplash.com/photo-1617469165786-8007eda3caa7?auto=format&fit=crop&q=80&w=1200" alt="Repartidor velocidad" class="bg-img">
+            <div class="content-overlay">
+                <h3>El Futuro del Reparto</h3>
+                <p>Nuestra plataforma conecta la inmediatez humana con la inteligencia de datos a gran escala.</p>
+            </div>
+        </article>
+
+        <!-- Card 2: Problema -->
+        <article id="problem" class="research-section bento-solid neon-blue-bg">
+            <div class="content">
+                <div class="icon-big">🚧</div>
+                <h3>El Caos del Tráfico</h3>
+                <p>Rutas superpuestas y embotellamientos destruyen los márgenes de ganancia y el tiempo de los repartidores. Es hora de evolucionar.</p>
+            </div>
+        </article>
+
+        <!-- Card 3: Solución (IA Generativa) -->
+        <article id="solucion" class="research-section bento-solid dark-bg outline-glow">
+            <div class="content">
+                <h3 class="gradient-text">Motor IA Generativo</h3>
+                <p>Nuestros algoritmos generan cientos de escenarios de rutas por segundo, seleccionando la óptima basándose en datos históricos y eventos en curso.</p>
+                <div class="tech-tags">
+                    <span>Machine Learning</span>
+                    <span>Redes Neuronales</span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Card NUEVA: Video Ilustrativo Local -->
+        <article id="video-section" class="research-section bento-wide video-card">
+            <div class="video-container-grid">
+                <div class="video-info">
+                    <h3>Demostración en Acción</h3>
+                    <p>Observa cómo nuestra IA recalcula rutas urbanas en tiempo real ante imprevistos viales, reduciendo drásticamente los tiempos muertos del repartidor.</p>
+                    <span class="video-badge">▶ Video Local Integrado</span>
+                </div>
+                <div class="video-wrapper">
+                    <!-- Configurado para tu video local llamado 'waysmart-demo.mp4' -->
+                    <video controls autoplay loop>
+                        <source src="./src/video/WaySmart ALPHA.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de videos locales.
+                    </video>
+                </div>
+            </div>
+        </article>
+
+        <!-- Card NUEVA: Estadísticas de Repartidores (Gráficos puros con CSS) -->
+        <article id="estadisticas" class="research-section bento-full stats-card">
+            <div class="stats-header">
+                <h3>Rendimiento y Tiempos de Repartidores</h3>
+                <p>Comparativa de eficiencia operativa antes y después de implementar WaySmart (Minutos por entrega)</p>
+            </div>
+            <div class="stats-grid-container">
+                <!-- Gráfico de Barras CSS -->
+                <div class="chart-box">
+                    <h4>Tiempo Promedio por Ruta (Min)</h4>
+                    <div class="css-bar-chart">
+                        <div class="bar-group">
+                            <span class="bar-value">45m</span>
+                            <div class="bar traditional" style="height: 90%;"></div>
+                            <span class="bar-label">Tradicional</span>
+                        </div>
+                        <div class="bar-group">
+                            <span class="bar-value">32m</span>
+                            <div class="bar waysmart" style="height: 64%;"></div>
+                            <span class="bar-label">WaySmart IA</span>
+                        </div>
+                        <div class="bar-group">
+                            <span class="bar-value">25m</span>
+                            <div class="bar optimized" style="height: 50%;"></div>
+                            <span class="bar-label">IA + Tráfico Real</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráfico de Pastel / Progreso CSS -->
+                <div class="chart-box">
+                    <h4>Distribución de Tiempo Ahorrado</h4>
+                    <div class="css-pie-container">
+                        <div class="pie-chart-mock">
+                            <div class="pie-slice slice-1"></div>
+                            <div class="pie-slice slice-2"></div>
+                            <div class="pie-slice slice-3"></div>
+                            <div class="pie-hole">
+                                <span class="pie-center-text">100%</span>
+                            </div>
+                        </div>
+                        <ul class="pie-legend">
+                            <li><span class="dot d1"></span> Tráfico Evitado (45%)</li>
+                            <li><span class="dot d2"></span> Optimización de Destinos (35%)</li>
+                            <li><span class="dot d3"></span> Tiempos de Espera (20%)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Card NUEVA: Preguntas Frecuentes (FAQ) -->
+        <article id="faq" class="research-section bento-full faq-card">
+            <div class="faq-header">
+                <h3>Preguntas Frecuentes</h3>
+                <p>Todo lo que necesitas saber sobre la plataforma y su funcionamiento.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>¿Cómo funciona la IA Generativa en WaySmart?</h4>
+                    <p>La IA analiza patrones masivos de tráfico urbano y congestión en tiempo real para generar múltiples alternativas de rutas en segundos, eligiendo la de menor fricción.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>¿Qué necesito para registrarme como Conductor?</h4>
+                    <p>Solo requieres registrarte mediante el botón superior, completar tus datos de vehículo y comenzar a recibir rutas dinámicas desde tu teléfono móvil.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>¿Es compatible con cualquier dispositivo GPS?</h4>
+                    <p>Sí, WaySmart cuenta con geolocalización nativa integrada adaptable a cualquier smartphone sin requerir hardware externo costoso.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>¿Qué pasa si no tengo conexión a internet estable?</h4>
+                    <p>La plataforma cuenta con caché predictivo local que almacena los tramos críticos de la ruta generada ante breves cortes de red.</p>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <h2>WaySmart</h2>
+        <p>Rompiendo los límites de la logística. ⚡ 2026</p>
+    </footer>
+
+    <!-- ==========================================
+       VENTANAS MODALES (Mini Ventanas Flotantes)
+       ========================================== -->
+
+    <!-- Modal de Iniciar Sesión (Con roles y datos fijos simulados) -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" id="closeLogin">&times;</button>
+            <div class="modal-header">
+                <h2>Iniciar Sesión</h2>
+                <p>Selecciona tu rol e ingresa tus credenciales preconfiguradas.</p>
+            </div>
+            <form id="loginForm" class="modal-form">
+                <div class="form-group">
+                    <label for="loginRole">Rol de Usuario</label>
+                    <select id="loginRole" required>
+                        <option value="conductor">Conductor (Ej: conductor@waysmart.com)</option>
+                        <option value="representante">Representante (Ej: rep@waysmart.com)</option>
+                        <option value="admin">Administrador (Ej: admin@waysmart.com)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="loginUser">Usuario / Correo</label>
+                    <input type="text" id="loginUser" value="conductor@waysmart.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPass">Contraseña (Fija: 1234)</label>
+                    <input type="password" id="loginPass" value="1234" required>
+                </div>
+                <button type="submit" class="btn-submit">Entrar al Sistema</button>
+                <p class="form-hint">Simulación de acceso seguro local con valores predefinidos.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" id="closeRegister">&times;</button>
+            <div class="modal-header">
+                <h2>Registro de Cuenta</h2>
+                <p>Crea tu perfil para unirte a la red logística inteligente.</p>
+            </div>
+            <form id="registerForm" class="modal-form">
+                <div class="form-group">
+                    <label for="regName">Nombre Completo</label>
+                    <input type="text" id="regName" placeholder="Ej. Carlos Mendoza" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Correo Electrónico</label>
+                    <input type="email" id="regEmail" placeholder="carlos@correo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="regRole">Tipo de Perfil</label>
+                    <select id="regRole">
+                        <option value="conductor">Repartidor / Conductor</option>
+                        <option value="representante">Representante Logístico</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="regPass">Contraseña</label>
+                    <input type="password" id="regPass" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-submit">Completar Registro</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script JavaScript para controlar las modales y el inicio de sesión simulado -->
+    <script>
+        // Referencias elementos Modal Login
+        const loginModal = document.getElementById('loginModal');
+        const openLogin = document.getElementById('openLogin');
+        const closeLogin = document.getElementById('closeLogin');
+
+        // Referencias elementos Modal Register
+        const registerModal = document.getElementById('registerModal');
+        const openRegister = document.getElementById('openRegister');
+        const closeRegister = document.getElementById('closeRegister');
+
+        // Abrir / Cerrar Login
+        openLogin.addEventListener('click', () => loginModal.classList.add('active'));
+        closeLogin.addEventListener('click', () => loginModal.classList.remove('active'));
+
+        // Abrir / Cerrar Registro
+        openRegister.addEventListener('click', () => registerModal.classList.add('active'));
+        closeRegister.addEventListener('click', () => registerModal.classList.remove('active'));
+
+        // Cerrar al hacer clic fuera del contenido modal
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) loginModal.classList.remove('active');
+            if (e.target === registerModal) registerModal.classList.remove('active');
+        });
+
+        // Simulación de Inicio de Sesión y redirección a otra página (programa funcionando)
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pass = document.getElementById('loginPass').value;
+            
+            // Verificación de valor fijo de contraseña establecida
+            if (pass === '1234') {
+                alert('¡Inicio de sesión exitoso! Redirigiendo al programa en funcionamiento...');
+                // Redirección simulada a la página interna de la aplicación (crearás 'app.html' posteriormente)
+                window.location.href = 'app.html';
+            } else {
+                alert('Contraseña incorrecta. Utiliza la contraseña fija: 1234');
+            }
+        });
+
+        // Simulación de Registro
+        const registerForm = document.getElementById('registerForm');
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Registro simulado completado con éxito! Ahora puedes Iniciar Sesión.');
+            registerModal.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

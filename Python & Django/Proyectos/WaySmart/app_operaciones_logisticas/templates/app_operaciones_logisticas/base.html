@@ -1,0 +1,21 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}WaySmart Operaciones{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'app_operaciones_logisticas/app.css' %}">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="{% url 'app_operaciones_logisticas:dashboard' %}"><span>WS</span> WaySmart <small>OPERACIONES</small></a>
+        <nav><a href="{% url 'app_operaciones_logisticas:dashboard' %}">Panel</a><a href="{% url 'app_operaciones_logisticas:crear_envio' %}" class="nav-action">+ Nuevo envío</a></nav>
+    </header>
+    <main class="shell">
+        {% if messages %}{% for message in messages %}<div class="notice">{{ message }}</div>{% endfor %}{% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    <script src="{% static 'app_operaciones_logisticas/app.js' %}"></script>
+</body>
+</html>

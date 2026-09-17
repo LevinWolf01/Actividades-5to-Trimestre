@@ -1,0 +1,690 @@
+/* ------------------------------------------ @import ---------------------------------------------- */
+/* ¡ATENCIÓN! Los @import SIEMPRE deben ir al principio del archivo */
+
+/* 1. Sintaxis con función url() */
+@import url("import-url.css");
+
+/* 2. Sintaxis con String (comillas) */
+@import "import-string.css";
+
+/* 3. Modalidad con Media Query (Solo carga si la pantalla es menor a 600px) */
+@import "import-media.css" screen and (max-width: 600px);
+
+/* 4. Modalidad con Feature Queries / Supports (Solo carga si el navegador soporta Grid) */
+@import url("import-supports.css") supports(display: grid);
+
+/* 5. Modalidad inyectando en una Capa Nombrada */
+@import "import-layer-nombrada.css" layer(modulo-externo);
+
+/* 6. Modalidad inyectando en una Capa Anónima */
+@import url("import-layer-anonima.css") layer();
+
+/* 4. Importación en capa: (Asegúrate de tener el archivo creado) */
+@import url("./estilos-extra.css") layer(importada);
+.btn-layer-imported { /* Definido en el archivo externo */ }
+
+/* ==========================================================================
+   Aquí abajo ya iría todo el resto de tu código CSS normal...
+   ========================================================================== */
+.import-box {
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color:            #334155;
+}
+
+/* ==========================================================================
+   ESTILOS BASE (Enfoque Mobile-First: Estilos por defecto para móviles)
+   ========================================================================== */
+:root {
+  --primary-color:      #2563eb;
+  --dark-color:         #0f172a;
+  --light-color:        #f8fafc;
+  --text-color:         #334155;
+  --card-bg:            #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  background-color: var(--light-color);
+  line-height: 1.6;
+}
+
+/* Navbar Móvil */
+.navbar {
+  background-color: var(--dark-color);
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column; /* Menú vertical en móviles por defecto */
+  align-items: center;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-menu a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+  color: white;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.hero-content h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  color: #94a3b8;
+  max-width: 500px;
+  margin-bottom: 25px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Indicador de ancho exacto (Oculto por defecto) */
+.pixel-detector {
+  display: none;
+  margin-top: 20px;
+  background-color: #10b981;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Proyectos Móvil */
+.projects-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--dark-color);
+}
+
+.projects-grid {
+  display: flex;
+  flex-direction: column; /* Una sola columna en móvil */
+  gap: 20px;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.main-footer {
+  background-color: #1e293b;
+  color: #64748b;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+
+
+
+
+/* ==========================================================================
+   IMPLEMENTACIÓN DE MEDIA QUERIES (REQUISITOS DEL EJERCICIO)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. MINIMUM WIDTH (min-width) - Ajuste para Tablets (Anchos desde 768px hacia arriba)
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .navbar {
+    flex-direction: row; /* El menú cambia a fila horizontal */
+    justify-content: space-between;
+    padding: 20px 40px;
+  }
+  
+  .hero-content h1 {
+    font-size: 42px; /* Texto más grande en pantallas amplias */
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cuadrícula de 2 columnas para Tablets */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. MINIMUM WIDTH (min-width) - Ajuste para PC (Anchos desde 1024px hacia arriba)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr); /* Cuadrícula de 3 columnas para computadoras */
+  }
+  
+  .project-card {
+    transition: transform 0.3s;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px); /* Efecto interactivo exclusivo de escritorio */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. MAXIMUM WIDTH (max-width) - Ajuste para Teléfonos Pequeños (Hasta 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /* Compactamos la tipografía en pantallas muy reducidas */
+  }
+  
+  .hero-content h1 {
+    font-size: 24px;
+  }
+  
+  .btn-primary {
+    width: 100%; /* Botón de ancho completo para facilitar clics táctiles */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. EXACT WIDTH (width) - Comportamiento en un ancho exacto (Ej: Pantallas de 1200px)
+   -------------------------------------------------------------------------- */
+@media (width: 1200px) {
+  .pixel-detector {
+    display: block; /* Revela el aviso cuando la ventana mide exactamente 1200px de ancho */
+    animation: pulse 1s infinite alternate;
+  }
+  
+  @keyframes pulse {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. MAXIMUM HEIGHT (max-height) - Dispositivos en Horizontal / Modo Landscape (Hasta 500px de alto)
+   -------------------------------------------------------------------------- */
+@media (max-height: 500px) {
+  .navbar {
+    position: relative; /* Quitamos el 'sticky' para evitar que tape toda la pantalla corta */
+  }
+  
+  .hero-section {
+    padding: 30px 20px; /* Reducimos los márgenes internos drásticamente */
+    min-height: auto; /* Evitamos que el contenedor ocupe espacio excesivo verticalmente */
+  }
+  
+  .hero-content p {
+    margin-bottom: 10px; /* Acortamos distancias entre componentes */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. MINIMUM HEIGHT (min-height) - Pantallas muy altas (Desde 900px de alto en adelante)
+   -------------------------------------------------------------------------- */
+@media (min-height: 900px) {
+  .hero-section {
+    min-height: 75vh; /* Forzamos a la sección de bienvenida a expandirse más */
+    display: flex;
+    align-items: center;
+  }
+  
+  .main-footer {
+    position: fixed; /* Mantenemos el footer fijo al fondo si la pantalla es extremadamente alta */
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. EXACT HEIGHT (height) - Ajuste decorativo a una altura exacta (Ej: 768px de alto)
+   -------------------------------------------------------------------------- */
+@media (height: 768px) {
+  .hero-section {
+    background: linear-gradient(135deg, #2563eb 0%, #0f172a 100%); /* Cambio sutil de color de fondo */
+  }
+}
+
+
+
+
+
+
+/* ==========================================================================
+   DETECCIÓN DE ORIENTACIÓN (PORTRAIT Y LANDSCAPE)
+   ========================================================================== */
+
+/* Estilos base para los indicadores de orientación */
+.orientation-detector {
+  display: none;
+  margin-top: 15px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   A. MODO RETRATO / VERTICAL (orientation: portrait)
+   Significa que la altura de la pantalla es MAYOR o igual que el ancho.
+   -------------------------------------------------------------------------- */
+@media (orientation: portrait) {
+  /* Mostramos el mensaje correspondiente */
+  .portrait-msg {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: white;
+  }
+
+  /* Optimización de espacio vertical: Aseguramos flujo en columna */
+  .hero-section {
+    padding: 80px 20px;
+    justify-content: center;
+  }
+
+  /* En modo vertical, los elementos de los proyectos se leen mejor con un margen inferior amplio */
+  .project-card {
+    margin-bottom: 10px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B. MODO PAISAJE / HORIZONTAL (orientation: landscape)
+   Significa que el ancho de la pantalla es MAYOR que la altura.
+   -------------------------------------------------------------------------- */
+@media (orientation: landscape) {
+  /* Mostramos el mensaje correspondiente */
+  .landscape-msg {
+    display: inline-block;
+    background-color: #f59e0b;
+    color: white;
+  }
+
+  /* Si estamos en una pantalla horizontal pero con poca altura (como un móvil girado),
+     reestructuramos la sección de presentación para que el contenido rinda mejor */
+  .hero-section {
+    padding: 40px;
+    flex-direction: row; /* Cambia a distribución horizontal si hay espacio */
+    justify-content: space-around;
+    text-align: left;
+  }
+
+  .hero-content {
+    max-width: 60%;
+  }
+
+  /* Ajuste para el menú de navegación en modo horizontal */
+  .nav-menu a {
+    letter-spacing: 1px; /* Espaciado de letras elegante para pantallas anchas */
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+  }
+
+  .nav-menu a:hover {
+    border-bottom-color: white; /* Subrayado interactivo en hover */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   C. COMBINACIÓN DE ANCHO + ORIENTACIÓN (Uso Avanzado)
+   Puedes mezclar selectores para máxima precisión.
+   Ejemplo: Solo afecta a TABLETS en modo horizontal (Ancho min 768px + Landscape)
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) and (orientation: landscape) {
+  .projects-grid {
+    gap: 35px; /* Más separación entre proyectos solo en tablets/PCs horizontales */
+  }
+}
+
+/* ==========================================================================
+   9. MODO PANTALLA COMPLETA (display-mode: fullscreen)
+   ========================================================================== */
+
+/* Estado inicial del indicador (Oculto) */
+.fullscreen-indicator {
+  display: none;
+  background-color: #ef4444; /* Rojo vibrante */
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  border: 2px dashed white;
+  animation: pulso-fullscreen 2s infinite;
+}
+
+@keyframes pulso-fullscreen {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+/* --------------------------------------------------------------------------
+   CUANDO LA WEB ENTRA EN PANTALLA COMPLETA
+   -------------------------------------------------------------------------- */
+@media (display-mode: fullscreen) {
+  
+  /* 1. Revelamos el cartel de advertencia/indicador */
+  .fullscreen-indicator {
+    display: block;
+  }
+
+  /* 2. Ocultamos el botón que nos metió aquí (ya no tiene sentido) */
+  .btn-fullscreen {
+    display: none !important;
+  }
+
+  /* 3. Ocultamos la barra de navegación para que sea 100% inmersivo */
+  .navbar {
+    display: none;
+  }
+
+  /* 4. Cambiamos el diseño a un "Modo Oscuro Cinematográfico" */
+  .hero-section {
+    background: #000000; /* Fondo totalmente negro */
+    min-height: 100vh;   /* Aseguramos que ocupe todo el monitor */
+    justify-content: center;
+  }
+
+  .hero-content h1 {
+    font-size: 50px; /* Hacemos el título gigante */
+    color: #10b981;  /* Texto verde neón */
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); /* Brillo */
+  }
+
+  .hero-content p {
+    font-size: 20px;
+    color: #f8fafc;
+  }
+
+  /* Ocultamos las demás secciones para que solo se vea la presentación */
+  .projects-section, .main-footer {
+    display: none;
+  }
+}
+
+
+
+
+/* ---------------------------------- @fon-feature-value ---------------------------------------------- */
+
+/* ==========================================================================
+   10. TIPOGRAFÍA OPENTYPE (@font-feature-values)
+   ========================================================================== */
+
+/* PASO 1: Definimos los valores de las características para una familia de fuentes específica.
+  Asignamos "nombres personalizados" a los índices numéricos que el creador de la fuente configuró.
+*/
+@font-feature-values "FuenteOpenTypePro" {
+  @stylistic {
+    estilo-alternativo: 1; /* Activa la alternativa estilística 1 */
+  }
+  @historical-forms {
+    forma-antigua: 1; /* Activa formas históricas */
+  }
+  @styleset {
+    pack-elegante: 3; /* Activa el set de estilos número 3 */
+  }
+  @character-variant {
+    cero-con-barra: 1; /* Activa la variante 1 para caracteres específicos */
+  }
+  @swash {
+    trazo-largo: 1; /* Activa el adorno tipo swash 1 */
+  }
+  @ornaments {
+    flor-decorativa: 2; /* Llama al ornamento número 2 de la fuente */
+  }
+  @annotation {
+    circulo-notacion: 1; /* Activa la notación circular */
+  }
+}
+
+/* PASO 2: Aplicamos la fuente base a nuestros textos de prueba.
+  En la vida real, deberías importar "FuenteOpenTypePro" con un @font-face.
+*/
+.typography-section span {
+  font-family: "FuenteOpenTypePro", serif; 
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* PASO 3: Usamos font-variant-alternates llamando a los "nombres personalizados" 
+  que creamos arriba dentro del @font-feature-values.
+*/
+.feature-stylistic {
+  font-variant-alternates: stylistic(estilo-alternativo);
+}
+
+.feature-historical {
+  font-variant-alternates: historical-forms(forma-antigua);
+}
+
+.feature-styleset {
+  font-variant-alternates: styleset(pack-elegante);
+}
+
+.feature-char-variant {
+  font-variant-alternates: character-variant(cero-con-barra);
+}
+
+.feature-swash {
+  font-variant-alternates: swash(trazo-largo);
+}
+
+.feature-ornament {
+  font-variant-alternates: ornaments(flor-decorativa);
+}
+
+.feature-annotation {
+  font-variant-alternates: annotation(circulo-notacion);
+}
+
+
+
+
+/* -------------------- Import desde JavaScript(CSS Module Scripts) ---------------------------------------------- */
+
+/* ==========================================================================
+   11. VARIABLES CSS o PROPIEDADES CUSTOM
+   ========================================================================== */
+
+/* 1. EL PADRE (La habitación) */
+.parent {
+  /* Declaramos la variable local para este elemento y sus hijos */
+  --background-color: black; 
+  
+  /* Estilos normales del contenedor */
+  background: indigo;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 8px; 
+}
+
+/* 2. LOS HIJOS (Los elementos dentro de la habitación) */
+.child {
+  width: 100px;
+  height: 100px;
+  
+  /* Llaman a la variable. Como están en .parent, reciben el valor "black" */
+  background: var(--background-color); 
+  
+  /* Estilos decorativos para el texto interior */
+  color: white; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+/* 3. EL HIJO REBELDE (El que sobrescribe la regla) */
+.first-child {
+  /* Redefine el valor de la variable ÚNICAMENTE para este elemento */
+  --background-color: gold; 
+  
+  /* Le cambiamos el color al texto para que haga buen contraste con el dorado */
+  color: black; 
+}
+
+
+
+
+
+/*-------------------------------- CSS Layers ----------------------------------------------*/
+
+/* ==========================================================================
+   12. FORMATOS DE CAPAS CSS (Ejemplos individuales)
+   ========================================================================== */
+
+/* 1. Capa Anónima: Ideal para resets rápidos */
+@layer {
+  .btn-layer-anon { background: #64748b; color: white; border: none; padding: 10px; }
+}
+
+/* 2. Capa Nombrada: "base" */
+@layer base {
+  .btn-layer-named { background: #3b82f6; color: white; border: none; padding: 10px; }
+}
+
+/* 3. Subcapa: Jerarquía con punto (framework.components) */
+@layer framework.components {
+  .btn-layer-nested { background: #8b5cf6; color: white; border: none; padding: 10px; }
+}
+
+/* Este import está al inicio del archivo!*/
+/* @import url("./estilos-extra.css") layer(importada); */
+/* .btn-layer-imported { Definido en el archivo externo } */
+
+/* 5. Capa Utils: Ejemplo directo de la imagen */
+@layer utils {
+  .btn-layer-utils {
+    background: #34a;
+    border: 2px outset #6381db;
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+  }
+}
+
+/* Definición de orden de prioridad (las últimas tienen más peso) */
+@layer base, framework.components, utils, importada;
+
+
+/* --------------------------- display: FLEX ----------------------------------------------  */
+/* Estilos comunes para los elementos */
+.flex-box { 
+  width:30%;
+  height: 10%;
+  display: flex; 
+  gap: 10px; 
+  padding: 15px; 
+  background: #f1f5f9; 
+  margin-bottom: 20px; 
+  border-radius: 8px;
+}
+.item { 
+  width: 50px; height: 50px; 
+  background: #64748b; color: white;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* 1. Ejemplo Row vs Row-Reverse */
+
+.row-demo { flex-direction: row; }
+.row-reverse-demo { flex-direction: row-reverse; }
+
+
+/* 2. Ejemplo Column vs Column-Reverse */
+.col-demo { flex-direction: column; height: 200px; }
+.col-reverse-demo { flex-direction: column-reverse; }
+
+
+/* 3. Ejemplo de Flex-wrap */
+.wrap-demo { 
+    flex-direction:row-reverse ; 
+    flex-wrap: wrap;
+}
+
+
+/* ------------------------------------------ justify-content y align-items ---------------------------------------------- */
+/* Contenedor base de cada celda */
+.flex-cell {
+  display: flex;
+  height: 150px;
+  border: 2px solid #cbd5e1;
+  padding: 10px;
+  position: relative;
+  background: #f8fafc;
+}
+
+.car-box { width: 40px; height: 30px; background: #10b981; }
+
+.label { font-size: 12px; position: absolute; top: 5px; left: 5px; color: #64748b; }
+
+/* Aplicación de las combinaciones de la imagen */
+.cell-1 { justify-content: flex-start; align-items: flex-start; }
+.cell-2 { justify-content: center; align-items: flex-start; }
+.cell-3 { justify-content: flex-end; align-items: flex-start; }
+
+.cell-4 { justify-content: flex-start; align-items: center; }
+.cell-5 { justify-content: center; align-items: center; }
+.cell-6 { justify-content: flex-end; align-items: center; }
+
+.cell-7 { justify-content: flex-start; align-items: flex-end; }
+.cell-8 { justify-content: center; align-items: flex-end; }
+.cell-9 { justify-content: flex-end; align-items: flex-end; }

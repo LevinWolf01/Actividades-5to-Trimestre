@@ -1,0 +1,324 @@
+/* RESET GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #00ccff 0%, #4fe0ff 45%, #cfeeff 100%);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
+    overflow-x: hidden;
+}
+
+/* HEADER BAR */
+.upperside-box {
+    width: 100%;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+}
+
+.License {
+    color: #ffffff;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease-out;
+}
+
+.License:hover {
+    transform: scale(1.03);
+}
+
+.button-options {
+    width: 35px;
+    height: 30px;
+    background-color: transparent;
+    border-top: 4px solid #ffffff;
+    border-bottom: 4px solid #ffffff;
+    position: relative;
+    cursor: pointer;
+}
+
+.button-options::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #ffffff;
+    top: 9px;
+    left: 0;
+}
+
+/* SECCIÓN CIELO */
+.escena-cielo {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.escena-cielo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top center, rgba(255, 255, 255, 0.16), transparent 55%);
+    pointer-events: none;
+}
+
+.texto-cielo {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 30;
+}
+
+.texto-cielo h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.texto-cielo h3 {
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+/*--- SISTEMA DE NUBES MULTIPLES ---*/
+.nube {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    border-radius: 100px;
+    z-index: 1;
+}
+
+.nube::before,
+.nube::after {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    border-radius: 50%;
+}
+
+.nube-1 { width: 180px; height: 60px; top: 90px; left: 10%; transform: scale(0.8); }
+.nube-1::before { width: 80px; height: 80px; top: -40px; left: 30px; }
+.nube-1::after { width: 65px; height: 65px; top: -25px; right: 25px; }
+
+.nube-2 { width: 140px; height: 45px; top: 120px; left: 28%; transform: scale(0.5); }
+.nube-2::before { width: 60px; height: 60px; top: -30px; left: 20px; }
+.nube-2::after { width: 50px; height: 50px; top: -20px; right: 20px; }
+
+.nube-3 { width: 220px; height: 70px; top: 100px; right: 15%; transform: scale(0.9); }
+.nube-3::before { width: 100px; height: 100px; top: -50px; left: 40px; }
+.nube-3::after { width: 80px; height: 80px; top: -35px; right: 35px; }
+
+.nube-4 { width: 120px; height: 40px; top: 180px; right: 5%; transform: scale(0.4); }
+.nube-4::before { width: 50px; height: 50px; top: -25px; left: 20px; }
+.nube-4::after { width: 40px; height: 40px; top: -15px; right: 15px; }
+
+.nube-5 { width: 150px; height: 50px; top: 220px; left: 5%; transform: scale(0.6); }
+.nube-5::before { width: 65px; height: 65px; top: -30px; left: 25px; }
+.nube-5::after { width: 55px; height: 55px; top: -20px; right: 20px; }
+
+/* CONTENEDOR DEL AUTO */
+.car-stage {
+    position: absolute;
+    top: 185px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(860px, 92%);
+    z-index: 12;
+    pointer-events: none;
+}
+
+
+/* PENDIENTE AJUSTAR EL FONDO BLANCO !!!!!!!! */
+.white-background {
+    width: var(--white-width, 78%);
+    height: var(--white-height, 260px);
+    margin: 0 auto;
+    border: 2px dashed rgba(255, 255, 255, 0.75);
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.08));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), 0 18px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+    position: relative;
+}
+
+.white-background::before {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 65px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+    transform: translateY(40px);
+}
+
+.car-frame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*--- EL CAMINO EN PERSPECTIVA ---*/
+.camino-contenedor {
+    position: relative;
+    width: 100%;
+    margin-top: 320px;
+    background: linear-gradient(180deg, rgba(95, 95, 95, 0.95) 0%, rgba(60, 60, 60, 0.95) 100%);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+    padding: 60px 15% 40px 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    box-shadow: inset 0 14px 30px rgba(255, 255, 255, 0.08);
+}
+
+.camino-contenedor::before {
+    content: '';
+    position: absolute;
+    inset: 16px 18% 24px 18%;
+    border-top: 2px dashed rgba(255, 255, 255, 0.28);
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.28);
+    pointer-events: none;
+}
+
+/* ABOUT US CONTENIDO */
+.about-us {
+    text-align: center;
+    max-width: 750px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 20;
+}
+
+.about-us h2 {
+    font-size: 2.2rem;
+    color: #222222;
+    margin-bottom: 5px;
+}
+
+.about-us .subtitle {
+    font-size: 1rem;
+    color: #555555;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.about-us .description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #333333;
+}
+
+/*--- GRID DE MIEMBROS ---*/
+.team-grid {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+    z-index: 20;
+}
+
+.member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 160px;
+    padding: 18px 14px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Monitos del Avatar usando CSS */
+.avatar {
+    width: 70px;
+    height: 70px;
+    background-color: #a0aab5;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.avatar-head {
+    width: 28px;
+    height: 28px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.avatar-body {
+    width: 50px;
+    height: 35px;
+    background-color: #ffffff;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.member-card h4 {
+    font-size: 1.1rem;
+    color: #111111;
+    margin-bottom: 2px;
+}
+
+.member-card p {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+@media (max-width: 768px) {
+    .upperside-box {
+        padding: 0 20px;
+    }
+
+    .texto-cielo h1 {
+        font-size: 2rem;
+    }
+
+    .car-stage {
+        width: min(94%, 860px);
+    }
+
+    .camino-contenedor {
+        padding: 50px 8% 30px 8%;
+    }
+
+    .team-grid {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,17 @@
+/* Este archivo está siendo inyectado directamente en la capa 'importada' */
+
+.btn-layer-imported {
+  background: #ef4444; /* Un rojo intenso para diferenciarlo */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
+}
+
+.btn-layer-imported:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}

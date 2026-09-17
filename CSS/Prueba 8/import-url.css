@@ -1,0 +1,5 @@
+/* Se carga mediante url() */
+.box-basico-url {
+  border-left: 5px solid #3b82f6; /* Borde azul */
+  background-color: #eff6ff;
+}

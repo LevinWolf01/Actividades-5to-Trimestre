@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convocatorias</title>
+</head>
+<body>
+    <div class = "contenedor">
+        <h1> Convocatorias de Cpacitaciones </h1>
+
+        {% if mis_cusrsos_disponibles %}
+            {% for curso_libre in mis_cusrsos_disponibles %}
+
+
+        <div class="tarjeta">
+            <h2> {{curso_libre.titulo_capacitacion}} </h2>
+            <h2> {{curso_libre.instructor}} </h2>
+
+            <div class="info">
+                <p><strong> Tipo: </strong> {{curso_libre.tipo}}</p>
+                <p><strong> Duracion: </strong> {{curso_libre.duracion}}</p>
+                <p><strong> Competencia: </strong> {{curso_libre.competencia}}</p>
+                <p><strong> Ambiente: </strong> {{curso_libre.ambiente}}</p>
+                <p><strong> Aprendiz Vocero: </strong> {{curso_libre.aprendiz}}</p>
+            </div>
+
+            {% comment %} <div class="acciones">
+                <a href="{% url 'detalle_convocatoria' curso_libre.id %}" class="btn">
+                    Ver Detalle
+                </a>
+                
+                <form action="{% url 'eliminar_convocatoria' curso_libre.id %}" method="post" {% csrf_token %}>
+                    <button type="submit" class="btn btn-eliminar">
+                        Eliminar
+                    </button>
+                </form>
+            </div> {% endcomment %}
+        </div>
+                {% endfor %}
+            {% else %}
+                <div class="mensaje">
+                    <p> No existen convocatorias registradas </p>
+                </div>
+            {% endif %}
+    </div>
+</body>
+</html>

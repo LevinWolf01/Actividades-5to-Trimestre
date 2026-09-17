@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portafolio Responsivo</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">DevPortafolio</div>
+    <nav class="nav-menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section id="inicio" class="hero-section">
+    <div class="hero-content">
+      <h1>Hola, soy un Desarrollador Web</h1>
+      <p>Diseño interfaces limpias, modernas y completamente adaptables a cualquier pantalla.</p>
+      <button class="btn-primary">Ver mi trabajo</button>
+    </div>
+
+    <button onclick="document.documentElement.requestFullscreen()" class="btn-fullscreen" style="margin-top: 15px; background-color: #8b5cf6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+      🔲 Entrar en Pantalla Completa
+    </button>
+
+    <div class="fullscreen-indicator">
+      🚀 ¡Estás en Modo Inmersivo (Pantalla Completa)! <br>
+      <small>Presiona ESC o F11 para salir.</small>
+    </div>
+
+    <div class="pixel-detector">¡Pantalla en el punto de control exacto!</div>
+    <div class="orientation-detector portrait-msg">📱 Modo Retrato (Vertical)</div>
+    <div class="orientation-detector landscape-msg">📺 Modo Paisaje (Horizontal)</div>
+  </section>
+
+  <section id="proyectos" class="projects-section">
+    <h2>Mis Proyectos</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Proyecto Alfa</h3>
+        <p>Aplicación web interactiva construida con metodologías modernas.</p>
+      </div>
+      <div class="project-card">
+        <h3>Proyecto Beta</h3>
+        <p>Optimización de bases de datos y maquetación adaptativa premium.</p>
+      </div>
+      <div class="project-card">
+        <h3>Proyecto Gamma</h3>
+        <p>Plataforma modular con flujos de trabajo automatizados.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- -------------------------------------@font-feature-value------------------------------------------ -->
+
+  <section id="tipografia" class="typography-section" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+    <h2 style="text-align: center; color: var(--dark-color); margin-bottom: 30px;">
+      Explorando OpenType: @font-feature-values
+    </h2>
+    <p style="text-align: center; margin-bottom: 40px; color: var(--text-color);">
+      Nota: Para que estos efectos se vean, la fuente cargada debe soportar estas características OpenType específicas.
+    </p>
+
+    <div class="font-features-grid" style="display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+      
+      <div class="project-card">
+        <h3>@stylistic</h3>
+        <p>Texto normal: <span class="texto-normal">Amplitud</span></p>
+        <p>Estilo alternativo: <span class="feature-stylistic">Amplitud</span></p>
+      </div>
+
+      <div class="project-card">
+        <h3>@historical-forms</h3>
+        <p>Texto normal: <span class="texto-normal">sibilante</span></p>
+        <p>Glifo histórico (ej. 's' larga): <span class="feature-historical">sibilante</span></p>
+      </div>
+
+      <div class="project-card">
+        <h3>@styleset</h3>
+        <p>Texto normal: <span class="texto-normal">Diseño Web</span></p>
+        <p>Pack de estilos: <span class="feature-styleset">Diseño Web</span></p>
+      </div>
+
+      <div class="project-card">
+        <h3>@character-variant</h3>
+        <p>Texto normal: <span class="texto-normal">0</span></p>
+        <p>Variación de carácter (ej. cero con barra): <span class="feature-char-variant">0</span></p>
+      </div>
+
+      <div class="project-card">
+        <h3>@swash</h3>
+        <p>Texto normal: <span class="texto-normal">Elegancia</span></p>
+        <p>Adorno tipográfico: <span class="feature-swash">Elegancia</span></p>
+      </div>
+
+      <div class="project-card">
+        <h3>@ornaments</h3>
+        <p>Texto normal: <span class="texto-normal">*</span></p>
+        <p>Glifo ornamental (flor/adorno): <span class="feature-ornament">*</span></p>
+      </div>
+
+      <div class="project-card">
+        <h3>@annotation</h3>
+        <p>Texto normal: <span class="texto-normal">1</span></p>
+        <p>Notación (ej. número en un círculo): <span class="feature-annotation">1</span></p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ------------------------------------------ @import ---------------------------------------------- -->
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 800px;">
+    <h2>📥 Pruebas de @import en CSS</h2>
+    <p>Cada una de estas cajas recibe sus estilos desde un archivo CSS externo diferente, usando las distintas modalidades de importación.</p>
+
+    <div class="import-grid" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+      
+      <div class="import-box box-basico-url">
+        <strong>1. @import url()</strong> <br> Cargado usando la función url().
+      </div>
+      
+      <div class="import-box box-basico-string">
+        <strong>2. @import ""</strong> <br> Cargado usando simplemente un String.
+      </div>
+
+      <div class="import-box box-media">
+        <strong>3. Media Query</strong> <br> Reduce el ancho de tu navegador. Esta caja cambiará de color solo en pantallas pequeñas.
+      </div>
+
+      <div class="import-box box-supports">
+        <strong>4. Supports(condición)</strong> <br> Esta caja tiene un diseño Grid inyectado SOLO si tu navegador soporta 'display: grid'.
+        <div class="mini-grid"><span>A</span><span>B</span></div>
+      </div>
+
+      <div class="import-box box-layer-named">
+        <strong>5. Layer(nombre)</strong> <br> Estilos encapsulados en una capa llamada "modulo-externo".
+      </div>
+
+      <div class="import-box box-layer-anon">
+        <strong>6. Layer() anónima</strong> <br> Estilos encapsulados en una capa sin nombre (ideal para resets).
+      </div>
+
+    </div>
+  </div>
+
+
+
+    <!-- ------------------------------------------ Import desde JavaScript(CSS Module Scripts) ---------------------------------------------- -->
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 800px;">
+    <h2>🚀 Importar CSS vía JavaScript (CSS Module Scripts)</h2>
+    <p>Esta caja no tiene estilos en nuestro CSS principal. Su diseño se inyecta dinámicamente convirtiendo el archivo en un objeto <code>CSS StyleSheet</code> mediante JS.</p>
+
+    <div class="box-js-import">
+      ¡Si el script de JavaScript funciona correctamente, Los efectos de este contenedor serán visibles!
+    </div>
+  </div>
+
+  <script type="module">
+    // 1. Importamos los estilos en un objeto CSS-StyleSheet usando los atributos de importación
+    import jsStyles from "./estilos-javascript.css" with { type: "css" };
+
+    // 2. Añade los estilos al documento sin borrar los que ya existen
+    document.adoptedStyleSheets.push(jsStyles);
+  </script>
+
+
+
+
+<!-- ----------------- Import desde JavaScript(CSS Module Scripts) ---------------------------------------------- -->
+
+  <div class="container" style="margin-top: 30px; margin-bottom: 50px; max-width: 800px;">
+    <h2>🎨 Ámbito de las Variables CSS (Scope)</h2>
+    <p>El primer cuadro sobrescribe la variable local que el contenedor padre le heredó, cambiando su color independientemente de sus hermanos.</p>
+
+    <div class="parent">
+      
+      <div class="child first-child">First child</div>
+      
+      <div class="child second-child">Second child</div>
+      
+      <div class="child third-child">Third child</div>
+      
+    </div>
+  </div>
+
+
+
+<!-- ------------------------------ CSS Layers ---------------------------------------------- -->
+
+
+    <section id="capas-css" class="container" style="padding: 40px 20px;">
+        <h2>🏗️ Laboratorio de Capas CSS (@layer)</h2>
+        <div class="layer-demo-grid" style="display: flex; gap: 15px; flex-wrap: wrap;">
+    
+            <button class="btn-layer-anon">1. Capa Anónima</button>
+            <button class="btn-layer-named">2. Capa Nombrada</button>
+            <button class="btn-layer-nested">3. Subcapa (framework.comp)</button>
+            <button class="btn-layer-imported">4. Importada en Capa</button>
+            <button class="btn-layer-utils">5. Estilo Capa Utils</button>
+    
+        </div>
+    </section>
+
+<!-- ----------------------------- display: FLEX ---------------------------------------------- -->
+
+
+    <section id="flex-demo" class="container" style="padding: 40px 20px;">
+        <h2>📐 Laboratorio de flex-direction</h2>
+
+        <div class="flex-box row-demo">
+            <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+        </div>
+        <div class="flex-box row-reverse-demo">
+            <div class="item">1</div><div class="item">2</div><div class="item">3</div>
+        </div>
+
+        <div class="flex-box col-demo">
+            <div class="item">A</div><div class="item">B</div><div class="item">C</div>
+        </div>
+        <div class="flex-box col-reverse-demo">
+            <div class="item">A</div><div class="item">B</div><div class="item">C</div>
+        </div>
+
+        <div class="flex-box wrap-demo">
+            <div class="item" style="background:#fd0000">1</div>
+            <div class="item" style="background:#0062ff">2</div>
+            <div class="item" style="background:#00ffaa">3</div>
+            <div class="item" style="background:#ffdd00">4</div>
+            <div class="item" style="background:#66ff00">5</div>
+            <div class="item" style="background:#009726">6</div>
+            <div class="item" style="background:#81008f">7</div>
+            <div class="item" style="background:#0099fe">8</div>
+            <div class="item" style="background:#d10061">9</div>
+            <div class="item" style="background:#5776ff">10</div>
+        </div>
+    </section>
+
+    <!-- ------------------------------------------ justify-content y align-items ---------------------------------------------- -->
+
+
+    <section id="flex-matrix" class="container" style="padding: 40px 20px;">
+    <h2>🚗 Matriz de Alineación (Flexbox)</h2>
+    
+    <div class="matrix-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div class="flex-cell cell-1">
+        <p class="label">justify-content: flex-start;<br>align-items: flex-start;</p>
+        <div class="car-box">🚗</div>
+        </div>
+        
+        <div class="flex-cell cell-2">
+        <p class="label">justify-content: center;<br>align-items: flex-start;</p>
+        <div class="car-box">🚗</div>
+        </div>
+
+        <div class="flex-cell cell-3">
+        <p class="label">justify-content: flex-end;<br>align-items: flex-start;</p>
+        <div class="car-box">🚗</div>
+        </div>
+
+        <div class="flex-cell cell-4">
+        <p class="label">justify-content: flex-start;<br>align-items: center;</p>
+        <div class="car-box">🚗</div>
+        </div>
+
+        <div class="flex-cell cell-5">
+        <p class="label">justify-content: center;<br>align-items: center;</p>
+        <div class="car-box">🚗</div>
+        </div>
+
+        <div class="flex-cell cell-6">
+        <p class="label">justify-content: flex-end;<br>align-items: center;</p>
+        <div class="car-box">🚗</div>
+        </div>
+
+        <div class="flex-cell cell-7">
+        <p class="label">justify-content: flex-start;<br>align-items: flex-end;</p>
+        <div class="car-box">🚗</div>
+        </div>
+
+        <div class="flex-cell cell-8">
+        <p class="label">justify-content: center;<br>align-items: flex-end;</p>
+        <div class="car-box">🚗</div>
+        </div>
+
+        <div class="flex-cell cell-9">
+        <p class="label">justify-content: flex-end;<br>align-items: flex-end;</p>
+        <div class="car-box">🚗</div>
+        </div>
+    </div>
+    </section>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 DevPortafolio. Creado con CSS Grid, Flexbox y Media Queries.</p>
+  </footer>
+
+</body>
+</html>

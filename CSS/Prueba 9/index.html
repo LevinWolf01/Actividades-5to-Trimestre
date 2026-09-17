@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuela de Acordeón Mario Torres</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Música de fondo -->
+    <!-- Nota: Los navegadores modernos requieren 'muted' o interacción del usuario para el autoplay -->
+    <audio 
+        id="musica-fondo" 
+        src="./src/La Noche Mas Linda.mp3" 
+        autoplay loop controls 
+        class="audio-player">
+    </audio>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="header-top">
+            <article class="brand">
+                <img src="./src/LOGO.png" alt="Logo Escuela" class="logo">
+                <h1>
+                    ESCUELA<br>DE ACORDEÓN<br>MARIO TORRES
+                </h1>
+            </article>
+            
+            <aside class="social-header">
+                <p>Síguenos:</p>
+                <nav class="social-icons">
+                    <img src="./src/Facebook-icon.png" alt="Facebook">
+                    <img src="./src/Google+_icon.png" alt="Google Plus">
+                    <img src="./src/YouTube-icon.png" alt="YouTube">
+                    <img src="./src/Gmail-icon.png" alt="Email">
+                </nav>
+            </aside>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">CLASES</a></li>
+                <li><a href="#">ESCUELA</a></li>
+                <li><a href="#">VENTA DE ACORDEONES</a></li>
+                <li><a href="#">CONTACTO</a></li>
+            </ul>
+        </nav>
+
+        <figure id="slider">
+            <img src="./src/Banner.jpg" alt="Banner">
+        </figure>
+    </header>
+
+    <!-- SECCIÓN DE VIDEOS (Añadida según tu solicitud) -->
+    <section class="multimedia-section">
+        <h2>Nuestros Videos</h2>
+        <div class="videos-container">
+            <!-- Video 1: YouTube -->
+            <article class="video-box">
+                <iframe width="100%" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/U9ecgWif5go?si=CmuI0PyasKqmLFzK" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+                
+                <p>Video desde YouTube</p>
+            </article>
+
+            <!-- Video 2: Local -->
+            <article class="video-box">
+                <video width="100%" height="315" controls>
+                    <source src="./src/ARG 0 - 1 ESP.mp4" type="video/mp4">
+                    Tu navegador no soporta la etiqueta de video.
+                </video>
+                <p>Video Local</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 1: CLASES -->
+    <section class="clases-section">
+        <article class="clases-container">
+            <figure class="clases-img-box">
+                <img src="./src/Mario Torres.jpg" alt="Persona tocando acordeón">
+            </figure>
+            <div class="clases-text-box">
+                <h2>CLASES DE ACORDEÓN</h2>
+                <p><strong>Escuela de acordeón Mario Torres</strong></p>
+                <p>Fundada en 1991 por Manuel Torres, delegado de la Asociación Española de Acordeón en Madrid... (Texto de ejemplo sobre la escuela y la divulgación del acordeón).</p>
+            </div>
+        </article>
+    </section>
+
+    <!-- SECCIÓN 2: CONTACTO -->
+    <section class="contacto-section">
+        <aside class="contacto-top">
+            <div class="contacto-title-bar">
+                <h2>CONTACTO</h2>
+                <nav class="social-icons">
+                    <img src="./src/Facebook-icon.png" alt="Facebook">
+                    <img src="./src/Google+_icon.png" alt="Google Plus">
+                    <img src="./src/YouTube-icon.png" alt="YouTube">
+                    <img src="./src/Gmail-icon.png" alt="Email">
+                </nav>
+            </div>
+            <article class="contacto-info">
+                <p><strong>La escuela de acordeón Mario Torres se encuentra ubicada en el bohemio Barrio de las Letras de Madrid.</strong></p>
+                <p>C/ Veneras de la Vega, 11 - 1º | 28014 - Madrid (Google Maps)</p>
+                <p>Para información de clases de acordeón: Tl. 609 27 55 22</p>
+            </article>
+        </aside>
+
+        <article class="contacto-bottom">
+            <p>Adaptaciones pedagógicas si fuera necesario. Se dedica aproximadamente un 15% del tiempo de la clase al aprendizaje de lenguaje musical. Cuando el alumno posee el nivel instrumental suficiente, se adapta el aprendizaje a sus propios gustos: música popular, clásica, celta, etc. Consideramos prioritario el gusto personal de cada alumno.</p>
+        </article>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <article class="footer-links">
+            <p>Diseño de páginas<br>www.urbecreativa.com</p>
+        </article>
+        <aside class="footer-social">
+            <nav>
+                <img src="./src/Facebook-icon.png" alt="Facebook">
+                <img src="./src/Google+_icon.png" alt="Google Plus">
+                <img src="./src/YouTube-icon.png" alt="YouTube">
+                <img src="./src/Gmail-icon.png" alt="Email">
+            </nav>
+        </aside>
+    </footer>
+
+</body>
+</html>

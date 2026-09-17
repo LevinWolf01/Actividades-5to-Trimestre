@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temblor - Registro</title>
+    <style>
+        body {
+            background-color: #030303;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #111;
+            padding: 40px;
+            border: 2px solid #39ff14;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #39ff14, inset 0 0 10px #39ff14;
+            animation: float 4s ease-in-out infinite;
+            max-width: 600px;
+            width: 100%;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        h1 {
+            color: #39ff14;
+            text-align: center;
+            text-shadow: 0 0 15px #39ff14;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        label {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            text-shadow: 0 0 5px #39ff14;
+        }
+        input, textarea, select {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid #39ff14;
+            color: #39ff14;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.1);
+            transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            box-shadow: 0 0 15px #39ff14;
+            background: rgba(0, 255, 0, 0.1);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .button-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .search-box {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .search-box .search-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .search-box label {
+            min-width: 150px;
+        }
+        .search-box input,
+        .search-box select {
+            flex: 1;
+        }
+        .search-box .search-row input[type="date"],
+        .search-box .search-row input[type="time"] {
+            min-width: 180px;
+        }
+        button {
+            background-color: transparent;
+            color: #39ff14;
+            border: 2px solid #39ff14;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #39ff14;
+            color: #000;
+            box-shadow: 0 0 30px #39ff14;
+            transform: scale(1.02);
+        }
+        .resultado {
+            margin-top: 25px;
+            border: 1px solid #39ff14;
+            border-radius: 10px;
+            padding: 20px;
+            background: rgba(57, 255, 20, 0.05);
+            box-shadow: inset 0 0 15px rgba(57, 255, 20, 0.08);
+        }
+        .resultado h3 {
+            margin-top: 0;
+            color: #39ff14;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .resultado ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .resultado li {
+            margin-bottom: 8px;
+            color: #d3ffd1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Temblor</h1>
+
+        <form action="{% url 'ingreso_temblor' %}" method="POST">
+            {% csrf_token %}
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Magnitud:</label>
+                    <input type="number" step="0.1" name="magnitud" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Profundidad (km):</label>
+                    <input type="number" step="0.1" name="profundidad" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Lugar/Epicentro:</label>
+                    <input type="text" name="lugar" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Área afectada:</label>
+                    <input type="text" name="area" placeholder="Ej: 50 km2" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Rango de Impacto:</label>
+                    <select name="rango" required>
+                        <option value="Bajo">Bajo</option>
+                        <option value="Medio">Medio</option>
+                        <option value="Alto">Alto</option>
+                        <option value="Catastrófico">Catastrófico</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha:</label>
+                    <input type="date" name="fecha" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Hora:</label>
+                    <input type="time" name="hora" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Observaciones:</label>
+                    <textarea name="observaciones" placeholder="Detalles adicionales..."></textarea>
+                </div>
+            </div>
+
+            <div class="button-row">
+                <button type="submit" name="accion" value="enviar">Enviar</button>
+                <button type="submit" name="accion" value="listar" formnovalidate>Listar</button>
+                <button type="submit" name="accion" value="buscar" formnovalidate>Buscar</button>
+            </div>
+
+            <div class="search-box">
+                <div class="search-row">
+                    <label for="filtro">Filtrar por:</label>
+                    <select id="filtro" name="filtro">
+                        <option value="magnitud">Magnitud</option>
+                        <option value="profundidad">Profundidad</option>
+                        <option value="lugar">Lugar</option>
+                        <option value="area">Área</option>
+                        <option value="rango">Rango de Impacto</option>
+                        <option value="fecha">Fecha</option>
+                        <option value="hora">Hora</option>
+                    </select>
+                </div>
+
+                <div class="search-row">
+                    <label for="criterio_busqueda">Buscar:</label>
+                    <input type="text" id="criterio_busqueda" name="criterio_busqueda" placeholder="Ingrese el valor a buscar">
+                </div>
+            </div>
+        </form>
+
+        <script>
+            const filtroSelect = document.getElementById('filtro');
+            const criterioInput = document.getElementById('criterio_busqueda');
+
+            function actualizarTipoBusqueda() {
+                const valor = filtroSelect.value;
+
+                if (valor === 'fecha') {
+                    criterioInput.type = 'date';
+                    criterioInput.value = '';
+                    criterioInput.placeholder = 'Seleccione una fecha';
+                } else if (valor === 'hora') {
+                    criterioInput.type = 'time';
+                    criterioInput.value = '';
+                    criterioInput.placeholder = 'Seleccione una hora';
+                } else {
+                    criterioInput.type = 'text';
+                    criterioInput.value = '';
+                    criterioInput.placeholder = 'Ingrese el valor a buscar';
+                }
+            }
+
+            filtroSelect.addEventListener('change', actualizarTipoBusqueda);
+            actualizarTipoBusqueda();
+        </script>
+
+        {% if ultimo_temblor %}
+        <div class="resultado">
+            <h3>Último registro agregado</h3>
+            <ul>
+                <li><strong>Magnitud:</strong> {{ ultimo_temblor.magnitud }}</li>
+                <li><strong>Profundidad:</strong> {{ ultimo_temblor.profundidad }} km</li>
+                <li><strong>Rango:</strong> {{ ultimo_temblor.rango }}</li>
+                <li><strong>Lugar:</strong> {{ ultimo_temblor.lugar }}</li>
+                <li><strong>Área:</strong> {{ ultimo_temblor.area }}</li>
+                <li><strong>Fecha:</strong> {{ ultimo_temblor.fecha }}</li>
+                <li><strong>Hora:</strong> {{ ultimo_temblor.hora }}</li>
+                <li><strong>Observaciones:</strong> {{ ultimo_temblor.observaciones|default:'Sin observaciones' }}</li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

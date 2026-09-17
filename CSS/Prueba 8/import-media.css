@@ -1,0 +1,6 @@
+/* Solo se aplicará si la pantalla mide 600px o menos */
+.box-media {
+  background-color: #fef08a !important; /* Fondo amarillo de advertencia */
+  border-color: #eab308;
+  color: #854d0e;
+}

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos de Display en CSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Ejemplos de `display` en CSS</h1>
+
+    <h2>1. Display: Block</h2>
+    <p>Ocupan todo el ancho disponible y saltan a una nueva línea.</p>
+    <div class="caja caja-block">Bloque 1</div>
+    <div class="caja caja-block">Bloque 2</div>
+
+    <hr>
+
+    <h2>2. Display: Inline</h2>
+    <p>Solo ocupan el espacio de su contenido. No respetan el ancho/alto asignado.</p>
+    <span class="caja caja-inline">Inline 1</span>
+    <span class="caja caja-inline">Inline 2</span>
+    <span class="caja caja-inline">Inline 3</span>
+
+    <hr>
+
+    <h2>3. Display: Inline-Block</h2>
+    <p>Se alinean en la misma fila (como inline) pero sí respetan el ancho y alto (como block).</p>
+    <div class="caja caja-inline-block">Inline-Block 1</div>
+    <div class="caja caja-inline-block">Inline-Block 2</div>
+
+    <h1>Diferencia entre `display: none` y `visibility: hidden`</h1>
+    <p>Haz clic en los botones para aplicar el efecto a la <strong>Caja 2 (la de en medio)</strong> y observa cómo reacciona la Caja 3.</p>
+
+    <div class="controles">
+        <button onclick="alternarDisplay()">Alternar `display: none`</button>
+        <button onclick="alternarVisibility()">Alternar `visibility: hidden`</button>
+        <button onclick="reiniciar()">Reiniciar</button>
+    </div>
+
+    <div class="contenedor-prueba">
+        <div class="caja-test caja-1">Caja 1 (Normal)</div>
+        <div id="caja-efecto" class="caja-test caja-2">Caja 2 (Modificable)</div>
+        <div class="caja-test caja-3">Caja 3 (Normal)</div>
+    </div>
+
+    <script>
+        const caja = document.getElementById('caja-efecto');
+
+        function alternarDisplay() {
+            reiniciar();
+            caja.classList.toggle('aplicar-none');
+        }
+
+        function alternarVisibility() {
+            reiniciar();
+            caja.classList.toggle('aplicar-hidden');
+        }
+
+        function reiniciar() {
+            caja.classList.remove('aplicar-none');
+            caja.classList.remove('aplicar-hidden');
+        }
+    </script>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    <hr>
+    <h2>4. Experimento Avanzado: Cuadrícula 3x3</h2>
+    <p>Prueba el comportamiento en tiempo real de los 9 botones:</p>
+    <ul>
+        <li><strong>1 Clic:</strong> Aplica <code>display: none</code> (El botón desaparece y la cuadrícula se desacomoda porque los demás botones se mueven).</li>
+        <li><strong>Doble Clic:</strong> Aplica <code>visibility: hidden</code> (El botón se vuelve invisible pero mantiene su posición, dejando el "hueco" en la cuadrícula).</li>
+    </ul>
+
+    <button onclick="reiniciarCuadricula()" style="margin-bottom: 15px; background-color: #2c3e50;">
+        Restaurar Cuadrícula
+    </button>
+
+    <div class="cuadricula-contenedor">
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">1</button>
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">2</button>
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">3</button>
+        
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">4</button>
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">5</button>
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">6</button>
+        
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">7</button>
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">8</button>
+        <button class="btn-cuadricula" onclick="desaparecer(this)" ondblclick="esconder(this)">9</button>
+    </div>
+
+    <script>
+        // Función para 1 clic (display: none)
+        function desaparecer(elemento) {
+            // Usamos un pequeño setTimeout para evitar que el primer clic interfiera inmediatamente con el doble clic
+            elemento.timer = setTimeout(() => {
+                if (!elemento.classList.contains('aplicar-hidden')) {
+                    elemento.classList.add('aplicar-none');
+                }
+            }, 200);
+        }
+
+        // Función para doble clic (visibility: hidden)
+        function esconder(elemento) {
+            // Cancelamos el temporizador del clic simple para que no se ejecuten ambos
+            clearTimeout(elemento.timer);
+            elemento.classList.remove('aplicar-none'); // Por si acaso
+            elemento.classList.add('aplicar-hidden');
+        }
+
+        // Función para regresar todos los botones a su estado normal
+        function reiniciarCuadricula() {
+            const botones = document.querySelectorAll('.btn-cuadricula');
+            botones.forEach(btn => {
+                btn.classList.remove('aplicar-none');
+                btn.classList.remove('aplicar-hidden');
+            });
+        }
+    </script>
+
+
+
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    <h1>🎮 Encuentra las Parejas 🎮</h1>
+    
+    <div class="marcador">
+        <div>⏱️ Tiempo: <span id="cronometro">00:00</span></div>
+        <div>🔄 Movimientos: <span id="movimientos">0</span></div>
+    </div>
+
+    <div id="tablero" class="tablero-grid"></div>
+
+    <div id="pantalla-victoria" class="victoria-modal">
+        <div class="victoria-contenido">
+            <h2>¡Victoria Magistral! 🎉</h2>
+            <p>Has encontrado todas las parejas con éxito.</p>
+            <hr>
+            <p>⏱️ **Tiempo final:** <span id="tiempo-final"></span></p>
+            <p>🔄 **Movimientos totales:** <span id="movimientos-final"></span></p>
+            <button onclick="reiniciarJuego()">Jugar de Nuevo</button>
+        </div>
+    </div>
+
+    <script>
+        // 12 parejas de símbolos + 1 estrella comodín = 25 cartas
+        const simbolosOriginales = [
+            '🎮', '🎮', '👾', '👾', '🚀', '🚀', '🛸', '🛸', 
+            '💻', '💻', '🕹️', '🕹️', '🎲', '🎲', '🧩', '🧩', 
+            '👑', '👑', '💎', '💎', '⚡', '⚡', '🔥', '🔥', '⭐'
+        ];
+
+        let cartasDuplicadas = [];
+        let cartasVolteadas = [];
+        let parejasEncontradas = 0;
+        let movimientos = 0;
+        let tiempoSegundos = 0;
+        let intervaloCronometro = null;
+        let juegoIniciado = false;
+        let bloqueandoTablero = false;
+
+        const tablero = document.getElementById('tablero');
+
+        // Función para barajar los símbolos (Algoritmo Fisher-Yates)
+        function barajar(array) {
+            let arreglo = [...array];
+            for (let i = arreglo.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arreglo[i], arreglo[j]] = [arreglo[j], arreglo[i]];
+            }
+            return arreglo;
+        }
+
+        // Crea la estructura del tablero en el HTML
+        function inicializarTablero() {
+            tablero.innerHTML = '';
+            cartasDuplicadas = barajar(simbolosOriginales);
+
+            cartasDuplicadas.forEach((simbolo, indice) => {
+                // Creamos un hueco fijo para que el display:none de la carta no mueva el grid
+                const hueco = document.createElement('div');
+                hueco.classList.add('hueco-carta');
+
+                const carta = document.createElement('div');
+                carta.classList.add('carta');
+                carta.dataset.simbolo = simbolo;
+                carta.dataset.indice = indice;
+
+                // Estructura interna para el efecto de volteo en 3D
+                carta.innerHTML = `
+                    <div class="cara trasera">❓</div>
+                    <div class="cara frontal">${simbolo}</div>
+                `;
+
+                carta.addEventListener('click', voltearCarta);
+                hueco.appendChild(carta);
+                tablero.appendChild(hueco);
+            });
+        }
+
+        function voltearCarta() {
+            if (bloqueandoTablero) return;
+            if (this.classList.contains('volteada')) return;
+
+            // Iniciar cronómetro en el primer clic
+            if (!juegoIniciado) {
+                juegoIniciado = true;
+                iniciarCronometro();
+            }
+
+            this.classList.add('volteada');
+
+            // Lógica especial si es el Comodín Estrella
+            if (this.dataset.simbolo === '⭐') {
+                bloqueandoTablero = true;
+                setTimeout(() => {
+                    this.classList.add('parpadeo-verde');
+                    setTimeout(() => {
+                        this.style.display = 'none';
+                        parejasEncontradas++;
+                        bloqueandoTablero = false;
+                        verificarVictoria();
+                    }, 600);
+                }, 300);
+                return;
+            }
+
+            cartasVolteadas.push(this);
+
+            if (cartasVolteadas.length === 2) {
+                movimientos++;
+                document.getElementById('movimientos').innerText = movimientos;
+                verificarPareja();
+            }
+        }
+
+        function verificarPareja() {
+            let [carta1, carta2] = cartasVolteadas;
+            bloqueandoTablero = true;
+
+            if (carta1.dataset.simbolo === carta2.dataset.simbolo) {
+                // ¡Coinciden! Parpadean en verde
+                setTimeout(() => {
+                    carta1.classList.add('parpadeo-verde');
+                    carta2.classList.add('parpadeo-verde');
+
+                    setTimeout(() => {
+                        carta1.style.display = 'none';
+                        carta2.style.display = 'none';
+                        parejasEncontradas += 2; // Cuenta como dos cartas resueltas
+                        remanecientes();
+                        verificarVictoria();
+                    }, 600);
+                }, 300);
+            } else {
+                // No coinciden. Parpadean en rojo y se vuelven a voltear
+                setTimeout(() => {
+                    carta1.classList.add('parpadeo-rojo');
+                    carta2.classList.add('parpadeo-rojo');
+
+                    setTimeout(() => {
+                        carta1.classList.remove('volteada', 'parpadeo-rojo');
+                        carta2.classList.remove('volteada', 'parpadeo-rojo');
+                        remanecientes();
+                    }, 800);
+                }, 300);
+            }
+        }
+
+        function remanecientes() {
+            cartasVolteadas = [];
+            bloqueandoTablero = false;
+        }
+
+        // Control del Cronómetro
+        function iniciarCronometro() {
+            intervaloCronometro = setInterval(() => {
+                tiempoSegundos++;
+                let mins = Math.floor(tiempoSegundos / 60).toString().padStart(2, '0');
+                let secs = (tiempoSegundos % 60).toString().padStart(2, '0');
+                document.getElementById('cronometro').innerText = `${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function verificarVictoria() {
+            // 24 cartas de parejas + 1 comodín = 25 en total
+            if (parejasEncontradas === 25) {
+                clearInterval(intervaloCronometro);
+                document.getElementById('tiempo-final').innerText = document.getElementById('cronometro').innerText;
+                document.getElementById('movimientos-final').innerText = movimientos;
+                document.getElementById('pantalla-victoria').style.display = 'flex';
+            }
+        }
+
+        function reiniciarJuego() {
+            clearInterval(intervaloCronometro);
+            tiempoSegundos = 0;
+            movimientos = 0;
+            parejasEncontradas = 0;
+            juegoIniciado = false;
+            cartasVolteadas = [];
+            bloqueandoTablero = false;
+            document.getElementById('cronometro').innerText = "00:00";
+            document.getElementById('movimientos').innerText = "0";
+            document.getElementById('pantalla-victoria').style.display = 'none';
+            inicializarTablero();
+        }
+
+        // Arrancar el juego al cargar la página
+        inicializarTablero();
+    </script>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- OVERFLOW -->
+    <h1>Laboratorio de `overflow` en CSS</h1>
+        <p>Todas las cajas tienen un tamaño fijo de <strong>200x120px</strong>. Observa cómo cambia el comportamiento:</p>
+
+        <div class="contenedor-laboratorio">
+
+            <div class="seccion-overflow">
+                <h2>1. overflow: visible (Por defecto)</h2>
+                <div class="ejemplos-fila">
+                    <div class="caja-test ov-visible">
+                        <p>Este texto es demasiado largo para una caja tan pequeña, por lo que se va a salir descaradamente sin importarle los bordes.</p>
+                    </div>
+                    <div class="caja-test ov-visible">
+                        <img src="https://picsum.photos/300/200" alt="Paisaje">
+                    </div>
+                </div>
+            </div>
+
+            <div class="seccion-overflow">
+                <h2>2. overflow: hidden</h2>
+                <div class="ejemplos-fila">
+                    <div class="caja-test ov-hidden">
+                        <p>Este texto es demasiado largo para una caja tan pequeña, por lo que todo lo que no quepa en los límites será guillotinado y desaparecerá.</p>
+                    </div>
+                    <div class="caja-test ov-hidden">
+                        <img src="https://picsum.photos/300/200" alt="Paisaje">
+                    </div>
+                </div>
+            </div>
+
+            <div class="seccion-overflow">
+                <h2>3. overflow: scroll</h2>
+                <div class="ejemplos-fila">
+                    <div class="caja-test ov-scroll">
+                        <p>Aquí puedes leer todo el texto usando las barras de navegación vertical y horizontal que aparecen de forma obligatoria.</p>
+                    </div>
+                    <div class="caja-test ov-scroll">
+                        <img src="https://picsum.photos/300/200" alt="Paisaje">
+                    </div>
+                </div>
+            </div>
+
+            <div class="seccion-overflow">
+                <h2>4. overflow: auto (El más recomendado)</h2>
+                <div class="ejemplos-fila">
+                    <div class="caja-test ov-auto">
+                        <p>El navegador es inteligente: si el texto se pasa, pone barra de scroll. Si el contenido cupiera justo, no pondría nada.</p>
+                    </div>
+                    <div class="caja-test ov-auto">
+                        <img src="https://picsum.photos/300/200" alt="Paisaje">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- POSITION: RELATIVE & ABSOLUTE -->
+    <hr>
+    <h2>5. Laboratorio de Position (Relative y Absolute)</h2>
+    <p>El cuadro gris grande es <code>relative</code>. Las 5 cajas internas son <code>absolute</code> y usan los bordes del padre como coordenadas.</p>
+
+    <div class="contenedor-padre">
+        
+        <div class="caja-absoluta esquina-tl">
+            top: 0;<br>left: 0;
+        </div>
+        
+        <div class="caja-absoluta esquina-tr">
+            top: 0;<br>right: 0;
+        </div>
+        
+        <div class="caja-absoluta centro">
+            center
+        </div>
+        
+        <div class="caja-absoluta esquina-bl">
+            bottom: 0;<br>left: 0;
+        </div>
+        
+        <div class="caja-absoluta esquina-br">
+            bottom: 0;<br>right: 0;
+        </div>
+
+    </div>
+
+    <div class="contenedor-padre">
+        </div>
+
+    <div class="caja-fija">
+        position: fixed;<br>bottom: 20px;<br>right: 20px;
+    </div>
+
+<!-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- FLOAT & CLEAR  -->
+    <h1>Laboratorio de `float` y `clear` en CSS</h1>
+
+        <div class="contenedor-caso">
+            <h2>1. Sin aplicar nada (Flujo Estático Normal)</h2>
+            <p class="descripcion">Las cajas se comportan como bloques normales: saltan de línea y el texto va después.</p>
+            
+            <div class="caja roja">Rojo</div>
+            <div class="caja azul">Azul</div>
+            
+            <p class="texto-relleno">Este es el texto del párrafo. Como no hay ningún float aplicado, el texto espera pacientemente a que terminen de dibujarse las dos cajas de bloque para acomodarse abajo de ellas.</p>
+        </div>
+
+        <div class="contenedor-caso">
+            <h2>2. Aplicando `float: left` a la Caja Roja</h2>
+            <p class="descripcion">La caja roja flota a la izquierda. Mira lo que les pasa a la caja azul y al texto.</p>
+            
+            <div class="caja roja flotar-izquierda">Rojo (Float)</div>
+            <div class="caja azul">Azul</div>
+            
+            <p class="texto-relleno">Este es el texto del párrafo. Al estar la caja roja flotando, el texto detecta su presencia y empieza a "envolverla" fluyendo por el espacio libre que queda a su derecha.</p>
+        </div>
+
+        <div class="contenedor-caso">
+            <h2>3. Aplicando `clear: both` a la Caja Azul</h2>
+            <p class="descripcion">La caja roja sigue flotando, pero la azul dice: "Yo no me pego a nada que flote".</p>
+            
+            <div class="caja roja flotar-izquierda">Rojo (Float)</div>
+            <div class="caja azul limpiar-flotado">Azul (Clear)</div>
+            
+            <p class="texto-relleno">Este es el texto del párrafo. Como la caja azul rompió el efecto del flotado, el flujo vuelve a la normalidad a partir de ella, y el texto se posiciona limpiamente abajo.</p>
+        </div>
+
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- POSITION: STICKY -->
+<h1>Demostración de `position: sticky`</h1>
+    <p>Haz scroll <strong>dentro del cuadro gris con borde azul</strong> para ver cómo reacciona el menú de navegación.</p>
+
+    <div class="ventana-scroll">
+        
+        <header class="banner-sitio">
+            <h2>Mi Blog de Tecnología</h2>
+            <p>Sección de noticias de programación</p>
+        </header>
+
+        <nav class="menu-sticky">
+            <a href="#" class="activo">Inicio</a>
+            <a href="#">Artículos</a>
+            <a href="#">Tutoriales</a>
+            <a href="#">Contacto</a>
+        </nav>
+
+        <main class="contenido-blog">
+            <h3>Últimas publicaciones</h3>
+            <p><strong>Post 1:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vesti bulum id ante vel magna porta eleifend. Cras convallis lorem ac ex elementum, ac accumsan tellus tincidunt.</p>
+            <p><strong>Post 2:</strong> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p><strong>Post 3:</strong> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+            <p><strong>Post 4:</strong> Mollis pretium lorem primis cubilia curae; Habitasse neque dapi bus cubilia morbi nascetur ridiculus integer sodales varius.</p>
+            <p><strong>Post 5:</strong> Aliquam erat volutpat. Proin eget tortor risus. Curabitur aliquet quam id dui posuere blandit. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.</p>
+            <p><strong>Fin del contenedor:</strong> Aquí termina el espacio del padre. Si sigues bajando, el menú sticky dejará de flotar porque no puede salirse de los límites de este cuadro gris.</p>
+        </main>
+
+    </div>
+
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- MARGIN (AUTO, LEFT, LEFT AUTO) -->
+
+    <h1>Laboratorio de Margins en CSS</h1>
+    <p>El recuadro oscuro mide <strong>600px</strong> de ancho. Cada caja interna mide <strong>160px</strong>.</p>
+
+    <div class="gran-recuadro">
+        
+        <div class="caja-test m-auto">
+            margin: auto;
+        </div>
+        
+        <div class="caja-test m-left-valor">
+            margin-left: 60px;
+        </div>
+        
+        <div class="caja-test m-left-auto">
+            margin-left: auto;
+        </div>
+
+    </div>
+
+    <hr>
+    <h2>6. Centrado Absoluto usando Margin Auto (El truco Flex)</h2>
+    <p>El recuadro mide 400x200px. El botón se clava en el centro exacto absorbiendo el espacio en todas las direcciones.</p>
+
+    <div class="contenedor-centrado">
+        <button class="boton-centrado">¡Centro Perfecto! 🎯</button>
+    </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- PROPIEDADES COLUMNS's -->
+    <hr>
+    <h2>7. Laboratorio de Textos Multi-columnas</h2>
+    <p>El texto fluye automáticamente entre las 3 columnas. Observa cómo los botones alteran el flujo saltando de columna.</p>
+
+    <div class="contenedor-columnas">
+        
+        <p><strong>Inicio del artículo:</strong> Este texto empieza en la primera columna. El sistema de columnas de CSS calcula cuántas palabras caben antes de pasar el excedente a la siguiente columna de forma fluida.</p>
+        
+        <p>A continuación verás un botón que tiene la propiedad de forzar su aparición al principio de la siguiente columna disponible, sin importar que aquí abajo quede espacio libre.</p>
+
+        <button class="btn-quiebre-antes">Botón con break-before: column;</button>
+
+        <p><strong>Texto intermedio:</strong> Ahora estamos en la segunda columna gracias al corte anterior. El texto sigue fluyendo de manera natural línea por línea. Pero mira lo que pasa justo después de este párrafo: añadiremos un encabezado especial.</p>
+
+        <h4 class="subtitulo-expandido">¡Subtítulo Intermedio con column-span: all!</h4>
+
+        <p>¿Viste lo que pasó arriba? El subtítulo rompió temporalmente las 3 columnas y cruzó todo el contenedor de lado a lado. Justo después de él, las columnas se vuelven a reconstruir automáticamente.</p>
+
+        <button class="btn-quiebre-despues">Botón con break-after: column;</button>
+
+        <p><strong>Texto final:</strong> Este párrafo fue expulsado a la tercera columna porque el botón de arriba tenía la orden de romper el flujo inmediatamente <em>después</em> de él. Aquí termina nuestro experimento de maquetación editorial.</p>
+        
+    </div>
+
+<!-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ -->
+ <!-- Actividad BLOQUES DE COLORES -->
+  <div class="Contenedor-Patriarca">
+    <div class="Contenedor-Abuelo">
+        <div class="Contenedor-Padre">
+            <div class="Bloque-Rojo"></div>
+            <div class="Bloque-Blanco"></div>
+            <div class="Bloque-Rosa"></div>
+        </div>
+
+        <div class="Rectangulo-Verde"></div>
+    </div>
+
+    <div class="Bloque-Naranja"></div>
+    <div class="Bloque-Amarillo"></div>
+  </div>
+</body>
+</html>
+
+<!-- -------------------------------------------------------------------------------------------------------------------- -->
+ <!-- Z-INDEX -->
+  <hr>
+    <h2>8. Laboratorio de Z-Index (La Baraja de Cartas)</h2>
+    <p>Por orden de HTML, la Reina debería estar arriba y el As abajo. Mira cómo <code>z-index</code> altera el orden de las capas.</p>
+
+    <div class="tapete-poker">
+        
+        <div class="carta as-picas">
+            <div class="esquina-carta">A♠</div>
+            <div class="centro-carta">♠</div>
+            <div class="esquina-carta invertida">A♠</div>
+        </div>
+        
+        <div class="carta rey-corazones">
+            <div class="esquina-carta">K♥</div>
+            <div class="centro-carta">♥</div>
+            <div class="esquina-carta invertida">K♥</div>
+        </div>
+        
+        <div class="carta reina-diamantes">
+            <div class="esquina-carta">Q♦</div>
+            <div class="centro-carta">♦</div>
+            <div class="esquina-carta invertida">Q♦</div>
+        </div>
+
+    </div>
+    <!-- ----------------------------------------------------------------------------------------- -->
+     <!-- ROTACIONES! -->
+      <hr>
+    <h2>9. Laboratorio de Transformaciones 2D (Transform)</h2>
+    <p>Las cajas punteadas grises muestran la posición original del elemento. Las cajas de colores muestran el resultado transformado.</p>
+
+    <div class="contenedor-transformaciones">
+        
+        <div class="zona-test">
+            <div class="caja-transform t-rotate">Rotate (45deg)</div>
+        </div>
+        
+        <div class="zona-test">
+            <div class="caja-transform t-scale">Scale (1.3)</div>
+        </div>
+        
+        <div class="zona-test">
+            <div class="caja-transform t-skew">Skew (20deg)</div>
+        </div>
+        
+        <div class="zona-test">
+            <div class="caja-transform t-matrix">Matrix(...)</div>
+        </div>
+
+    </div>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------- -->
+<!-- BLEND-MODE & MIX-BLEND-MODE -->
+<hr>
+    <h2>10. Laboratorio de Blend Modes (Modos de Fusión)</h2>
+    <p>El contenedor mezcla un color violeta con una imagen (<code>background-blend-mode</code>). El texto cian se mezcla con el fondo resultante (<code>mix-blend-mode</code>).</p>
+
+    <div class="grid-blend-modes">
+        
+        <div class="caja-blend bg-normal">
+            <h3 class="texto-blend mix-normal">Normal</h3>
+        </div>
+
+        <div class="caja-blend bg-multiply">
+            <h3 class="texto-blend mix-multiply">Multiply</h3>
+        </div>
+
+        <div class="caja-blend bg-screen">
+            <h3 class="texto-blend mix-screen">Screen</h3>
+        </div>
+
+        <div class="caja-blend bg-overlay">
+            <h3 class="texto-blend mix-overlay">Overlay</h3>
+        </div>
+
+        <div class="caja-blend bg-darken">
+            <h3 class="texto-blend mix-darken">Darken</h3>
+        </div>
+
+        <div class="caja-blend bg-lighten">
+            <h3 class="texto-blend mix-lighten">Lighten</h3>
+        </div>
+
+        <div class="caja-blend bg-dodge">
+            <h3 class="texto-blend mix-dodge">Color-Dodge</h3>
+        </div>
+
+        <div class="caja-blend bg-saturation">
+            <h3 class="texto-blend mix-saturation">Saturation</h3>
+        </div>
+
+        <div class="caja-blend bg-color">
+            <h3 class="texto-blend mix-color">Color</h3>
+        </div>
+
+        <div class="caja-blend bg-luminosity">
+            <h3 class="texto-blend mix-luminosity">Luminosity</h3>
+        </div>
+
+    </div>  
+    
+    <!-- ------------------------------------------------------------------------------------------------- -->
+     <!-- Actividad PAGINA WEB CON BLEND's -->
+      <div class="Contenedor-azul-celeste">
+        <div class="Contenedor-blanquesino">
+
+        </div>
+      </div>

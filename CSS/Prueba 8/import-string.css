@@ -1,0 +1,5 @@
+/* Se carga mediante un String "" */
+.box-basico-string {
+  border-left: 5px solid #8b5cf6; /* Borde morado */
+  background-color: #faf5ff;
+}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaySmart.com - Popayán</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        
+        .map-container {
+            height: 620px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+    </style>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-white transition-all">
+
+    <!-- LOGIN -->
+    <div id="login-screen" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-900 dark:to-blue-950">
+        <div class="max-w-md w-full mx-4">
+            <div class="bg-white dark:bg-zinc-900 rounded-3xl p-12 shadow-2xl border border-zinc-200 dark:border-white/10">
+                <div class="flex justify-center mb-10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-white font-black text-5xl shadow-inner">W</div>
+                        <div>
+                            <h1 class="text-5xl font-bold tracking-tighter">WaySmart</h1>
+                            <p class="text-blue-600 dark:text-blue-400 text-lg">Popayán</p>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-center text-2xl font-medium mb-10 text-gray-700 dark:text-gray-300">Inicia sesión para gestionar tus rutas y entregas</h2>
+                
+                <form onsubmit="login(event)">
+                    <input type="email" value="fernando.g@waysmart.co" class="w-full px-6 py-5 bg-zinc-100 dark:bg-zinc-800 border border-zinc-300 dark:border-white/20 rounded-2xl focus:border-blue-500 outline-none mb-4">
+                    <input type="password" value="demo123" class="w-full px-6 py-5 bg-zinc-100 dark:bg-zinc-800 border border-zinc-300 dark:border-white/20 rounded-2xl focus:border-blue-500 outline-none mb-6">
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-5 rounded-2xl text-xl font-semibold hover:brightness-110 transition">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="hidden min-h-screen">
+        <!-- Navbar -->
+        <nav class="bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-white/10 sticky top-0 z-50">
+            <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-11 h-11 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-black text-4xl">W</div>
+                    <div>
+                        <h1 class="text-3xl font-bold">WaySmart</h1>
+                        <p class="text-xs text-blue-600 dark:text-blue-400">Popayán • Tiempo real</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <div class="relative w-80">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400"></i>
+                        <input id="address-input" 
+                               type="text" 
+                               placeholder="Buscar dirección en Popayán (ej: Parque Caldas)" 
+                               class="w-full bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-white/20 pl-11 py-3 rounded-2xl focus:border-blue-500 outline-none text-sm">
+                    </div>
+                    <button onclick="searchAddress()" 
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-medium transition">
+                        Agregar
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleTheme()" class="p-3 rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+                        <i id="theme-icon" class="fa-solid fa-moon text-2xl"></i>
+                    </button>
+                    <button onclick="newRoute()" class="flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-medium transition">
+                        <i class="fa-solid fa-plus"></i> Nueva Ruta
+                    </button>
+                    <button onclick="optimizeRoute()" class="flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-2xl font-medium transition">
+                        <i class="fa-solid fa-brain"></i> Optimizar IA
+                    </button>
+                    <button onclick="logout()" class="flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-2xl font-medium transition">
+                        <i class="fa-solid fa-right-from-bracket"></i> Salir
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-screen-2xl mx-auto px-8 py-8">
+            <div class="grid grid-cols-12 gap-8">
+                <!-- MAPA -->
+                <div class="col-span-12 lg:col-span-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-3xl font-bold">Mapa de Popayán</h2>
+                        <div id="route-status" class="px-5 py-2 bg-white dark:bg-zinc-800 rounded-2xl text-sm font-medium shadow flex items-center gap-2"></div>
+                    </div>
+                    <div id="map" class="map-container"></div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-span-12 lg:col-span-4 space-y-6">
+                    <div class="bg-white dark:bg-zinc-900 rounded-3xl p-7 border border-zinc-200 dark:border-white/10">
+                        <h3 class="font-bold text-xl mb-6 flex items-center gap-3"><i class="fa-solid fa-truck"></i> Pedidos Activos</h3>
+                        <div id="active-orders" class="space-y-6"></div>
+                    </div>
+
+                    <div class="bg-white dark:bg-zinc-900 rounded-3xl p-7 border border-zinc-200 dark:border-white/10">
+                        <h3 class="font-bold text-xl mb-5">Notificaciones</h3>
+                        <div class="space-y-5 text-sm">
+                            <div class="flex gap-4"><i class="fa-solid fa-message text-blue-500 mt-1"></i><div>Nuevo mensaje del Soporte</div></div>
+                            <div class="flex gap-4"><i class="fa-solid fa-triangle-exclamation text-amber-500 mt-1"></i><div>Tráfico en Carrera 7</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let map, currentRoute = null, waypoints = [];
+        let isDark = true;
+
+        function toggleTheme() {
+            isDark = !isDark;
+            document.documentElement.classList.toggle('dark', isDark);
+            document.getElementById('theme-icon').classList.toggle('fa-moon', isDark);
+            document.getElementById('theme-icon').classList.toggle('fa-sun', !isDark);
+        }
+
+        function initMap() {
+            map = L.map('map', { zoomControl: true }).setView([2.45, -76.61], 15);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+            map.on('click', function(e) {
+                addMarker(e.latlng);
+            });
+        }
+
+        function addMarker(latlng, popupText = "Punto de ruta") {
+            const marker = L.marker(latlng, { draggable: true }).addTo(map);
+            marker.bindPopup(popupText).openPopup();
+            marker.on('dragend', updateRoute);
+            waypoints.push({ latlng: latlng, marker: marker });
+            updateRoute();
+        }
+
+        function updateRoute() {
+            if (currentRoute) map.removeLayer(currentRoute);
+            if (waypoints.length < 2) return;
+
+            const coords = waypoints.map(w => w.latlng);
+            currentRoute = L.polyline(coords, { 
+                color: '#3b82f6', 
+                weight: 7.5, 
+                opacity: 0.92,
+                lineJoin: 'round'
+            }).addTo(map);
+        }
+
+        async function searchAddress() {
+            const input = document.getElementById('address-input');
+            const query = input.value.trim();
+            if (!query) return alert("Escribe una dirección en Popayán");
+
+            try {
+                const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ", Popayán, Colombia")}`);
+                const data = await res.json();
+
+                if (data.length > 0) {
+                    const lat = parseFloat(data[0].lat);
+                    const lon = parseFloat(data[0].lon);
+                    map.flyTo([lat, lon], 16, { duration: 1.5 });
+                    addMarker([lat, lon], data[0].display_name.split(',')[0]);
+                    input.value = "";
+                } else {
+                    alert("No se encontró la dirección. Intenta con: Parque Caldas, Carrera 7, Universidad del Cauca, etc.");
+                }
+            } catch (e) {
+                alert("Error al buscar dirección");
+            }
+        }
+
+        function newRoute() {
+            clearMap();
+            document.getElementById('route-status').innerHTML = `🗺️ <span class="text-blue-600">Haz clic o busca direcciones</span>`;
+        }
+
+        function optimizeRoute() {
+            clearMap();
+            
+            // Ruta más realista y fluida por Popayán
+            const routePoints = [
+                [2.4558, -76.6148], // Parque Caldas
+                [2.4532, -76.6121],
+                [2.4515, -76.6095], // Calle 5
+                [2.4498, -76.6078],
+                [2.4479, -76.6092], // Carrera 6
+                [2.4462, -76.6128],
+                [2.4481, -76.6159], // Centro Histórico
+                [2.4510, -76.6184]  // Barrio Belén
+            ];
+            
+            routePoints.forEach((pos, i) => {
+                const popup = i === 0 ? "Inicio - Parque Caldas" : 
+                             (i === routePoints.length-1 ? "Destino Final" : `Parada ${i}`);
+                addMarker(pos, popup);
+            });
+            
+            currentRoute = L.polyline(routePoints, { 
+                color: '#10b981', 
+                weight: 8, 
+                opacity: 0.95 
+            }).addTo(map);
+            
+            document.getElementById('route-status').innerHTML = `✨ <span class="text-emerald-600">Ruta optimizada por IA</span> • 41 min`;
+        }
+
+        function clearMap() {
+            if (currentRoute) map.removeLayer(currentRoute);
+            waypoints.forEach(w => map.removeLayer(w.marker));
+            waypoints = [];
+        }
+
+        function login(e) {
+            e.preventDefault();
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            setTimeout(() => {
+                initMap();
+                loadDemoData();
+            }, 300);
+        }
+
+        function logout() {
+            if (confirm("¿Cerrar sesión?")) {
+                clearMap();
+                document.getElementById('dashboard').classList.add('hidden');
+                document.getElementById('login-screen').classList.remove('hidden');
+            }
+        }
+
+        function loadDemoData() {
+            document.getElementById('active-orders').innerHTML = `
+                <div class="flex gap-5 border-l-4 border-blue-500 pl-4">
+                    <div class="flex-1">
+                        <p class="font-semibold">#WS-2024-007</p>
+                        <p class="text-sm text-zinc-500">Parque Caldas → Centro Histórico</p>
+                        <p class="text-emerald-600 text-sm">ETA: 10:42 AM</p>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

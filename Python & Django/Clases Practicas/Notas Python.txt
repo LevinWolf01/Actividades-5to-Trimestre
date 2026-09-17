@@ -1,0 +1,14 @@
+===================================================================================
+||  Clase (class)  => Plantilla para crear OBJETOS                               ||
+||    Objetos (objects) = Objetos crados a partir del Molde (Class)              ||
+||              Metodo (Funciones) = Acciones que puede realizar el objeto       ||
+||                  Atributos (Variables) = Caracteristicas de objeto.           ||
+||                                                                               ||
+||                                                                               ||
+||  llamar una clase = se dice "INSTANCIO la clase"                              ||
+===================================================================================
+
+La "Clase-RIDER"  =>  Instancia a la "Clase-MIGUEL", 
+    => Creo el "Objeto-DANIEL"
+        => tiene como "Metodo-JULIANA"
+            => Enviando como parametro La "Variable-JUAN", con valor Falso y de tipo booleano

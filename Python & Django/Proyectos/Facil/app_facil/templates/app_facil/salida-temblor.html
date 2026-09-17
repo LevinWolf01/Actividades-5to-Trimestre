@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temblor - Reporte</title>
+    <style>
+        body {
+            background-color: #030303;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #0a0a0a;
+            padding: 40px;
+            border: 2px solid #39ff14;
+            border-radius: 15px;
+            animation: pulse-border 2s infinite;
+            max-width: 700px;
+            width: 100%;
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 20px #39ff14, inset 0 0 10px #39ff14; }
+            50% { box-shadow: 0 0 40px #39ff14, inset 0 0 20px #39ff14; border-color: #6eff45; }
+            100% { box-shadow: 0 0 20px #39ff14, inset 0 0 10px #39ff14; }
+        }
+        h2 {
+            font-size: 2rem;
+            text-shadow: 0 0 10px #39ff14;
+            text-align: center;
+            margin-top: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .lista-registros {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        .lista-registros li {
+            background: rgba(57, 255, 20, 0.04);
+            border: 1px solid #39ff14;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin-bottom: 12px;
+        }
+        .lista-registros strong {
+            color: #39ff14;
+        }
+        .btn-volver {
+            display: block;
+            text-align: center;
+            color: #39ff14;
+            text-decoration: none;
+            border: 2px solid #39ff14;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+        }
+        .btn-volver:hover {
+            background-color: #39ff14;
+            color: #000;
+            box-shadow: 0 0 20px #39ff14;
+        }
+        .vacio {
+            text-align: center;
+            color: #d3ffd1;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Registros Sísmicos</h2>
+
+        {% if temblores %}
+            <ul class="lista-registros">
+                {% for temblor in temblores %}
+                    <li>
+                        <strong>Magnitud:</strong> {{ temblor.magnitud }}<br>
+                        <strong>Lugar:</strong> {{ temblor.lugar }}<br>
+                        <strong>Profundidad:</strong> {{ temblor.profundidad }} km<br>
+                        <strong>Rango:</strong> {{ temblor.rango }}<br>
+                        <strong>Área:</strong> {{ temblor.area }}<br>
+                        <strong>Fecha:</strong> {{ temblor.fecha }}<br>
+                        <strong>Hora:</strong> {{ temblor.hora }}<br>
+                        <strong>Observaciones:</strong> {{ temblor.observaciones|default:'Sin observaciones' }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="vacio">No hay registros guardados aún.</div>
+        {% endif %}
+
+        <a href="{% url 'ingreso_temblor' %}" class="btn-volver">Registrar Nuevo</a>
+    </div>
+</body>
+</html>

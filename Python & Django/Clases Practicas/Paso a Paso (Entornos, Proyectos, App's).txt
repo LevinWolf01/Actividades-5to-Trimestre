@@ -1,0 +1,193 @@
+1.ro CREAR EL ENTORNO VIRTUAL:
+    Crear Entorno   = python -m venv v_nombreEntorno
+    Activar Entorno = v_nombreEntorno/scripts/activate
+
+
+2do. INSTALAR DJANGO:
+     ver Paquetes instalados = pip list
+     instalar Django         = pip install django
+
+
+3ro. CREAR EL PROYECTO:
+    Crear Proyecto  = django-admin startproject pr_nombre . (Es muy importante del uso del Espacio y el punto al final") 
+    
+    => Se debe crear el archivo 'manage.py' (este no debe estar dentro de 'pr_nombre', ni de 'v_nombre')
+
+
+4to. CREAR APP:
+    Crear App = python manage.py startapp app_nombre
+
+    => Dentro de la carpeta app_nombre, se debe crear manualmente el ARCHIVO "urls.py"
+    => Dentro de la carpeta app_nombre, se debe crear la CARPETA "templates", dentro de esa carpeta,
+        se debe crear OTRA CARPETA con el mismo nombre de la carpeta original del app. 
+    => Dentro de esta carpeta, crearemos un archivo HTML, y lo nombraremos, tambien con el mismo nombre 
+        de la carpeta, ahora añadiendole al inicio "main_"
+        
+    => EJM: app_gustavo/templates/app_gustavo/main_app_gustavo.html
+
+
+5to. AJUSTES AL ARCHIVO "settings.py":
+    => en la parte donde dice "INSTALLED_APPS", al final, por donde está 
+        la ultima " , " debes añadir una nueva linea, oséa, el nombre de tu app:
+        => 'app_nombre', (Si, el espacio y la coma ván al final)
+
+    También se configura la carpeta de templates: (Pricipalmente la parte de 'DIRS')
+        TEMPLATES = [
+            {
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'DIRS': ['app_code_rider/templates/app_code_rider'],
+                'APP_DIRS': True,
+            }
+        ]
+
+
+6to. CONFIGURAR URLs DEL PROYECTO:
+    => en el "urls.py" DEL PROYECTO (pr_nombre), debes borrar el comentario que está entre 
+       las comillas ("""), luego de eso, en los import de la segunda 
+       linea, debes añadir ", include" después de "path"
+
+    => en los "urlpatterns" debes añadir un nuevo "path":
+        => path('', include('app_nombre.urls')),
+            => con esto, hacemos que el url principal del proyeto pueda conectarse con las otra urls que crees en la APP
+            (en las comillas vacias puedes añadirle una direccion especifica, como 'ruta-1' o algo así.
+             Solo ten muy encuenta que no debes usar " _ "al ponerlo, si nó que debes usar " - " en el proceso)
+
+    
+        El resultado final se deberia ver similar a esto:
+
+            from django.contrib import admin
+            from django.urls import path, include
+
+            urlpatterns = [
+                path('admin/', admin.site.urls),
+                path('', include('app_sena.urls')),
+            ]
+
+
+7mo. CONFIGURAR URLs DE LA APP:
+     => Este no es tan complicado como parece, ya que una vez lo tengas funcionando, lo puedes 
+        copiar y pegar y modificar para tu uso posterior.
+
+            from django.contrib import admin
+            from django.http import HttpResponse
+            from django.urls import path
+            from .import views
+
+            urlpatterns = [
+                path('admin/',admin.site.urls),
+                path('', lambda request: HttpResponse("<h1> Mensaje de Prueba 1 </h1>")),
+                path('bienvenida', lambda request: HttpResponse("Mensaje <b> Prueba 2 </b> ")),
+                path('despedida', lambda request: HttpResponse('Mensaje de Prueba 3')),
+            ]
+
+
+8vo. CONFIGURAR VISTAS DE LA APP:
+    => Este es el paso más importante, ya que aquí es donde se crean las vistas de la app,
+       y se le asigna a cada una de ellas un nombre, para luego poder llamarlas desde el archivo "urls.py".
+    
+    => Para esto, debemos ir al archivo "views.py" de la app, y crear una función para cada vista que
+       queramos crear, y dentro de esa función, debemos retornar un render con el nombre del archivo
+       HTML que queremos mostrar.
+    
+    Ejemplo:
+    
+        from django.shortcuts import render
+
+        def vista_principal(request):
+            return render(request, 'app_nombre.html')
+
+
+    En mi caso, con 'Prueba 1' usé algo parecido:
+
+        from django.shortcuts import render
+        from django.http import HttpResponse
+
+        def fnRiderMultilinea(request):
+            return HttpResponse(htmlRiderMultilinea)
+
+        def fn_coderider(request):
+            return render(request, 'index.html')
+
+
+    => En el caso del 2do 'def' (fn_codeRider(request)), se usó una carpeta
+       'templates' y otra 'static' dentro de la app para guardar el diseño, imágenes, audio, video y CSS.
+
+    => En el HTML se usa:
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'app_code_rider/Styles.css' %}">
+        
+    => Esto permite que Django encuentre estilos CSS, imágenes, audio y videos dentro de la carpeta 'static'.
+
+
+    Estos son algunos ejemplos de los tipos de vistas que tenemos:
+
+    EJEMPLO 1: mensaje directo
+        from django.http import HttpResponse
+
+        def bienvenida(request):
+            return HttpResponse("<h1>Bienvenido</h1>")
+
+    EJEMPLO 2: renderizar una plantilla
+        from django.shortcuts import render
+
+        def vista_principal(request):
+            return render(request, 'app_code_rider/index.html')
+
+
+
+10mo. CONFIGURAR VISTAS DEL PROYECTO:
+    => Esto nos prermite poner una pagina de incio al ejecutar el "runserver"
+
+    => en la CARPETA DEL PROYECTO, debemos otra Carpeta de TEMPLATES (si quieren, dentro de ella crean otra carpeta 
+        de 'pr_nombre', asi como lo hicieron en el templates de la App, pero esto es opcional. es mas como para tenerlo todo
+        organizado :), ya dentro deben crear el HTML que hará de pagina de bienvenida. (Pueden ahorrarse dolores de cabeza si
+        solo lo llaman por ejemplo 'bienvenida.html')
+        EJM: => pr_nombre/templates/pr_nombre/bienvenida.html
+    
+    => luego, en la carpeta del proyecto (La principal, no la del 'templates') crearemos un archivo 'views.py', y lo configuramos 
+        casi que de la misma forma que lo hicimos en el views de la APP:
+        EJM: 
+            from django.shortcuts import render
+            from django.http import HttpResponse
+
+            def fn_inicio(request):
+                return render(request, 'pr_repaso/bienvenido.html')
+
+        en este ejemplo, creamos una funcion/metodo llamado fn_inicio, esta será quein llame al archivo
+        que está dentro de la carpeta TEMPLATES, por lo que por simple logica, deucimos que en este caso,
+        hay una carpeta que se llama pr_repaso la cual está dentro de TEMPLATES, y la cual contiene el archivo 'bienvenida.html'
+
+    =>
+
+====================================================================================================================================
+COMO SE EJECUTA EL PROYECTO:
+    Para correr el proyecto en Django debes hacer estos pasos:
+
+    1. Ingresa a la carpeta del proyecto el la consola de POWERSHELL o CMD:
+
+    2. Activar el entorno virtual
+        v_codeRider\Scripts\activate
+
+    3. Ejecutar migraciones iniciales
+        python manage.py migrate
+
+    4. Iniciar el servidor
+        python manage.py runserver
+
+    5. Abrir el navegador en:
+        http://127.0.0.1:8000/
+
+    6. Si se quiere acceder a la app
+        http://127.0.0.1:8000/code-rider/
+
+    => En mi caso caso, la app muestra una página principal con estilo, navegación, imágenes, audio y video.
+
+
+
+
+=======================================================================================================================
+
+            GENERAR MODELOS (PARA BASES DE DATOS)
+            
+=======================================================================================================================            

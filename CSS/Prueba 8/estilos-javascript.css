@@ -1,0 +1,20 @@
+/* ------------------------------------------ Import desde JavaScript(CSS Module Scripts) ---------------------------------------------- */
+/* Este archivo NO está enlazado con <link> ni con @import en el CSS principal.
+   ¡Únicamente cobra vida cuando JavaScript lo importa y lo adopta! */
+
+.box-js-import {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+  border: 2px dashed #a7f3d0;
+  transition: transform 0.3s ease;
+}
+
+.box-js-import:hover {
+  transform: scale(1.02) translateY(-5px);
+}

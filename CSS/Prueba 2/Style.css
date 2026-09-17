@@ -1,0 +1,785 @@
+/* ================================================================
+   ESTILOS GLOBALES - RESET Y CONFIGURACIÓN GENERAL
+   ================================================================ */
+
+* {
+    margin: 10;
+    padding: 5px;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url(./src/Visual-background.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ================================================================
+   CONTENEDOR PRINCIPAL Y ENCABEZADO
+   ================================================================ */
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    background-color: rgba(2, 4, 124, 0.667);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start;
+    background-image: url('');
+    background-size: 64%;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 2.2rem;
+    grid-column: 1 / -1;
+}
+
+/* Estilo base para todos los h2 con clase ej */
+h2[class^="ej"] {
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/072/498/133/small/a-glowing-pink-flower-stands-out-in-a-tranquil-dark-blue-mystical-field-photo.jpg');
+    background-repeat: no-repeat;
+    /* Para apreciar mejor el tamaño real */
+    height: 150px;
+    /* Altura fija para que el fondo sea visible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================================================================
+   CONTENEDORES DE TABLAS - ALINEACIÓN HORIZONTAL (Sin Flex)
+   ================================================================ */
+
+/* Tabla alineada a la IZQUIERDA */
+.tabla-izquierda {
+    text-align: left;
+    padding-right: 10px;
+
+}
+
+/* Tabla alineada al CENTRO */
+.tabla-centro {
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* Tabla alineada a la DERECHA */
+.tabla-derecha {
+    text-align: right;
+    padding-left: 10px;
+}
+
+/* Contenedor general para tablas con barra de desplazamiento */
+.tabla-contenedor {
+    overflow-x: auto;
+    max-width: 100%;
+    display: block;
+}
+
+/* ================================================================
+   ESTILOS DE TABLAS - ESTRUCTURA Y APARIENCIA
+   ================================================================ */
+
+table {
+    width: 100%;
+    min-width: 350px;
+    border-collapse: collapse;
+    border: 2px solid #999;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px 12px;
+    text-align: left;
+    border: 1px solid #bbb;
+    font-size: 0.95rem;
+}
+
+td img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+/* ================================================================
+   TEMAS DE COLOR PARA LAS TABLAS
+   ================================================================ */
+
+/* TABLA 1: AMARILLA */
+.tabla-amarilla thead {
+    background-color: #ffcc00;
+    color: #2c3e50;
+}
+
+.tabla-amarilla tr {
+    background-color: #ffcc00;
+}
+
+/* TABLA 2: AZUL */
+.tabla-azul thead {
+    background-color: #00538a;
+    color: white;
+}
+
+.tabla-azul tr {
+    background-color: #00538a;
+}
+
+/* TABLA 3: ROJA */
+.tabla-roja thead {
+    background-color: red;
+    color: white;
+}
+
+.tabla-roja tr {
+    background-color: red;
+}
+
+/* ================================================================
+   ESTILOS DE ESTADO Y FOOTER
+   ================================================================ */
+
+/* Estados de activo/inactivo */
+.activo {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.inactivo {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Pie de página */
+footer {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* ================================================================
+   RESPONSIVE - Estilos para pantallas más pequeñas
+   ================================================================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    table {
+        max-width: 100%;
+    }
+
+    td img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+.ej1 {
+    border-style: solid;
+    border-color: #0859ab rgb(246, 9, 9) rgb(252, 181, 2);
+    border-radius: 100px 5px;
+
+    background-size: cover;
+    /* CUBRE TODO EL ESPACIO */
+    background-color: linear-gradient(#00f8f8, #1500f8, #fefefeea);
+}
+
+.ej2 {
+    border-style: dotted;
+    border-radius: 50px;
+    background-size: contain;
+    /* SE VE TODA LA IMAGEN */
+    background-color: #00f8f852;
+}
+
+.ej3 {
+    border-style: dashed;
+    background-size: auto;
+    /* TAMAÑO ORIGINAL (MUY GRANDE) */
+    background-color: #00f8f852;
+}
+
+.ej4 {
+    border-style: double;
+    background-position: center;
+    /* CENTRADO */
+    background-size: auto;
+    background-color: #00f8f852;
+}
+
+.ej5 {
+    border-style: groove;
+    background-size: 50px;
+    /* TAMAÑO FIJO EN PIXELES */
+    background-color: #00f8f852;
+
+}
+
+.ej6 {
+    border-style: ridge;
+    background-size: 15%;
+    /* EL 15% DEL ANCHO DEL H2 */
+    background-color: #00f8f852;
+}
+
+.ej7 {
+    border-style: inset;
+    background-size: inherit;
+    /* HEREDA DEL CONTENEDOR PADRE, pero en este caso, él es el contenedor padre : */
+    background-color: #00f8f852;
+}
+
+.ej8 {
+    border-style: outset;
+    background-size: revert;
+    /* VUELVE AL VALOR DEL NAVEGADOR */
+    background-color: #00f8f852;
+}
+
+.ej9 {
+    border-style: none;
+    background-size: unset;
+    /* ELIMINA EL VALOR APLICADO */
+    background-color: #00f8f852;
+}
+
+.ej10 {
+    border-style: hidden;
+    background-size: initial;
+    /* VALOR INICIAL DE LA PROPIEDAD */
+    background-color: #00f8f852;
+}
+
+/* Mantengo tus otros estilos de borde abajo */
+.ej11 {
+    border-style: solid inset groove dashed;
+    background-color: #00f8f852;
+}
+
+.ej12 {
+    border: solid firebrick;
+    border-width: 25px 5px 10px 12px;
+    background-color: #00f8f852;
+}
+
+.Fondo_Natural {
+    border: #03ff2d 5px solid;
+    border-radius: 15px;
+    background-image: url(./src/visual/Fondo\ Natural.jpg);
+    background-size: auto;
+}
+
+.cuyito {
+    background-image: url(./src/visual/cuyito.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+    position: relative;
+    z-index: 2;
+}
+
+.pastito {
+    background-image: url(./src/visual/pastito.png);
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: center bottom;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    z-index: 1;
+}
+
+.newObject-1 {
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background: linear-gradient(-135deg, rgb(31, 1, 255), rgb(255, 255, 255), rgb(255, 0, 0));
+}
+
+.newObject-2 {
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background: radial-gradient(closest-side,
+            red,
+            rgb(92, 1, 106),
+            rgb(255, 185, 55));
+}
+
+.newObject-3 {
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background: radial-gradient(closest-corner,
+            red,
+            rgb(92, 1, 106),
+            rgb(255, 185, 55));
+}
+
+.newObject-4 {
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background: radial-gradient(farthest-side,
+            red,
+            rgb(92, 1, 106),
+            rgb(255, 185, 55));
+}
+
+.newObject-5 {
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background: radial-gradient(farthest-corner,
+            red,
+            rgb(92, 1, 106),
+            rgb(255, 185, 55));
+}
+
+.newObject-6 {
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background-image: repeating-radial-gradient(red, blue 10%);
+}
+
+.newObject-7 {
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background: conic-gradient(#1f005c, #5b0060, #870160, #ac255e, #ca450c)
+}
+
+.newObject-8 {/*Un atardecer en el mar*/
+    
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    /* Multiple gradients are comma-separated. Order: top-most first */
+    background: linear-gradient(
+            /*ARENA*/
+            -180deg,
+            transparent 82%,
+            rgb(248, 213, 114) 10%,
+            rgb(77, 63, 1)),
+
+        linear-gradient(
+            /*CIELO ROJIZO A LOS LADOS*/
+            90deg,
+            rgba(250, 2, 2, 0.154),
+            transparent,
+            rgba(250, 2, 2, 0.154)),
+
+        linear-gradient(
+            /*Reflejo del sol*/
+            to bottom,
+
+            transparent 0%,
+            transparent 50%,
+
+            rgba(255, 255, 220, 0.35) 51%,
+            rgba(255, 255, 220, 0.12) 58%,
+
+            transparent 68%),
+
+        linear-gradient(
+            /*MAR*/
+            -180deg,
+            transparent 50%,
+            rgb(0, 78, 222) 50%,
+            rgb(3, 167, 255) 70%),
+
+        radial-gradient(
+            /*SOL CRUEL*/
+            circle at 50% 50%,
+
+            white 18%,
+            rgb(251, 251, 152) 20%,
+            rgb(255, 191, 0) 60%);
+}
+
+.newObject-9 { /*Ciudad con pezo Cortado*/
+    max-width: 600px;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background-image: linear-gradient(-10deg, #fff 19%, transparent 19%), url('https://template.canva.com/EAFcGQeYc0k/1/0/800w-bsBFT-jECDs.jpg');
+}
+
+.newObject-10 { /*Clip-path:Estrella y Figuras Geometricas*/
+    max-width: 900px;
+    min-height: 475px;
+    margin: 10px;
+    padding: 25px;
+    border: 2px solid rgb(0, 0, 0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    background: linear-gradient(rgb(17, 255, 0), yellow, orange, red);
+    height: 250px;
+
+    /*Triangulo Equilatero*/
+    /* clip-path: polygon(50% 20% , 0% 100% , 100% 100%);  */
+
+    /*Octágono*/
+    /* clip-path: polygon(30% 0% , 70% 0% , 100% 30% , 100% 70% , 70% 100% , 30% 100% , 0% 70% , 0% 30%); */
+
+    /*Estrella de 5 Puntas*/
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.newObject-11 { /*Diseños de Botones*/
+    max-width: 900px;
+    min-height: 475px;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(rgba(3, 221, 255, 0.517), rgba(205, 3, 255, 0.363)), url('https://template.canva.com/EAFcGQeYc0k/1/0/800w-bsBFT-jECDs.jpg') center/cover;
+}
+
+.button-1 {
+    padding: 15px;
+    font-weight: bold;
+    color: rgb(0, 0, 172);
+    background-color: cyan;
+
+    border-style: solid;
+    border-color: #085aab00 rgba(246, 9, 9, 0) rgb(255, 255, 255);
+    border-radius: 100px;
+
+}
+
+
+
+.newObject-12 { /*Mask: Samurai en Luna Escarlata*/
+    max-width: 600px;
+    min-height: 1000px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+
+    background: url('https://i.pinimg.com/1200x/43/ee/5a/43ee5ac102e96332c50ce3b775a911d2.jpg') center/cover;
+    -webkit-mask-image: radial-gradient(ellipse 100% 60% at 50% 40%, black 40%, transparent 50%);
+    mask-image: radial-gradient(ellipse 100% 60% at 50% 40%, black 40%, transparent 50%);
+}
+
+.newObject-13 { /*Mask: Mahoraga en Grafiti Urbano*/
+    max-width: 600px;
+    min-height: 1000px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+
+    background: url('https://i.pinimg.com/1200x/aa/36/e8/aa36e836835b28849b7e985cb7fbba37.jpg') center/cover;
+
+    -webkit-mask-image: url('https://png.pngtree.com/png-vector/20241107/ourmid/pngtree-urban-graffiti-artwork-on-brick-wall-png-image_14224006.png') center;
+    mask-image: url('https://png.pngtree.com/png-vector/20241107/ourmid/pngtree-urban-graffiti-artwork-on-brick-wall-png-image_14224006.png');
+
+    mask-repeat: no-repeat;
+    mask-size: 600px 800px;
+}
+
+.newObject-14 { 
+    max-width: 600px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 8px solid black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #1f005c;
+}
+
+.mahoraga-titulo { /*Efecto de Degradado en Titulo de Mahoraga*/
+    background: -webkit-linear-gradient(black, rgb(255, 0, 0), black);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mahoraga {
+    color: white;
+}
+
+.mahoraga-forma { /*Shape-Outside: Texto descriptivo de Mahoraga*/
+    float: left;
+    /* Regala de oro 1: Debe flotar */
+    width: 120px;
+    /* Regla de oro 2: Tamaño definido */
+    height: 120px;
+    /* Le pasamos la imagen de Mahoraga a este bloque */
+    background-image: url(https://i.redd.it/mahoraga-beats-all-these-guys-btw-v0-flfnofxp002e1.png?width=735&format=png&auto=webp&s=88844f8865feee7002112d524ad67991fc6d8aac);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Definimos la forma circular para que el texto la rodee */
+    /* circle(radio at posiciónX posiciónY) */
+    shape-outside: circle(90% at 50% 50%);
+
+    /* Un pequeño margen a la derecha y abajo para que el texto no toque la imagen */
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.newObject-15 {
+    max-width: 600px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 3px solid rgb(241, 241, 241);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #000000c7;
+}
+
+.adaptacion {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-size: 280%;
+    text-align: center;
+    font-weight: 1000;
+    /* Tip: Mientras más grueso, ¡mejor se ve el efecto! */
+
+    /* FORMA CORRECTA DE DEFINIR EL FONDO */
+    background: url('https://image.slidesdocs.com/responsive-images/background/shimmering-gold-colored-paper-texture-with-reflection-effects-powerpoint-background_4a268a39c9__960_540.jpg') center / cover;
+
+    /* Corta el fondo con la forma del texto */
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    /* AHORA SÍ: Descomenta estas líneas para que el texto sea transparente */
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    /* La sombra ayuda mucho a que el texto no se pierda */
+    text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.4);
+}
+/*========================================================================================================*/
+
+.escena {
+    position: relative;
+    z-index: 0;
+    
+    /* Cambiado a tamaño fijo para congelar las coordenadas internas */
+    width: 700px;
+    height: 700px;
+    box-sizing: border-box; /* Evita que el padding altere el tamaño total */
+    
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 81px;
+    border: 3px solid rgb(0, 255, 13);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffffb1;
+}
+
+.Triangulo-Invertido {    
+    position: absolute;
+    z-index: 12;
+    top: 25px;  /* Alineado al padding superior de la escena */
+    left: 25px; /* Alineado al padding izquierdo de la escena */
+    
+    min-width: 400px;
+    min-height: 600px;
+    border: 4px solid transparent;    
+    background: #323131; 
+    
+    /* Lateral - Vertical */
+    clip-path: polygon(
+        65% 20%,  /* Lado Derecho */
+        20% 25%,  /* Lado Izquierdo */
+        50% 65%   /* Lado inferior */
+    );
+}
+
+.Triangulo-BordeBlanco {
+    position: absolute;
+    z-index: 13;
+    top: 25px;
+    left: 25px;
+    
+    min-width: 400px;
+    min-height: 600px;
+    border: 4px solid transparent;    
+    background: white; 
+    
+    /* Lateral - Vertical */
+    clip-path: polygon(
+        65% 20.5%, /* Lado Derecho */
+        23% 25.5%, /* Lado Izquierdo */
+        50% 65%    /* Lado inferior */
+    );
+}
+
+.Triangulo-Lado-Colombia {
+    position: absolute;
+    z-index: 14;
+    top: 25px;
+    left: 25px;
+    
+    min-width: 400px;
+    min-height: 600px;
+    background: linear-gradient(
+        80deg,
+        #CE1126 0%,    
+        #CE1126 39.5%, 
+        #003893 40%,   
+        #003893 43.5%, 
+        #FCD116 44%,   
+        #FCD116 100%
+    );
+    
+    /* Lateral - Vertical */
+    clip-path: polygon(
+        45% 23.8%,  /* Lado Derecho */
+        25% 26.5%,  /* Lado Izquierdo */
+        49.7% 63%   /* Lado inferior */
+    );
+}
+
+.Triangulo-Lado-SENA {
+    position: absolute;
+    z-index: 15;
+    top: 25px;
+    left: 25px;
+    
+    min-width: 400px;
+    min-height: 600px;
+    background-color: rgb(1, 187, 10);
+    background-image: url(https://prezigram-assets.prezicdn.net/17f35fde3ce0e218a5b73232bca52cbe3cd63abcd81a621e2c9c984cbe36289a1bee7b771c55e0a7b0865ad248c3bbe0dbf818943a86609ff0662220d043b380);
+    background-size: 16%;
+    background-repeat: no-repeat;
+    background-position: 52.5% 28%;
+    
+    /* Lateral - Vertical */
+    clip-path: polygon(
+        63.5% 21.5%, /* Lado Derecho */
+        45% 23.8%,   /* Lado Izquierdo */
+        49.7% 63%    /* Lado inferior */
+    );
+}
+
+.disco-Mapa-Colombia-Capa1 {
+    position: absolute;
+    z-index: 1;
+    top: 51.5%;
+    left: 6%;
+
+    min-width: 370px;
+    min-height: 140px;
+    background-color: rgb(222, 222, 222);
+    clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+.disco-Mapa-Colombia-Capa2 {
+    position: absolute;
+    z-index: 2;
+    top: 51.5%;
+    left: 6%;
+
+    min-width: 370px;
+    min-height: 125px;
+    background-image: url(./src/visual/Colombia.jpg);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+.Servicio-Nacional-de-Aprendizaje {
+    position: absolute;
+    z-index: 16;
+    bottom: 30%;
+    right: 15%;
+    
+    max-width: 207px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: 700;
+    background: linear-gradient(rgb(0, 100, 0), rgb(0, 255, 0), rgb(0, 100, 0));
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

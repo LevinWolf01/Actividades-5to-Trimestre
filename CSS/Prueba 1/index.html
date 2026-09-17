@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Práctica CSS #1 </title>
+    <link rel="stylesheet" type="text/css" href="Style.css">
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>⚡ Pruebas de CSS #1</h1>
+            
+        </header>
+
+        <section class="card">
+            <h2>💬 Pruebas de Selectores y Fuentes</h2>
+            <p> Soy un Párrafo :D </p>
+            <hr>
+            <p class="my-class"> ¡Yo también! ¡Aweboooo! </p>
+            <p id="my-id"> Igual yo we, nmms :O </p>
+
+            <div>
+                <p> Soy un Parrafo dentro dentro de un div :D </p>
+            </div>
+
+            <p> y yo, uno fuera del div :/ </p>
+        </section>
+
+        <section class="card">
+            <h2>🔘 Interactivos y Bloques Inline</h2>
+            <div class="button-area">
+                <button> Soy un boton :3 </button>
+                <p> Yo tambien soy un parrafo! </p>
+            </div>
+
+            <div class="flex-container">
+                <div id="first"> Soy el 1er. div </div>
+                <div id="second"> Soy el 2do. div </div>
+                <div id="third"> Soy el 3er. div </div> 
+            </div>
+
+            <div style="background-color: #14b8a6; color: #042f2e; width: 100%; text-align: center; padding: 3px; border-radius: 8px; margin-top: 15px; font-weight: bold;"> 
+                Soy un div con CSS en linea (in-line) 
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>📊 Datos, Listas y Fórmulas</h2>
+            <pre>
+Producto:          Precio:          Cantidad:
+Laptop 1           $ 500            2
+Laptop 2           $ 500            3
+Laptop 3           $ 500            5
+            </pre>
+            
+            <p> La formula del Agua es H<sub>2</sub>O </p>
+            
+            <div style="background-color: #1e40af; color: #f8fafc; width: 100%; text-align: center; padding: 3px; border-radius: 8px; margin: 15px 0; font-size: 0.9rem; line-height: 1.5;"> 
+                Hay un nivel en Geometry DasH que tiene una duración de 2.761 x 10<sup>17.372</sup> Segundos, y a su vez, en la parte del Spam final, tienes que dar 4.327.749 clicks POR CADA SEGUNDO! ☠️ 
+            </div>
+
+            <div class="lists-grid">
+                <ul>
+                    <li> Elemento 1 </li>
+                    <li> Elemento 2 </li>
+                </ul>
+
+                <ol>
+                    <li> Elemento Ordenado 1 </li>
+                    <li> Elemento Ordenado 2 </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>📋 Formulario Estilizado</h2>
+            <div class="form-group instructions-container">
+                <label for="zip"> Zip Code: <span class="instructions">(5 Digits)</span></label>
+                <input type="number" pattern="[0-9]*" maxlength="5" min="0" name="zip" id="zip" placeholder="12345">
+            </div>
+
+            <div class="form-group">
+                <label>Phone: *</label>
+                <div class="phone-inputs">
+                    <label for="areacode" class="hidden">Area Code</label>
+                    <input required type="tel" name="areacode" id="areacode" maxlength="3" placeholder="123">
+                    <span>-</span>
+                    <label for="threedigits" class="hidden">First 3 phone digits</label>
+                    <input required type="tel" name="threedigits" id="threedigits" maxlength="3" placeholder="456">
+                    <span>-</span>
+                    <label for="fourdigits" class="hidden">Last 4 phone digits</label>
+                    <input required type="tel" name="fourdigits" id="fourdigits" maxlength="4" placeholder="7890">
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

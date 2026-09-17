@@ -1,0 +1,16 @@
+/* Solo se aplica si el navegador entiende display: grid */
+.box-supports .mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.box-supports .mini-grid span {
+  background-color: #10b981;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+}
